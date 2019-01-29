@@ -1,15 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Flex } from '@rebass/grid';
 
 import Text from './Text';
-import Layout from './Layout';
 
-const ContainerLayout = styled(Layout)`
-  display: flex;
-  flex-direction: column;
-  position: relative;
-
+const ContainerLayout = styled(Flex)`
   & > *:last-child {
     height: 30%;
     background-color: ${({ theme }) => theme.color.dark};
@@ -36,8 +32,8 @@ const Clickable = styled.a`
   left: 0;
 `;
 
-const CourseItem = ({ text }) => (
-  <ContainerLayout>
+const CourseItem = ({ text, ...props }) => (
+  <ContainerLayout {...props}>
     <Clickable href="#" />
     <Image />
     <Text color="light" size={2}>
