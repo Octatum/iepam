@@ -1,11 +1,12 @@
 const theme = {
   color: {
-    light: 'white',
+    white: 'white',
     dark: '#333',
     black: 'black',
     lightGray: '#C4C4C4',
     darkGray: '#6C6C6C',
     footer: '#D4D4D4',
+    darkestGray: '#3E3E3E',
   },
   font: {
     main: 'Roboto',

@@ -7,23 +7,23 @@ export const withButtonStyles = component => styled(component)`
   justify-content: center;
   transition: 0.3s ease-in-out all;
   padding: 0.5em 1em;
-  background-color: ${({ theme }) => theme.color.light};
+  background-color: ${({ theme }) => theme.color.white};
   color: ${({ theme }) => theme.color.black};
   font-weight: bold;
 
   :hover {
     background-color: ${({ theme }) => theme.color.black};
-    color: ${({ theme }) => theme.color.light};
+    color: ${({ theme }) => theme.color.white};
   }
 
   ${({ theme, kind }) =>
     kind === 'dark' &&
     `
     background-color: ${theme.color.black};
-    color: ${theme.color.light};
+    color: ${theme.color.white};
     
     :hover {
-      background-color: ${theme.color.light};
+      background-color: ${theme.color.white};
       color: ${theme.color.black};
     }
   `}
