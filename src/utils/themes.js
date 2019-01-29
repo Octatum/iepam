@@ -17,7 +17,7 @@ const theme = {
     black: 'black',
     lightGray: '#C4C4C4',
     darkGray: '#6C6C6C',
-    footer: '#D4D4D4'
+    footer: '#D4D4D4',
   },
   font: {
     main: 'Roboto',

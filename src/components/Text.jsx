@@ -19,6 +19,7 @@ const Text = styled.div`
   font-weight: ${setWeight};
   text-align: ${({ align }) => align};
   text-decoration: none;
+  box-sizing: border-box;
 `;
 
 Text.defaultProps = {
