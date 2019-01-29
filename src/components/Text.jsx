@@ -8,13 +8,18 @@ const setWeight = ({ bold }) => {
   return bold ? '700' : '400';
 };
 
-const setFont = ({ size, theme }) => {
-  const x = theme.setFontWithRhythm(theme.font.main, size);
-  return x;
+const setFont = ({ theme, fontname = 'main' }) => {
+  return theme.font[fontname];
+};
+
+const setFontSize = ({ theme, size = 0 }) => {
+  return `${1 + size * theme.fontIncrement.desktop}em`;
 };
 
 const Text = styled.div`
-  ${setFont};
+  font-family: ${setFont};
+  font-size: ${setFontSize};
+  line-height: 1.2em;
   color: ${setColor};
   font-weight: ${setWeight};
   text-align: ${({ align }) => align};
@@ -25,7 +30,7 @@ Text.defaultProps = {
   align: 'inherit',
   color: 'black',
   bold: false,
-  size: 1,
+  size: 0,
 };
 
 export default Text;

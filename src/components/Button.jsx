@@ -1,28 +1,24 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-const setFont = ({ size, theme }) => {
-  const x = theme.setFontWithRhythm(theme.font.main, size);
-  return x;
-};
-
-const Button = styled('button')`
-  ${setFont};
-  border-color: ${({theme}) => theme.color.black};
+export const withButtonStyles = component => styled(component)`
+  border-color: ${({ theme }) => theme.color.black};
   display: flex;
   align-items: center;
   justify-content: center;
   transition: 0.3s ease-in-out all;
-  padding: 0.5rem 1rem;
-  background-color: ${({theme}) => theme.color.light};
-  color: ${({theme}) => theme.color.black};
+  padding: 0.5em 1em;
+  background-color: ${({ theme }) => theme.color.light};
+  color: ${({ theme }) => theme.color.black};
   font-weight: bold;
-  
+
   :hover {
-    background-color: ${({theme}) => theme.color.black};
-    color: ${({theme}) => theme.color.light};
+    background-color: ${({ theme }) => theme.color.black};
+    color: ${({ theme }) => theme.color.light};
   }
 
-  ${({ theme, kind }) => kind === "dark" && `
+  ${({ theme, kind }) =>
+    kind === 'dark' &&
+    `
     background-color: ${theme.color.black};
     color: ${theme.color.light};
     
@@ -32,6 +28,8 @@ const Button = styled('button')`
     }
   `}
 `;
+
+const Button = withButtonStyles('button');
 
 Button.defaultProps = {
   size: 1,

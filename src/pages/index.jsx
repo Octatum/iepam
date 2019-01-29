@@ -7,7 +7,7 @@ const IndexPage = () => {
   return (
     <AppLayout>
       <Helmet>
-        <title>Plataforma educativa</title>
+        <title>Instituto Estatal Por el Adulto Mayor</title>
       </Helmet>
     </AppLayout>
   );

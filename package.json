@@ -5,6 +5,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@ceteio/styled-components-rhythm": "^2.0.1",
+    "@rebass/grid": "^6.0.0-7",
     "babel-plugin-styled-components": "^1.9.4",
     "formik": "^1.4.0",
     "gatsby": "^2.0.66",
@@ -17,9 +18,10 @@
     "gatsby-source-filesystem": "^2.0.12",
     "gatsby-transformer-sharp": "^2.1.9",
     "prop-types": "^15.6.2",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+    "react": "^16.8.0-alpha.1",
+    "react-dom": "^16.8.0-alpha.1",
     "react-helmet": "^5.2.0",
+    "react-image-gallery": "^0.8.12",
     "slick-carousel": "^1.8.1",
     "styled-components": "^4.1.2",
     "yup": "^0.26.6"

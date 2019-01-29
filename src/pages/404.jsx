@@ -20,8 +20,12 @@ const NotFoundPage = () => (
       <title>Plataforma educativa</title>
     </Helmet>
     <Layout>
-      <Text size={3} bold>¡Ooops!</Text>
-      <Text size={8} bold>404</Text>
+      <Text size={3} bold>
+        ¡Ooops!
+      </Text>
+      <Text size={8} bold>
+        404
+      </Text>
       <Text as="h1" size={2}>
         ¡No he encontrado nada!
       </Text>

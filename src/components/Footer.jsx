@@ -1,65 +1,64 @@
 import React from 'react';
 import styled from 'styled-components';
-import Layout from './Layout';
 import Text from './Text';
+import { Flex, Box } from '@rebass/grid';
 
-const GridLayout = styled(Layout)`
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 2fr 1fr;
-  grid-template-areas:
-    'links block'
-    'copyright block';
-  height: 20rem;
-  grid-gap: 2rem;
-  background-color: ${({theme}) => theme.color.footer};
+const FlexLayout = styled(Flex)`
+  background: ${({ theme }) => theme.color.footer};
 `;
 
-const LinksArea = styled('div')`
-  grid-area: links;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: space-around;
+const LightBox = styled(Box)`
+  background: ${({ theme }) => theme.color.footer};
 `;
 
-const CopyrightArea = styled(Text)`
-  padding: 0 20%;
-  grid-area: copyright;
-  margin: 0;
-`;
-
-const BlockArea = styled(Layout)`
-  grid-area: block;
-  background-color: ${({theme}) => theme.color.darkGray};
-
-  > * {
-    height: 50%;
-    width: 100%;
-    background-color: ${({theme}) => theme.color.footer};
-
-  }
+const DarkFlex = styled(Flex)`
+  background: ${({ theme }) => theme.color.darkGray};
 `;
 
 const Footer = () => {
   return (
     <footer>
-      <GridLayout padding={4}>
-        <LinksArea>
-          <Text as="a" href="#">Texto 1</Text>
-          <Text as="a" href="#">Texto 2</Text>
-          <Text as="a" href="#">Texto 3</Text>
-          <Text as="a" href="#">Texto 4</Text>
-        </LinksArea>
-        <CopyrightArea align="center">
-          © Lorem ipsum –  <Text as="span" bold>America’s Most Trusted Senior Citizen Website</Text> | Site Disclaimer | Privacy Policy
-        </CopyrightArea>
-        <BlockArea paddingHorizontal={4} paddingVertical={2}>
-          <div />
-        </BlockArea>
-      </GridLayout>
+      <FlexLayout p={4}>
+        <Box width={2 / 3}>
+          <Flex flexDirection="column" pt={4}>
+            <Box width={1} p={3}>
+              <Flex alignItems="center" justifyContent="space-around" py={3}>
+                <Box>
+                  <Text>Texto 1</Text>
+                </Box>
+                <Box>
+                  <Text>Texto 1</Text>
+                </Box>
+                <Box>
+                  <Text>Texto 1</Text>
+                </Box>
+                <Box>
+                  <Text>Texto 1</Text>
+                </Box>
+              </Flex>
+            </Box>
+          </Flex>
+          <Flex justifyContent="center" pt={3}>
+            <Box width={4 / 6}>
+              <Text align="center">
+                © Lorem ipsum{' '}
+                <Text bold as="span">
+                  – America’s Most Trusted Senior Citizen Website
+                </Text>{' '}
+                | Site Disclaimer | Privacy Policy
+              </Text>
+            </Box>
+          </Flex>
+        </Box>
+        <Box width={1 / 3}>
+          <DarkFlex flexDirection="column" px={5} py={4}>
+            <LightBox width={1} p={4} />
+            <Box width={1} p={4} />
+          </DarkFlex>
+        </Box>
+      </FlexLayout>
     </footer>
-  )
+  );
 };
 
 export default Footer;

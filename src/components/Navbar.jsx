@@ -1,100 +1,91 @@
 import React from 'react';
+import { Flex, Box } from '@rebass/grid';
 import styled from 'styled-components';
 
-import Layout from './Layout';
 import Text from './Text';
 import Button from './Button';
+import GatsbyLink from 'gatsby-link';
 
-const GridLayout = styled(Layout)`
-  display: grid;
-  grid-template-rows: 1fr 1fr 1.5fr;
-  grid-template-columns: 1fr 3fr 1.5fr;
-  grid-template-areas:
-    '. . address'
-    'logo links login'
-    '. . block';
-  height: 15rem;  
+const GrayBox = styled(Box)`
+  background: ${({ theme }) => theme.color.lightGray};
 `;
 
-const AddressArea = styled('div')`
-  grid-area: address;
-  text-align: right;
+const DarkGrayBox = styled(Box)`
+  background: ${({ theme }) => theme.color.darkGray};
 `;
 
-const LogoArea = styled('div')`
-  grid-area: logo;
-  background-color: ${({ theme }) => theme.color.lightGray};
-`;
-
-const LinksArea = styled('div')`
-  grid-area: links;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-`;
-
-const ButtonArea = styled('div')`
-  grid-area: login;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  text-align: center;
-  box-sizing: border-box;
-  padding-left: 10%;
-
-  > * {
-    flex: 1;
-  }
-
-  > * {
-    margin-left: 0.25rem;
-  }
-`;
-
-const BlockArea = styled('div')`
-  grid-area: block;
-  display: flex;
-  margin-top: ${({theme}) => theme.rhythmSizing(3)}rem;
-
-  > * {
-    background-color: ${({theme}) => theme.color.darkGray};
-    flex: 1;
-  }
-
-  > :last-child {
-    flex: 6;
-    margin-left: 0.5rem;
-  }
+const FullSizeButton = styled(Button)`
+  width: 100%;
+  height: 100%;
 `;
 
 const Navbar = () => {
   return (
-    <nav>
-      <GridLayout paddingVertical={2} paddingHorizontal={4}>
-        <AddressArea>
-          <Text bold>
+    <Flex as="nav" flexDirection="column" p={4}>
+      <Flex>
+        <Box width={1}>
+          <Text align="right" bold>
             (210) 647-420 5305
           </Text>
-          <Text>Bandera Rd, San Antonio, TX 78238, USA</Text>
-        </AddressArea>
-        <LogoArea />
-        <LinksArea>
-          <Text href="#" as="a" bold>Link 1</Text>
-          <Text href="#" as="a" bold>Link 2</Text>
-          <Text href="#" as="a" bold>Link 3</Text>
-          <Text href="#" as="a" bold>Link 4</Text>
-        </LinksArea>
-        <ButtonArea>
-          <Button kind="dark">Registrarse</Button>
-          <Button>Entrar</Button>
-        </ButtonArea>
-        <BlockArea>
-          <div />
-          <div />
-        </BlockArea>
-      </GridLayout>
-    </nav>
+          <Text align="right">Bandera Rd, San Antonio, TX 78238, USA</Text>
+        </Box>
+      </Flex>
+      <Flex>
+        <GrayBox width={1 / 5} py={4} />
+        <Box width={2 / 5}>
+          <Flex
+            css={{ height: '100%' }}
+            alignItems="center"
+            justifyContent="space-around"
+          >
+            <Box width={1 / 4}>
+              <Text bold align="center">
+                Texto 1
+              </Text>
+            </Box>
+            <Box width={1 / 4}>
+              <Text bold align="center">
+                Texto 1
+              </Text>
+            </Box>
+            <Box width={1 / 4}>
+              <Text bold align="center">
+                Texto 1
+              </Text>
+            </Box>
+            <Box width={1 / 4}>
+              <Text bold align="center">
+                Texto 1
+              </Text>
+            </Box>
+          </Flex>
+        </Box>
+        <Box width={2 / 10} />
+        <Box width={2 / 10}>
+          <Flex
+            css={{ height: '100%' }}
+            alignItems="center"
+            justifyContent="space-around"
+          >
+            <Box width={1 / 2} pr={1}>
+              <FullSizeButton kind="dark">Registrarse</FullSizeButton>
+            </Box>
+            <Box width={1 / 2}>
+              <FullSizeButton>Entrar</FullSizeButton>
+            </Box>
+          </Flex>
+        </Box>
+      </Flex>
+      <Flex>
+        <Box width={4 / 6} />
+        <Box width={2 / 6}>
+          <Flex>
+            <DarkGrayBox width={1 / 6} p={3} />
+            <DarkGrayBox width={5 / 6} p={3} ml={3} />
+          </Flex>
+        </Box>
+      </Flex>
+    </Flex>
   );
 };
 
