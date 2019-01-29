@@ -40,16 +40,12 @@ const Navbar = () => {
           >
             <Box width={1 / 4}>
               <Text bold align="center">
-                <GatsbyLink to="/educacion/">
-                  Educación
-                </GatsbyLink>
+                <GatsbyLink to="/educacion/">Educación</GatsbyLink>
               </Text>
             </Box>
             <Box width={1 / 4}>
               <Text bold align="center">
-                <GatsbyLink to="/educacion/curso">
-                  Curso
-                </GatsbyLink>
+                <GatsbyLink to="/educacion/curso">Curso</GatsbyLink>
               </Text>
             </Box>
             <Box width={1 / 4}>
@@ -61,9 +57,7 @@ const Navbar = () => {
             </Box>
             <Box width={1 / 4}>
               <Text bold align="center">
-                <GatsbyLink to="/educacion/">
-                  Texto 1
-                </GatsbyLink>
+                <GatsbyLink to="/educacion/">Texto 1</GatsbyLink>
               </Text>
             </Box>
           </Flex>

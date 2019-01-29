@@ -5,7 +5,6 @@ import Layout from '../../../components/Layout';
 import Arrow from '../../../components/Arrow';
 import CourseItem from '../../../components/CourseItem';
 
-
 const SliderLayout = styled(Layout)`
   position: relative;
   overflow-x: hidden;
@@ -15,13 +14,12 @@ const SliderLayout = styled(Layout)`
 const SliderComponent = styled(Layout)`
   display: flex;
   justify-content: flex-start;
-  
-  width: ${({ total }) => `${25*total}%`};
-  
+
+  width: ${({ total }) => `${25 * total}%`};
+
   transition: transform 1s ease;
   transform: ${({ current, total }) =>
-        `translateX(-${(current / total) * 100}%)`};
-
+    `translateX(-${(current / total) * 100}%)`};
 
   height: 500px;
   > * {
@@ -40,29 +38,34 @@ const ArrowContainer = styled.div`
   top: 50%;
   transform: translateY(-50%);
   position: absolute;
-  ${({isLeft}) => isLeft ? {left: '0'} : {right: '0'}}
-  background-color: ${({ theme }) => theme.color.dark.length === 7 ? theme.color.dark+'AA' : theme.color.dark+'A'}; 
+  ${({ isLeft }) => (isLeft ? { left: '0' } : { right: '0' })}
+  background-color: ${({ theme }) =>
+    theme.color.dark.length === 7
+      ? theme.color.dark + 'AA'
+      : theme.color.dark + 'A'}; 
 
   cursor: pointer;
 `;
 
-const Slider = ({ current, items, handleArrowClick}) => {
+const Slider = ({ current, items, handleArrowClick }) => {
   return (
-    <SliderLayout >
-      <SliderComponent current={current} total={items.length} >
+    <SliderLayout>
+      <SliderComponent current={current} total={items.length}>
         {items.map(data => {
-          return <CourseItem text={data.title} src={data.image} key={data.title} />
+          return (
+            <CourseItem text={data.title} src={data.image} key={data.title} />
+          );
         })}
       </SliderComponent>
 
       <ArrowContainer onClick={() => handleArrowClick(false)} isLeft>
         <Arrow color="light" direction="left" scaling={1.5} />
       </ArrowContainer>
-      <ArrowContainer onClick={() => handleArrowClick(true)} >
+      <ArrowContainer onClick={() => handleArrowClick(true)}>
         <Arrow color="light" direction="right" scaling={1.5} />
       </ArrowContainer>
     </SliderLayout>
-  )
-}
+  );
+};
 
 export default Slider;

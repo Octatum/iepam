@@ -24,7 +24,8 @@ const StaticImage = styled(Layout).attrs({
   paddingHorizontal: 1,
   paddingVertical: 2,
 })`
-  background: ${({ image, theme }) => `${theme.color.darkGray} url(${image}) no-repeat 100% 100%`};
+  background: ${({ image, theme }) =>
+    `${theme.color.darkGray} url(${image}) no-repeat 100% 100%`};
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -37,11 +38,15 @@ const StaticImage = styled(Layout).attrs({
 const WelcomeImage = ({ slides, title, text }) => (
   <ComponentLayout>
     <StaticImage>
-      <Text size={2} color="light">{title}</Text>
-      <Text size={1} color="light">{text}</Text>
+      <Text size={2} color="light">
+        {title}
+      </Text>
+      <Text size={1} color="light">
+        {text}
+      </Text>
     </StaticImage>
     <Slider slides={slides} />
   </ComponentLayout>
-)
+);
 
 export default WelcomeImage;

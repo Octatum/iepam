@@ -10,7 +10,7 @@ const ContainerLayout = styled(Layout)`
   flex-direction: column;
   position: relative;
 
-  & > *:last-child  {
+  & > *:last-child {
     height: 30%;
     background-color: ${({ theme }) => theme.color.dark};
     text-align: center;
@@ -40,13 +40,15 @@ const CourseItem = ({ text }) => (
   <ContainerLayout>
     <Clickable href="#" />
     <Image />
-    <Text color='light' size={2}>{text}</Text>
+    <Text color="light" size={2}>
+      {text}
+    </Text>
   </ContainerLayout>
-)
+);
 
 CourseItem.propTypes = {
   text: PropTypes.string,
   src: PropTypes.string,
-}
+};
 
 export default CourseItem;

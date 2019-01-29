@@ -7,11 +7,11 @@ import Slider from './Slider';
 
 class CoursesSlider extends Component {
   constructor() {
-    super()
+    super();
 
     this.state = {
       current: 0,
-    }
+    };
 
     this.handleArrowClick = this.handleArrowClick.bind(this);
   }
@@ -20,16 +20,14 @@ class CoursesSlider extends Component {
     const length = this.props.items.length;
     let next = this.state.current;
 
-    if(isNext) {
+    if (isNext) {
       next = next + 4;
       if (next >= length) {
         next = 0;
-      }
-      else if (next + 4 > length) {
+      } else if (next + 4 > length) {
         next = length - 4;
       }
-    }
-    else {
+    } else {
       next = next - 4;
       if (next < 0) {
         next = length - 4;
@@ -45,19 +43,25 @@ class CoursesSlider extends Component {
     const { title, items } = this.props;
 
     return (
-      <Layout >
+      <Layout>
         <Layout paddingHorizontal={3}>
-          <Text size={3} bold>{title}</Text>
+          <Text size={3} bold>
+            {title}
+          </Text>
         </Layout>
-        <Slider current={this.state.current} items={items} handleArrowClick={this.handleArrowClick} />
+        <Slider
+          current={this.state.current}
+          items={items}
+          handleArrowClick={this.handleArrowClick}
+        />
       </Layout>
-    )
+    );
   }
 }
 
 CoursesSlider.propTypes = {
   title: PropTypes.string,
   items: PropTypes.arrayOf(Object),
-}
+};
 
 export default CoursesSlider;

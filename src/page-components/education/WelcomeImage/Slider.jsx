@@ -6,10 +6,6 @@ const SliderContainer = styled(Layout)`
   background: ${({ theme }) => theme.color.darkGray};
 `;
 
-const ImagesSlider = ({ slides, current }) => (
-  <SliderContainer>
-    
-  </SliderContainer>
-)
+const ImagesSlider = ({ slides, current }) => <SliderContainer />;
 
 export default ImagesSlider;
