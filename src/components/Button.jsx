@@ -1,4 +1,7 @@
+import React from 'react'
 import styled from 'styled-components';
+
+import Text from './Text';
 
 export const withButtonStyles = component => styled(component)`
   border-color: ${({ theme }) => theme.color.black};
@@ -29,10 +32,14 @@ export const withButtonStyles = component => styled(component)`
   `}
 `;
 
-const Button = withButtonStyles('button');
+const _Button = withButtonStyles('button');
 
-Button.defaultProps = {
-  size: 1,
-};
+function Button ({children, className, kind, style, ...other}) {
+  return <_Button style={style} className={className} kind={kind}>
+    <Text style={{color: "inherit"}} {...other}>
+      {children}
+    </Text>
+  </_Button>;
+}
 
 export default Button;

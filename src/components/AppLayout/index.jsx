@@ -12,7 +12,7 @@ const AppLayout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <React.Fragment>
-        <Helmet titleTemplate="%s PDFIS" />
+        <Helmet titleTemplate="%s - IEPAM" />
         <Navbar />
         {children}
         <Footer />

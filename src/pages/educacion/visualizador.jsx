@@ -1,14 +1,11 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import AppLayout from '../../components/AppLayout';
 import { Flex, Box } from '@rebass/grid';
 
 import styled from 'styled-components';
 import Text from '../../components/Text';
-
-const BackgroundBox = styled(Box)`
-  background-color: ${({ theme, backgroundColor }) =>
-    theme.color[backgroundColor]};
-`;
+import BackgroundBox from '../../components/BackgroundBox';
 
 const ScrollBox = styled(Box)`
   overflow-y: scroll;
@@ -18,6 +15,7 @@ const ScrollBox = styled(Box)`
 const Visualizador = () => {
   return (
     <AppLayout>
+      <Helmet title="Visualizador" />
       <Flex>
         <BackgroundBox backgroundColor="darkGray" width={3 / 5} p={3}>
           <BackgroundBox backgroundColor="white" css={{ height: '27rem' }}></BackgroundBox>
