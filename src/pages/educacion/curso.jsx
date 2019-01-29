@@ -6,6 +6,7 @@ import BackgroundBox from '../../components/BackgroundBox';
 import Text from '../../components/Text';
 import styled from 'styled-components';
 import Button from '../../components/Button';
+import GatsbyLink from 'gatsby-link';
 
 const ProgressCircle = styled('div')`
   background-color: ${({theme}) => theme.color.darkGray}; 

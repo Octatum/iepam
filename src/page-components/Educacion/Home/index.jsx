@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import AppLayout from '../../../components/AppLayout';
 import Text from '../../../components/Text';
+import GatsbyLink from 'gatsby-link';
 
 const GrayBox = styled(Box)`
   background: ${({ theme }) => theme.color.darkGray};
@@ -58,8 +59,16 @@ const InicioEducacion = () => {
         </GrayBox>
       </Flex>
       <Flex py={4} flexDirection="column">
-        <Box px={4} size={3}>
-          <Text>Cursos destacados</Text>
+        <Box px={4}>
+          <Text bold size={2}>Cursos destacados</Text>
+        </Box>
+
+        <Box px={4} py={3}>
+          <Text align="right" bold>
+            <GatsbyLink to="/educacion/curso">
+              Ver más...
+            </GatsbyLink>
+          </Text>
         </Box>
       </Flex>
     </AppLayout>
