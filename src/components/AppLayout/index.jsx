@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { ThemeProvider } from 'styled-components';
@@ -9,6 +9,7 @@ import Footer from '../Footer';
 import Navbar from '../Navbar';
 
 const AppLayout = ({ children }) => {
+
   return (
     <ThemeProvider theme={theme}>
       <React.Fragment>

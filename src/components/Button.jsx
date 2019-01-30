@@ -34,9 +34,9 @@ export const withButtonStyles = component => styled(component)`
 
 const _Button = withButtonStyles('button');
 
-function Button({ children, className, kind, style, as, ...other }) {
+function Button({ children, className, kind, style, as, onClick, ...other }) {
   return (
-    <_Button style={style} className={className} as={as} kind={kind}>
+    <_Button style={style} className={className} as={as} kind={kind} onClick={onClick}>
       <Text style={{ color: 'inherit' }} {...other}>
         {children}
       </Text>
