@@ -36,7 +36,7 @@ const CourseItem = ({ text, ...props }) => (
   <ContainerLayout {...props}>
     <Clickable href="#" />
     <Image />
-    <Text color="light" size={2}>
+    <Text color="white" size={2}>
       {text}
     </Text>
   </ContainerLayout>

@@ -5,8 +5,9 @@ import styled from 'styled-components';
 import Text from './Text';
 import Button from './Button';
 import GatsbyLink from 'gatsby-link';
-import Registration from './Registration';
-import Login from './Login';
+import Registration from './Popups/Registration';
+import Login from './Popups/Login';
+import Popups from './Popups'
 
 const GrayBox = styled(Box)`
   background: ${({ theme }) => theme.color.lightGray};
@@ -72,10 +73,10 @@ const Navbar = () => {
             justifyContent="space-around"
           >
             <Box width={1 / 2} pr={1}>
-              <Registration triggerElement={<FullSizeButton kind="dark">Registrarse</FullSizeButton>} />
+              <Popups current="register" triggerElement={<FullSizeButton kind="dark">Registrarse</FullSizeButton>} />
             </Box>
             <Box width={1 / 2}>
-              <Login triggerElement={<FullSizeButton>Entrar</FullSizeButton>} />
+              <Popups current="login" triggerElement={<FullSizeButton>Entrar</FullSizeButton>} />
             </Box>
           </Flex>
         </Box>

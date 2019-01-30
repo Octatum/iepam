@@ -27,12 +27,12 @@ const InicioEducacion = () => {
             justifyContent="flex-end"
           >
             <Box py={3}>
-              <Text size={3} color="light" bold>
+              <Text size={3} color="white" bold>
                 Lorem ipsum
               </Text>
             </Box>
             <Box width={5 / 6}>
-              <Text color="light" align="justify">
+              <Text color="white" align="justify">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s, when an unknown
@@ -47,11 +47,11 @@ const InicioEducacion = () => {
             css={{ height: '100%' }}
           >
             <Box py={3}>
-              <Text size={2} align="center" color="light" bold>
+              <Text size={2} align="center" color="white" bold>
                 Lorem ipsum is
               </Text>
             </Box>
-            <Text align="center" color="light">
+            <Text align="center" color="white">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown
