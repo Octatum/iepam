@@ -53,7 +53,7 @@ const Registration = ({ close, setActive }) => (
       <Box width={1} as={BackgroundBox} backgroundColor="dark" pt="3px" mt={3} />
       <Flex alignItems='center'>
         <Box mr={4}><Text size={3}>¿Ya tienes una cuenta?</Text></Box>
-        <Button kind="dark" size={2} onClick={() => setActive('login')}>Iniciar Sesion</Button>
+        <Button kind="dark" size={2} onClick={() => setActive('login')} css={{ cursor: 'pointer', borderTop: 'none' }}>Iniciar Sesion</Button>
       </Flex>
     </Flex>
   </Flex>

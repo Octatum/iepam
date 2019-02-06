@@ -7,6 +7,8 @@ const theme = {
     darkGray: '#6C6C6C',
     footer: '#D4D4D4',
     darkestGray: '#3E3E3E',
+    red: 'red',
+    errorRed: '#FFCACA'
   },
   font: {
     main: 'Roboto',

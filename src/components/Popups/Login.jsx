@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Box, Flex } from '@rebass/grid';
+import { withFormik } from 'formik';
 import Text from '../Text';
 import BackgroundBox from '../BackgroundBox';
 import Button from '../Button';
 import CloseButton from './CloseButton';
+import validation from '../../utils/validation';
 
 const BorderBox = styled(Flex)`
   border: 1px solid ${({ theme }) => theme.color.dark};
@@ -19,15 +21,30 @@ const Input = styled.input`
   width: 100%;
 `;
 
-const InputComponent = ({ placeholder, type = 'text', name = '', ...other }) => (
+const InputComponent = ({ placeholder, type = 'text', name = '', value, handleChange, handleBlur, ...other }) => (
   <BorderBox justifyContent="flex-start" alignItems="center" p={2} width={1} {...other}>
     <BackgroundBox backgroundColor='darkGray' as={Box} mr="10px" width="40px" css={{ height: "40px" }} />
-    <Text color="darkGray" size={2} as={Input} placeholder={placeholder} type={type} name={name} />
+    <Text color="darkGray" size={1} as={Input} placeholder={placeholder} type={type} name={name} value={value} onChange={handleChange} onBlur={handleBlur} />
   </BorderBox>
 )
 
-const Registration = ({ close, setActive }) => (
-  <Flex flexDirection="column" mb={4}>
+const ErrorComponent = ({ children }) => (
+  <BackgroundBox width="100%" backgroundColor="errorRed" as={Box} p={2} mb={2} css={{ borderRadius: '10px' }}>
+    <Text color="red">{children}</Text>
+  </BackgroundBox>
+)
+
+const Login = ({ 
+  close,
+  setActive,
+  values,
+  touched,
+  errors,
+  handleChange,
+  handleBlur,
+  handleSubmit 
+}) => (
+  <Flex flexDirection="column" mb={4} as="form" name="LoginForm" onSubmit={handleSubmit}>
     <CloseButton alignSelf="flex-end" closeFunction={close} />
 
     <Flex flexDirection="column" alignItems="center" mx={[4]}>
@@ -40,8 +57,11 @@ const Registration = ({ close, setActive }) => (
       <BackgroundBox backgroundColor="black" as={Box} my={2} width={1} css={{ height: "75px" }} />
       <BackgroundBox backgroundColor="black" as={Box} mt={2} width={1} css={{ height: "75px" }} mb={5} />
 
-      <InputComponent my={2} placeholder="Correo Electronico" name="email" type="email" />
-      <InputComponent my={2} placeholder="Contrasena" name="password" type="password" />
+      <InputComponent my={2} placeholder="Correo Electronico" name="email" type="email" value={values.email} handleBlur={handleBlur} handleChange={handleChange} />
+      {errors.email && touched.email && <ErrorComponent>{errors.email}</ErrorComponent>}
+
+      <InputComponent my={2} placeholder="Contraseña" name="password" type="password" value={values.password} handleBlur={handleBlur} handleChange={handleChange} />
+      {errors.password && touched.password && <ErrorComponent>{errors.password}</ErrorComponent>}
 
       {/* captcha */}
       <BackgroundBox backgroundColor="black" as={Captcha} my={2} width={1} css={{ height: "75px" }} />
@@ -52,13 +72,21 @@ const Registration = ({ close, setActive }) => (
 
       <Box width={1} as={BackgroundBox} backgroundColor="dark" pt="3px" mt={3} />
       <Flex alignItems='center'>
-        <Box mr={4}><Text size={3}>¿No tienes una cuenta?</Text></Box>
-        <Button kind="dark" size={2} onClick={() => setActive('register')}>Registrate</Button>
+        <Box mr={4}><Text size={2}>¿No tienes una cuenta?</Text></Box>
+        <Button kind="dark" size={1} onClick={() => setActive('register')} css={{ cursor: 'pointer', borderTop: 'none' }}>Registrate</Button>
       </Flex>
     </Flex>
+    <button type="submit" onSubmit={handleSubmit}>submit</button>
   </Flex>
 
 
 )
 
-export default Registration;
+export default withFormik({
+  mapPropsToValues: () => ({ email: '', password: '', captcha: false}),
+  validationSchema: validation,
+  handleSubmit: (values, { setSubmitting }) => {
+    console.log(JSON.stringify(values, null, 2))
+  },
+  displayName: 'LoginForm',
+})(Login);

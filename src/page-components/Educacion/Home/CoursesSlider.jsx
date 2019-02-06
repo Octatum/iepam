@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Flex } from '@rebass/grid';
 import BackgroundBox from '../../../components/BackgroundBox';
 import Text from '../../../components/Text';
+import Conevyt from '../../../assets/conevyt.png';
 
 const SliderArrow = styled('div')`
   font-size: 3em;
@@ -42,8 +43,8 @@ const SlickNextArrow = ({ onClick }) => (
 const Slide = () => {
   return (
     <Flex flexDirection="column" mx={4}>
-      <BackgroundBox backgroundColor="darkGray" py={6} />
-      <BackgroundBox backgroundColor="darkestGray" p={4}>
+      {/* <BackgroundBox backgroundColor="darkGray" py={6} /> */}
+      <BackgroundBox /* backgroundColor="darkestGray" */ image={Conevyt} p={4} width="400px" css={{height: '300px'}}>
         <Text color="white" align="center">
           Lorem ipsum is dummy text
         </Text>
