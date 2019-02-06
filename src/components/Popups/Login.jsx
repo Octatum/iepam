@@ -76,7 +76,7 @@ const Login = ({
         <Button kind="dark" size={1} onClick={() => setActive('register')} css={{ cursor: 'pointer', borderTop: 'none' }}>Registrate</Button>
       </Flex>
     </Flex>
-    <button type="submit" onSubmit={handleSubmit}>submit</button>
+    
   </Flex>
 
 
