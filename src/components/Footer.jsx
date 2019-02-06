@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Text from './Text';
 import { Flex, Box } from '@rebass/grid';
+import Button from './Button';
+import SuggestionBox from './Popups/SuggestionBox';
 
 const FlexLayout = styled(Flex)`
   background: ${({ theme }) => theme.color.footer};
@@ -52,7 +54,7 @@ const Footer = () => {
         </Box>
         <Box width={1 / 3}>
           <DarkFlex flexDirection="column" px={5} py={4}>
-            <LightBox width={1} p={4} />
+            <SuggestionBox triggerElement={<Button kind='dark' size={2} css={{ cursor: 'pointer' }}>Buzón de Sugerencias</Button>} />
             <Box width={1} p={4} />
           </DarkFlex>
         </Box>
