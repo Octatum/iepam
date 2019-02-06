@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Flex } from '@rebass/grid';
 import BackgroundBox from '../../../components/BackgroundBox';
 import Text from '../../../components/Text';
-import Conevyt from '../../../assets/conevyt.png';
+import { Link } from 'gatsby';
 
 const SliderArrow = styled('div')`
   font-size: 3em;
@@ -28,6 +28,16 @@ const RightArrow = styled(SliderArrow)`
   right: 0;
 `;
 
+const Clickable = styled(Link)`
+  position: absolute;
+  top: 0;
+  left: 0;  
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+`;
+
 const SlickPrevArrow = ({ onClick }) => (
   <LeftArrow onClick={onClick}>
     <div>◀</div>
@@ -40,20 +50,21 @@ const SlickNextArrow = ({ onClick }) => (
   </RightArrow>
 );
 
-const Slide = () => {
+const Slide = ({ courseInfo }) => {
   return (
-    <Flex flexDirection="column" mx={4}>
+    <Flex flexDirection="column" mx={4} css={{ position: 'relative' }}>
       {/* <BackgroundBox backgroundColor="darkGray" py={6} /> */}
-      <BackgroundBox /* backgroundColor="darkestGray" */ image={Conevyt} p={4} width="400px" css={{height: '300px'}}>
+      <Clickable to={courseInfo.link} />
+      <BackgroundBox /* backgroundColor="darkestGray" */ image={courseInfo.image} p={4} width="400px" css={{height: '300px'}}>
         <Text color="white" align="center">
-          Lorem ipsum is dummy text
+          {courseInfo.title}
         </Text>
       </BackgroundBox>
     </Flex>
   );
 };
 
-const CoursesSlider = () => {
+const CoursesSlider = ({ coursesLinks }) => {
   const settings = {
     dots: false,
     infinite: false,
@@ -66,8 +77,8 @@ const CoursesSlider = () => {
   };
   return (
     <Slider {...settings}>
-      {[1, 2, 3, 4, 5, 6].map(element => (
-        <Slide key={element} />
+      {coursesLinks.map(element => (
+        <Slide key={element.title} courseInfo={element} />
       ))}
     </Slider>
   );
