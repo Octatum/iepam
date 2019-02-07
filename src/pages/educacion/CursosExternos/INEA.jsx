@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import ExternalLinks from '../../../page-components/Educacion/ExternalLinks';
 import AppLayout from '../../../components/AppLayout';
 
-import LandscapeImage from '../../../assets/INEA_h.png';
+import LandscapeImage from '../../../assets/inea_h.png';
 
 const INEADATA = {
   courseProvider: 'INEA',
