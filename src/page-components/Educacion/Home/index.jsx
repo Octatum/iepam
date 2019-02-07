@@ -23,7 +23,7 @@ const InicioEducacion = () => {
         <title>Plataforma educativa</title>
       </Helmet>
       <Flex css={{ height: '25rem' }} p={4}>
-        <GrayBox width={15 / 24} p={4} py={5}>
+        <GrayBox width={16 / 24} p={4} py={5}>
           <Flex
             css={{ height: '100%' }}
             flexDirection="column"
@@ -43,7 +43,7 @@ const InicioEducacion = () => {
             </Box>
           </Flex>
         </GrayBox>
-        <GrayBox width={1 / 3} ml="auto" p={4} py={5}>
+        <GrayBox width={6 / 24} ml="auto" p={4} py={5}>
           <Flex
             flexDirection="column"
             justifyContent="flex-end"

@@ -19,6 +19,8 @@ const EnlaceExterno = ({ bigImage, courseLink, courseProvider, description, cour
               image={bigImage}
               css={{ height: '15rem' }}
               width={2 / 5}
+              alignSelf="center"
+              my={3}
             />
             <Box width={2 / 5} p={3}>
               <Flex flexDirection="column">
@@ -31,6 +33,9 @@ const EnlaceExterno = ({ bigImage, courseLink, courseProvider, description, cour
                   <Text align="justify" color="white">
                     {description}
                   </Text>
+                </Box>
+                <Box py={3}>
+                  <Text size={1} color="white" as='a' target="_blank" href={courseLink}>Ir al sitio</Text>
                 </Box>
               </Flex>
             </Box>
@@ -55,19 +60,19 @@ const EnlaceExterno = ({ bigImage, courseLink, courseProvider, description, cour
         {courses.map(data => (
           <Box key={data.nombre} pt={3} my={4}>
             <BackgroundBox backgroundColor="darkGray" p={4} px={3}>
-              <Flex alignItems="center">
+              <Flex alignItems="center" justifyContent="space-between">
                 <Box width={2 / 10}>
                   <Text size={2} color="white">
                     {data.nombre}
                   </Text>
                 </Box>
-                <Box width={7 / 10}>
-                  <Text color="white" size={2}>
-                    Lorem ipsum is dummy text
+                <Box width={7 / 10} mx={4}>
+                  <Text color="white" size={1}>
+                    {data.courseDescription}
                   </Text>
                 </Box>
                 <Box width={1 / 10}>
-                  <MyLink href={data.link} style={{ width: '100%', boxSizing: 'border-box' }} size={2} kind="dark">
+                  <MyLink href={data.link} target="_blank" style={{ width: '100%', boxSizing: 'border-box' }} size={2} kind="dark">
                     <Text style={{color: 'inherit'}}>
                       Ver
                     </Text>
@@ -89,6 +94,7 @@ EnlaceExterno.PropTypes = {
   courses: PropTypes.shape({
     name: PropTypes.string,
     link: PropTypes.string,
+    courseDescription: PropTypes.string,
   }),
   bigImage: PropTypes.string,
 }
