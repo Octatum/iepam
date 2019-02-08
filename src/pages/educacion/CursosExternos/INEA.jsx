@@ -14,15 +14,18 @@ const INEADATA = {
   courses: [
     {
       nombre: 'México en nuestro hogar',
-      link: 'http://www.cursosinea.conevyt.org.mx/cursos/mexico/index.html'
+      link: 'http://www.cursosinea.conevyt.org.mx/cursos/mexico/index.html',
+      courseDescription: 'Curso para aprender acerca de la situación actual de nuestro país',
     },
     {
       nombre: 'Crédito para mi negocio',
-      link: 'http://www.cursosinea.conevyt.org.mx/cursos/creditneg/bienvenida.htm'
+      link: 'http://www.cursosinea.conevyt.org.mx/cursos/creditneg/bienvenida.htm',
+      courseDescription: 'Técnicas para solicitar y conseguir financiamiento'
     },
     {
       nombre: 'Vida y salud',
-      link: 'http://www.cursosinea.conevyt.org.mx/cursos/vidaysalud1_1/bienvenida.htm'
+      link: 'http://www.cursosinea.conevyt.org.mx/cursos/vidaysalud1_1/bienvenida.htm',
+      courseDescription: 'Descubre como mejorar tu salud integral'
     }
   ],
   bigImage: LandscapeImage,

@@ -14,15 +14,18 @@ const CONEVYTDATA = {
   courses: [
     {
       nombre: 'Primeros auxilios',
-      link: 'https://www.conevyt.org.mx/index.php?option=com_content&view=article&id=448&Itemid=856'
+      link: 'https://www.conevyt.org.mx/index.php?option=com_content&view=article&id=448&Itemid=856',
+      courseDescription: 'Amplia tu conocimiento en primeros auxilios'
     },
     {
       nombre: 'Educación para tu trabajo',
-      link: 'https://www.conevyt.org.mx/index.php?option=com_content&view=article&id=421&Itemid=800'
+      link: 'https://www.conevyt.org.mx/index.php?option=com_content&view=article&id=421&Itemid=800',
+      courseDescription: 'Capacitación laboral y formación para emprezar un negocio propio'
     },
     {
       nombre: 'Administra tu gasto',
-      link: 'https://www.conevyt.org.mx/index.php?option=com_content&view=article&id=447&Itemid=855'
+      link: 'https://www.conevyt.org.mx/index.php?option=com_content&view=article&id=447&Itemid=855',
+      courseDescription: 'Consejos para administrar tus ingresos y egresos'
     }
   ],
   bigImage: LandscapeImage,

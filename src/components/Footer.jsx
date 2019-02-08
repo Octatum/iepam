@@ -4,6 +4,7 @@ import Text from './Text';
 import { Flex, Box } from '@rebass/grid';
 import Button from './Button';
 import SuggestionBox from './Popups/SuggestionBox';
+import { Link } from 'gatsby';
 
 const FlexLayout = styled(Flex)`
   background: ${({ theme }) => theme.color.footer};
@@ -26,16 +27,14 @@ const Footer = () => {
             <Box width={1} p={3}>
               <Flex alignItems="center" justifyContent="space-around" py={3}>
                 <Box>
-                  <Text>Texto 1</Text>
+                  <Text bold align="center">
+                    <Link to="/">Inicio</Link>
+                  </Text>
                 </Box>
                 <Box>
-                  <Text>Texto 1</Text>
-                </Box>
-                <Box>
-                  <Text>Texto 1</Text>
-                </Box>
-                <Box>
-                  <Text>Texto 1</Text>
+                  <Text bold align="center">
+                    <Link to="/educacion/">Educación</Link>
+                  </Text>
                 </Box>
               </Flex>
             </Box>

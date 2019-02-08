@@ -8,8 +8,7 @@ import Text from '../../../components/Text';
 import GatsbyLink from 'gatsby-link';
 import CoursesSlider from './CoursesSlider';
 
-import conevytImage from '../../../assets/conevyt.png'
-import INEAImage from '../../../assets/ineaPort.png'
+import { courses } from './ExternalLinks';
 
 const GrayBox = styled(Box)`
   background: ${({ theme }) => theme.color.darkGray};
@@ -23,7 +22,7 @@ const InicioEducacion = () => {
         <title>Plataforma educativa</title>
       </Helmet>
       <Flex css={{ height: '25rem' }} p={4}>
-        <GrayBox width={15 / 24} p={4} py={5}>
+        <GrayBox width={16 / 24} p={4} py={5}>
           <Flex
             css={{ height: '100%' }}
             flexDirection="column"
@@ -43,7 +42,7 @@ const InicioEducacion = () => {
             </Box>
           </Flex>
         </GrayBox>
-        <GrayBox width={1 / 3} ml="auto" p={4} py={5}>
+        <GrayBox width={6 / 24} ml="auto" p={4} py={5}>
           <Flex
             flexDirection="column"
             justifyContent="flex-end"
@@ -69,18 +68,7 @@ const InicioEducacion = () => {
           </Text>
         </Box>
         <Box>
-          <CoursesSlider coursesLinks={[
-            {
-              link: '/educacion/CursosExternos/CONEVyt', 
-              title: 'CONEVyt',
-              image: conevytImage
-            },
-            {
-              link: '/educacion/CursosExternos/INEA',
-              title: 'INEA',
-              image: INEAImage
-            }
-          ]}/>
+          <CoursesSlider coursesLinks={courses}/>
         </Box>
 
         <Box px={4} py={3}>

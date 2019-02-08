@@ -55,7 +55,7 @@ const Slide = ({ courseInfo }) => {
     <Flex flexDirection="column" mx={4} css={{ position: 'relative' }}>
       {/* <BackgroundBox backgroundColor="darkGray" py={6} /> */}
       <Clickable to={courseInfo.link} />
-      <BackgroundBox /* backgroundColor="darkestGray" */ image={courseInfo.image} p={4} width="400px" css={{height: '300px'}}>
+      <BackgroundBox /* backgroundColor="darkestGray" */ image={courseInfo.image} p={4} width="100%" css={{height: '300px'}}>
         <Text color="white" align="center">
           {courseInfo.title}
         </Text>
