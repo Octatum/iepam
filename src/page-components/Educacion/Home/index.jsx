@@ -8,8 +8,7 @@ import Text from '../../../components/Text';
 import GatsbyLink from 'gatsby-link';
 import CoursesSlider from './CoursesSlider';
 
-import conevytImage from '../../../assets/conevyt.png'
-import INEAImage from '../../../assets/ineaPort.png'
+import { courses } from './ExternalLinks';
 
 const GrayBox = styled(Box)`
   background: ${({ theme }) => theme.color.darkGray};
@@ -69,18 +68,7 @@ const InicioEducacion = () => {
           </Text>
         </Box>
         <Box>
-          <CoursesSlider coursesLinks={[
-            {
-              link: '/educacion/CursosExternos/CONEVyt', 
-              title: 'CONEVyt',
-              image: conevytImage
-            },
-            {
-              link: '/educacion/CursosExternos/INEA',
-              title: 'INEA',
-              image: INEAImage
-            }
-          ]}/>
+          <CoursesSlider coursesLinks={courses}/>
         </Box>
 
         <Box px={4} py={3}>
