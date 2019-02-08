@@ -64,3 +64,5 @@ public/
 .cache/
 tmp/
 dist/
+lambda/
+functions/
