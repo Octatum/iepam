@@ -24,7 +24,7 @@ const Input = styled.input`
 const InputComponent = ({ placeholder, type = 'text', name = '', value, handleChange, handleBlur, ...other }) => (
   <BorderBox justifyContent="flex-start" alignItems="center" p={2} width={1} {...other}>
     <BackgroundBox backgroundColor='darkGray' as={Box} mr="10px" width="40px" css={{ height: "40px" }} />
-    <Text color="darkGray" size={1} as={Input} placeholder={placeholder} type={type} name={name} value={value} onChange={handleChange} onBlur={handleBlur} />
+    <Text color="darkGray" size={0} as={Input} placeholder={placeholder} type={type} name={name} value={value} onChange={handleChange} onBlur={handleBlur} />
   </BorderBox>
 )
 
@@ -42,15 +42,16 @@ const Login = ({
   errors,
   handleChange,
   handleBlur,
-  handleSubmit 
+  handleSubmit,
+  ...others
 }) => (
-  <Flex flexDirection="column" mb={4} as="form" name="LoginForm" onSubmit={handleSubmit}>
+  <Flex flexDirection="column" mb={4} as="form" name="LoginForm" onSubmit={handleSubmit} {...others}>
     <CloseButton alignSelf="flex-end" closeFunction={close} />
 
     <Flex flexDirection="column" alignItems="center" mx={[4]}>
-      <Centered as={Text} bold size={2} alignSelf="flex-start" pt={3}>
+      <Centered as={Text} bold size={1} alignSelf="flex-start" pt={3}>
         Inicia sesion en tu cuenta
-          </Centered>
+      </Centered>
       <Box width={1} as={BackgroundBox} backgroundColor="dark" pt="3px" m={3} />
 
       {/* login with google and others */}
@@ -66,14 +67,14 @@ const Login = ({
       {/* captcha */}
       <BackgroundBox backgroundColor="black" as={Captcha} my={2} width={1} css={{ height: "75px" }} />
       <Box>
-        <Centered color='darkGray' size={2.5}>o ¿Has olvidado tu Contrasena?</Centered>
+        <Centered color='darkGray' size={1}>o ¿Has olvidado tu Contrasena?</Centered>
         <Centered color='darkGray' size={0}>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</Centered>
       </Box>
 
       <Box width={1} as={BackgroundBox} backgroundColor="dark" pt="3px" mt={3} />
       <Flex alignItems='center'>
-        <Box mr={4}><Text size={2}>¿No tienes una cuenta?</Text></Box>
-        <Button kind="dark" size={1} onClick={() => setActive('register')} css={{ cursor: 'pointer', borderTop: 'none' }}>Registrate</Button>
+        <Box mr={4}><Text size={1}>¿No tienes una cuenta?</Text></Box>
+        <Button kind="dark" size={0} onClick={() => setActive('register')} css={{ cursor: 'pointer', borderTop: 'none' }}>Registrate</Button>
       </Flex>
     </Flex>
     

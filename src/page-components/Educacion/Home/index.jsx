@@ -5,15 +5,18 @@ import styled from 'styled-components';
 
 import AppLayout from '../../../components/AppLayout';
 import Text from '../../../components/Text';
-import GatsbyLink from 'gatsby-link';
 import CoursesSlider from './CoursesSlider';
 
 import { courses } from './ExternalLinks';
+import Button, { withButtonStyles } from '../../../components/Button';
+import { Link } from 'gatsby';
 
 const GrayBox = styled(Box)`
   background: ${({ theme }) => theme.color.darkGray};
   box-sizing: border-box;
 `;
+
+const MyLink = withButtonStyles(Link);
 
 const InicioEducacion = () => {
   return (
@@ -68,13 +71,15 @@ const InicioEducacion = () => {
           </Text>
         </Box>
         <Box>
-          <CoursesSlider coursesLinks={courses}/>
+          <CoursesSlider coursesLinks={courses} />
         </Box>
 
-        <Box px={4} py={3}>
-          <Text align="right" bold>
-            <GatsbyLink to="/educacion/curso">Ver más...</GatsbyLink>
-          </Text>
+        <Box px={4} py={3} alignSelf="flex-end">
+          <MyLink to="/educacion/curso" kind="dark" style={{cursor:'pointer'}}>
+            <Text size={2} style={{color:'inherit'}}>
+              Ver más...
+              </Text>
+          </MyLink>
         </Box>
       </Flex>
     </AppLayout>

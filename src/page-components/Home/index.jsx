@@ -1,8 +1,11 @@
 import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 import Text from '../../components/Text';
-import GatsbyLink from 'gatsby-link';
 import BackgroundBox from '../../components/BackgroundBox';
+import { Link } from 'gatsby';
+import { withButtonStyles } from '../../components/Button';
+
+const MyLink = withButtonStyles(Link);
 
 const Row = ({ title, children, linkTo }) => (
   <Flex flexDirection="column">
@@ -15,10 +18,12 @@ const Row = ({ title, children, linkTo }) => (
       {children}
     </Box>
 
-    <Box py={3}>
-      <Text align="right" bold>
-        <GatsbyLink to={linkTo}>Ver más...</GatsbyLink>
-      </Text>
+    <Box py={3} alignSelf="flex-end">
+      <MyLink to={linkTo} kind="dark" style={{ cursor: 'pointer' }}>
+        <Text size={2} style={{ color: 'inherit' }}>
+          Ver más...
+        </Text>
+      </MyLink>
     </Box>
   </Flex>
 )
@@ -27,7 +32,7 @@ const HomePage = () => (
   <Box>
     <Flex py={4} flexDirection="column" mx={4}>
       <Box mb={4}>
-        <BackgroundBox as={Flex} backgroundColor="darkGray" p={4} css={{height:"400px"}}>
+        <BackgroundBox as={Flex} backgroundColor="darkGray" p={4} css={{ height: "400px" }}>
           <Box alignSelf="flex-end" width={1 / 2}>
             <Box mb={3}>
               <Text color="white" sixe={2} bold>Lorem Ipsum is simply dummy text</Text>
@@ -38,9 +43,9 @@ const HomePage = () => (
           </Box>
         </BackgroundBox>
         <Flex justifyContent="center" mt={3}>
-          <BackgroundBox backgroundColor="darkGray" mx={2} width="20px" css={{height:"20px", borderRadius:"50%"}} />
-          <BackgroundBox backgroundColor="darkGray" mx={2} width="20px" css={{height:"20px", borderRadius:"50%"}} />
-          <BackgroundBox backgroundColor="darkGray" mx={2} width="20px" css={{height:"20px", borderRadius:"50%"}} />
+          <BackgroundBox backgroundColor="darkGray" mx={2} width="20px" css={{ height: "20px", borderRadius: "50%" }} />
+          <BackgroundBox backgroundColor="darkGray" mx={2} width="20px" css={{ height: "20px", borderRadius: "50%" }} />
+          <BackgroundBox backgroundColor="darkGray" mx={2} width="20px" css={{ height: "20px", borderRadius: "50%" }} />
         </Flex>
       </Box>
 
@@ -51,7 +56,7 @@ const HomePage = () => (
       </Row>
       <Row title="Bienestar" linkTo="/bienestar">
         <Text size={2}>
-          Cátalogo de ofertas por instituciones públicas y privadas que brindan descuentos, promociones        
+          Cátalogo de ofertas por instituciones públicas y privadas que brindan descuentos, promociones
         </Text>
       </Row>
     </Flex>

@@ -1,4 +1,12 @@
 import styled from 'styled-components';
+import { device } from '../utils/device';
+
+const defaultSize = 1;
+const increments = {
+  laptop: 0.3,
+  tablet: 0.15,
+  mobile: 0.0,
+};
 
 const setColor = ({ theme, color }) => {
   return theme.color[color];
@@ -12,19 +20,27 @@ const setFont = ({ theme, fontname = 'main' }) => {
   return theme.font[fontname];
 };
 
-const setFontSize = ({ theme, size = 0 }) => {
-  return `${1 + size * theme.fontIncrement.desktop}em`;
-};
+function setFontSize({ size = 0 }, increment) {
+  return `${defaultSize + increment * size}rem`;
+}
 
 const Text = styled.div`
   font-family: ${setFont};
-  font-size: ${setFontSize};
   line-height: 1.2em;
   color: ${setColor};
   font-weight: ${setWeight};
   text-align: ${({ align }) => align};
   text-decoration: none;
   box-sizing: border-box;
+
+  font-size: ${props => setFontSize(props, increments.mobile)};
+
+  ${device.tablet} {
+    font-size: ${props => setFontSize(props, increments.tablet)};
+  }
+  ${device.laptop} {
+    font-size: ${props => setFontSize(props, increments.laptop)};
+  }
 `;
 
 Text.defaultProps = {

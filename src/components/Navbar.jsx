@@ -6,6 +6,7 @@ import Text from './Text';
 import Button from './Button';
 import GatsbyLink from 'gatsby-link';
 import Popups from './Popups'
+import SuggestionBox from './Popups/SuggestionBox';
 
 const GrayBox = styled(Box)`
   background: ${({ theme }) => theme.color.lightGray};
@@ -68,8 +69,11 @@ const Navbar = () => {
           </Flex>
         </Box>
       </Flex>
-      <Flex>
-        <Box width={4 / 6} />
+      <Flex my={3} alignItems="center">
+        <Box width={1 / 6}>
+          <SuggestionBox triggerElement={<Button kind='dark' size={2} css={{ cursor: 'pointer' }}>Buzón de Sugerencias</Button>} />
+        </Box>
+        <Box width={3 / 6} />
         <Box width={2 / 6}>
           <Flex>
             <DarkGrayBox width={1 / 6} p={3} />
