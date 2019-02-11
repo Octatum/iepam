@@ -53,7 +53,13 @@ const Footer = () => {
         </Box>
         <Box width={1 / 3}>
           <DarkFlex flexDirection="column" px={5} py={4}>
-            <SuggestionBox triggerElement={<Button kind='dark' size={2} css={{ cursor: 'pointer' }}>Buzón de Sugerencias</Button>} />
+            <SuggestionBox
+              triggerElement={
+                <Button kind="dark" size={2} css={{ cursor: 'pointer' }}>
+                  Buzón de Sugerencias
+                </Button>
+              }
+            />
             <Box width={1} p={4} />
           </DarkFlex>
         </Box>

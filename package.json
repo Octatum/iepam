@@ -4,8 +4,10 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@babel/polyfill": "^7.2.5",
     "@rebass/grid": "^6.0.0-7",
     "babel-plugin-styled-components": "^1.10.0",
+    "core-js": "^2.6.4",
     "errorhandler": "^1.5.0",
     "express-validator": "^5.3.1",
     "formik": "^1.5.0",

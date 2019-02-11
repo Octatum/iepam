@@ -8,14 +8,16 @@ function encode(data) {
 }
 
 const withForm = (WrappedComponent, functionProps) => {
-  console.log(WrappedComponent)
-  return (
-    props => { console.log(props) ;return (<Formik 
-      initialValues={functionProps.initialValues}
-      validationSchema={null}
-      onSubmit={(values, actions) => {
-        console.log(encode(JSON.stringify(values)));
-        /* fetch('/', {
+  console.log(WrappedComponent);
+  return props => {
+    console.log(props);
+    return (
+      <Formik
+        initialValues={functionProps.initialValues}
+        validationSchema={null}
+        onSubmit={(values, actions) => {
+          console.log(encode(JSON.stringify(values)));
+          /* fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: encode({
@@ -31,10 +33,11 @@ const withForm = (WrappedComponent, functionProps) => {
             actions.setSubmitting(false);
             return error => alert(error);
           }); */
-      }}
-      render={props => <WrappedComponent {...props} />}
-    />)}
-  )
-}
+        }}
+        render={props => <WrappedComponent {...props} />}
+      />
+    );
+  };
+};
 
 export default withForm;

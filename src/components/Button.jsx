@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Text from './Text';
 
 export const withButtonStyles = component => styled(component)`
-  border-color: ${({ theme }) => theme.color.black};
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,7 +12,7 @@ export const withButtonStyles = component => styled(component)`
   padding: 0.5em 1em;
   background-color: ${({ theme }) => theme.color.white};
   color: ${({ theme }) => theme.color.black};
-  font-weight: bold;
+  box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.4);
 
   :hover {
     background-color: ${({ theme }) => theme.color.black};
@@ -26,7 +26,7 @@ export const withButtonStyles = component => styled(component)`
     color: ${theme.color.white};
     
     :hover {
-      background-color: ${theme.color.white};
+      background-color: ${theme.color.gray};
       color: ${theme.color.black};
     }
   `}
@@ -36,8 +36,14 @@ const _Button = withButtonStyles('button');
 
 function Button({ children, className, kind, style, as, onClick, ...other }) {
   return (
-    <_Button style={style} className={className} as={as} kind={kind} onClick={onClick}>
-      <Text style={{ color: 'inherit' }} {...other}>
+    <_Button
+      style={style}
+      className={className}
+      as={as}
+      kind={kind}
+      onClick={onClick}
+    >
+      <Text bold style={{ color: 'inherit' }} {...other}>
         {children}
       </Text>
     </_Button>

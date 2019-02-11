@@ -10,7 +10,6 @@ import Navbar from '../Navbar';
 import { Box } from '@rebass/grid';
 
 const AppLayout = ({ children }) => {
-
   return (
     <ThemeProvider theme={theme}>
       <React.Fragment>

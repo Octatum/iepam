@@ -75,10 +75,14 @@ const InicioEducacion = () => {
         </Box>
 
         <Box px={4} py={3} alignSelf="flex-end">
-          <MyLink to="/educacion/curso" kind="dark" style={{cursor:'pointer'}}>
-            <Text size={2} style={{color:'inherit'}}>
+          <MyLink
+            to="/educacion/curso"
+            kind="dark"
+            style={{ cursor: 'pointer' }}
+          >
+            <Text size={2} style={{ color: 'inherit' }}>
               Ver más...
-              </Text>
+            </Text>
           </MyLink>
         </Box>
       </Flex>

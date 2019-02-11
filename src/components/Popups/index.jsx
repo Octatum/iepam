@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Popup from 'reactjs-popup'
+import Popup from 'reactjs-popup';
 import styled from 'styled-components';
 import Registration from './Registration';
 import Login from './Login';
@@ -27,16 +27,17 @@ const PopupElement = ({ triggerElement, current }) => {
 
   return (
     <AllHeight>
-      <Popup trigger={triggerElement} modal lockScroll={true} >
-        {close => (
-          currentActive === 'register' ? 
-            <Registration close={close} setActive={setActive} /> 
-            : 
+      <Popup trigger={triggerElement} modal lockScroll={true}>
+        {close =>
+          currentActive === 'register' ? (
+            <Registration close={close} setActive={setActive} />
+          ) : (
             <Login close={close} setActive={setActive} />
-        )}
+          )
+        }
       </Popup>
     </AllHeight>
-  )
-}
+  );
+};
 
 export default PopupElement;

@@ -6,9 +6,16 @@ import BackgroundBox from '../../../components/BackgroundBox';
 import Text from '../../../components/Text';
 import Button, { withButtonStyles } from '../../../components/Button';
 
-const MyLink = withButtonStyles('a')
+const MyLink = withButtonStyles('a');
 
-const EnlaceExterno = ({ bigImage, courseLink, courseProvider, description, courses, ...other }) => {
+const EnlaceExterno = ({
+  bigImage,
+  courseLink,
+  courseProvider,
+  description,
+  courses,
+  ...other
+}) => {
   return (
     <Box {...other}>
       <Flex p={4} flexDirection="column">
@@ -35,7 +42,15 @@ const EnlaceExterno = ({ bigImage, courseLink, courseProvider, description, cour
                   </Text>
                 </Box>
                 <Box py={3}>
-                  <Text size={1} color="white" as='a' target="_blank" href={courseLink}>Ir al sitio</Text>
+                  <Text
+                    size={1}
+                    color="white"
+                    as="a"
+                    target="_blank"
+                    href={courseLink}
+                  >
+                    Ir al sitio
+                  </Text>
                 </Box>
               </Flex>
             </Box>
@@ -72,10 +87,14 @@ const EnlaceExterno = ({ bigImage, courseLink, courseProvider, description, cour
                   </Text>
                 </Box>
                 <Box width={1 / 10}>
-                  <MyLink href={data.link} target="_blank" style={{ width: '100%', boxSizing: 'border-box' }} size={2} kind="dark">
-                    <Text style={{color: 'inherit'}}>
-                      Ver
-                    </Text>
+                  <MyLink
+                    href={data.link}
+                    target="_blank"
+                    style={{ width: '100%', boxSizing: 'border-box' }}
+                    size={2}
+                    kind="dark"
+                  >
+                    <Text style={{ color: 'inherit' }}>Ver</Text>
                   </MyLink>
                 </Box>
               </Flex>
@@ -84,8 +103,8 @@ const EnlaceExterno = ({ bigImage, courseLink, courseProvider, description, cour
         ))}
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 EnlaceExterno.PropTypes = {
   courseLink: PropTypes.string,
@@ -97,6 +116,6 @@ EnlaceExterno.PropTypes = {
     courseDescription: PropTypes.string,
   }),
   bigImage: PropTypes.string,
-}
+};
 
 export default EnlaceExterno;
