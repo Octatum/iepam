@@ -61,7 +61,7 @@ const Navbar = () => {
 
       <Flex
         css={{ height: '100%' }}
-        alignItems="center"
+        alignItems="stretch"
         justifyContent="space-evenly"
         mb={4}
       >
@@ -75,7 +75,7 @@ const Navbar = () => {
           Bienestar
         </NavLink>
         <NavLink size={2} to="/revista" width={1}>
-          Revista Digital
+          Revista Digital Biblioteca Virtual
         </NavLink>
         <NavLink size={2} to="/biblioteca" width={1}>
           Biblioteca Virtual
