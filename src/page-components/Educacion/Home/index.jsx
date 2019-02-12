@@ -33,7 +33,7 @@ const InicioEducacion = () => {
           >
             <Box py={3}>
               <Text size={3} color="white" bold>
-                Lorem ipsum
+                  Lorem ipsum
               </Text>
             </Box>
             <Box width={5 / 6}>

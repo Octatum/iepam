@@ -5,6 +5,7 @@ const theme = {
     black: 'black',
     gray: '#ABACA4',
     lightGray: '#C4C4C4',
+    opaqueBlack: '#00000038',
     darkGray: '#6C6C6C',
     darkestGray: '#3E3E3E',
     footer: '#D4D4D4',
