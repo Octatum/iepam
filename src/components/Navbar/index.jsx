@@ -66,7 +66,7 @@ const Navbar = () => {
         mb={4}
       >
         <NavLink size={2} to="/" width={1}>
-          Home
+          Inicio
         </NavLink>
         <NavLink size={2} to="/educacion" width={1}>
           Educación
@@ -89,7 +89,7 @@ const Navbar = () => {
         <Box width={1 / 6}>
           <SuggestionBox
             triggerElement={
-              <Button kind="dark" size={2} css={{ cursor: 'pointer' }}>
+              <Button kind="dark" size={2} css={{ cursor: 'pointer', padding:"1em 1.5em" }}>
                 Buzón de Sugerencias
               </Button>
             }
