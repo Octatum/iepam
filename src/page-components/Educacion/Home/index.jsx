@@ -33,14 +33,13 @@ const InicioEducacion = () => {
           >
             <Box py={3}>
               <Text size={3} color="white" bold>
-                  Lorem ipsum
+                  Educación
               </Text>
             </Box>
             <Box width={5 / 6}>
-              <Text color="white" align="justify">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown
+              <Text size={2} color="white" align="justify">
+                Explora y aprende de temas como salud física y mental, vida social, 
+                como cuidar tu patrimonio, derechos humanos, entre otros.
               </Text>
             </Box>
           </Flex>
@@ -52,21 +51,19 @@ const InicioEducacion = () => {
             css={{ height: '100%' }}
           >
             <Box py={3}>
-              <Text size={2} align="center" color="white" bold>
-                Lorem ipsum is
+              <Text size={3} align="center" color="white" bold>
+                Bienvenida
               </Text>
             </Box>
-            <Text align="center" color="white">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown
+            <Text size={2} align="center" color="white">
+              Explora nuestra selección de cursos y material didáctico
             </Text>
           </Flex>
         </GrayBox>
       </Flex>
       <Flex py={4} flexDirection="column">
         <Box px={4} pb={4}>
-          <Text bold size={2}>
+          <Text bold size={3}>
             Cursos destacados
           </Text>
         </Box>
@@ -75,7 +72,7 @@ const InicioEducacion = () => {
         </Box>
 
         <Box px={4} py={3} alignSelf="flex-end">
-          <MyLink
+          {/* <MyLink
             to="/educacion/curso"
             kind="dark"
             style={{ cursor: 'pointer' }}
@@ -83,7 +80,7 @@ const InicioEducacion = () => {
             <Text size={2} style={{ color: 'inherit' }}>
               Ver más...
             </Text>
-          </MyLink>
+          </MyLink> */}
         </Box>
       </Flex>
     </AppLayout>

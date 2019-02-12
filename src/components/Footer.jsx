@@ -10,14 +10,6 @@ const FlexLayout = styled(Flex)`
   background: ${({ theme }) => theme.color.footer};
 `;
 
-const LightBox = styled(Box)`
-  background: ${({ theme }) => theme.color.footer};
-`;
-
-const DarkFlex = styled(Flex)`
-  background: ${({ theme }) => theme.color.darkGray};
-`;
-
 const Footer = () => {
   return (
     <footer>

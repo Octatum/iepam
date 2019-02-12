@@ -80,7 +80,7 @@ const Navbar = () => {
         <NavLink size={2} to="/biblioteca" width={1}>
           Biblioteca Virtual
         </NavLink>
-        <NavLink size={2} to="/Ludoteca" width={1}>
+        <NavLink size={2} to="/ludoteca" width={1}>
           Ludoteca
         </NavLink>
       </Flex>

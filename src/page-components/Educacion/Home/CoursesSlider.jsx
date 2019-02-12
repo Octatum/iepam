@@ -53,17 +53,16 @@ const SlickNextArrow = ({ onClick }) => (
 const Slide = ({ courseInfo }) => {
   return (
     <Flex flexDirection="column" mx={4} css={{ position: 'relative' }}>
-      {/* <BackgroundBox backgroundColor="darkGray" py={6} /> */}
       <Clickable to={courseInfo.link} />
       <BackgroundBox
-        /* backgroundColor="darkestGray" */ image={courseInfo.image}
+        image={courseInfo.image}
         p={4}
         width="100%"
-        css={{ height: '300px' }}
+        css={{ height: '300px', border: "2px solid #0004" }}
       >
-        <Text color="white" align="center">
+      {/* <Text color="white" align="center">
           {courseInfo.title}
-        </Text>
+        </Text> */}
       </BackgroundBox>
     </Flex>
   );
