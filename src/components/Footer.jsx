@@ -5,9 +5,29 @@ import { Flex, Box } from '@rebass/grid';
 import Button from './Button';
 import SuggestionBox from './Popups/SuggestionBox';
 import { Link } from 'gatsby';
+import { device } from '../utils/device';
+
 
 const FlexLayout = styled(Flex)`
   background: ${({ theme }) => theme.color.footer};
+`;
+
+
+const AllHeight = styled.div`
+  .popup-content {
+    max-height: 80vh;
+    overflow: auto;
+
+    width: calc(100% - 3rem) !important;
+
+    ${device.tablet} {
+      width: 80% !important;
+    }
+    ${device.laptop} {
+      width: 1200px !important;
+      max-height: 90vh;
+    }
+  }
 `;
 
 const Footer = () => {
@@ -19,13 +39,16 @@ const Footer = () => {
             <Box mb={3}>
               <Text size={2} bold>Sugerencias y Comentarios</Text>
             </Box>
-            <SuggestionBox
+            <AllHeight>
+              <SuggestionBox
               triggerElement={
                 <Button kind="dark" size={1} css={{ cursor: 'pointer', padding: "1em 1.5em" }}>
                   Buzón de Sugerencias
                 </Button>
               }
             />
+
+            </AllHeight>
           </Box>
           <Box mx={4} width={1 / 3}>
               <Box mb={3}>

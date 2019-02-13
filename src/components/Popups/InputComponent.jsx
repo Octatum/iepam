@@ -7,7 +7,12 @@ import { Flex, Box } from '@rebass/grid';
 const BorderBox = styled(Flex)`
   border: 1px solid ${({ theme }) => theme.color.dark};
 `;
-
+const Message = styled.textarea`
+  min-height: 10rem;
+  resize: vertical;
+  width: 100%;
+  border: none;
+`;
 const Input = styled.input`
   border: none;
   width: 100%;
@@ -20,6 +25,7 @@ const InputComponent = ({
   value,
   handleChange,
   handleBlur,
+  isMessage = false,
   ...other
 }) => (
   <BorderBox
@@ -29,17 +35,10 @@ const InputComponent = ({
     width={1}
     {...other}
   >
-    {/* <BackgroundBox
-      backgroundColor="darkGray"
-      as={Box}
-      mr="10px"
-      width="40px"
-      css={{ height: '40px' }}
-    /> */}
     <Text
       color="darkGray"
-      size={2}
-      as={Input}
+      size={1}
+      as={isMessage ? Message : Input}
       placeholder={placeholder}
       type={type}
       name={name}

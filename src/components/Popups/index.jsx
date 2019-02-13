@@ -31,13 +31,19 @@ const PopupElement = ({ triggerElement, current, handleLogin }) => {
         {close =>
           currentActive === 'register' ? (
             <Registration close={close} setActive={setActive} handleLogin={handleLogin} />
-              ) : (
-              <Login close={close} setActive={setActive} handleLogin={handleLogin} />
+            ) : (
+            <Login close={close} setActive={setActive} handleLogin={handleLogin} />
           )
         }
       </Popup>
     </AllHeight>
   );
 };
+
+export const PopupContainer = ({ children }) => (
+  <AllHeight>
+    {children}
+  </AllHeight>
+)
 
 export default PopupElement;

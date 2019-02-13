@@ -6,7 +6,7 @@ import Logo from '../../assets/Logo.svg';
 import MagnifyingGlass from '../../assets/magnifying-glass.svg';
 
 import Button from '../Button';
-import Popups from '../Popups';
+import Popups, { PopupContainer } from '../Popups';
 import SuggestionBox from '../Popups/SuggestionBox';
 import NavLink from './NavLink';
 import BackgroundBox from '../BackgroundBox';
@@ -33,12 +33,12 @@ const Navbar = () => {
           <Image src={Logo} />
         </Box>
         <Box width={3 / 10}>
-            <Flex
-              css={{ height: '100%' }}
-              alignItems="center"
-              justifyContent="space-around"
-              >
-              {!loggedIn ? 
+          <Flex
+            css={{ height: '100%' }}
+            alignItems="center"
+            justifyContent="space-around"
+          >
+            {!loggedIn ?
               <React.Fragment>
                 <Box width={1 / 2} pr={1}>
                   <Popups
@@ -61,7 +61,7 @@ const Navbar = () => {
                       </FullSizeButton>
                     }
                   />
-                </Box>  
+                </Box>
               </React.Fragment>
               :
               <React.Fragment>
@@ -74,8 +74,8 @@ const Navbar = () => {
                   <Text size={2} align="center">Bienvenido usuario</Text>
                 </Box>
               </React.Fragment>
-              }
-            </Flex> 
+            }
+          </Flex>
         </Box>
       </Flex>
 
@@ -107,13 +107,15 @@ const Navbar = () => {
 
       <Flex my={3} mx={4} alignItems="center">
         <Box width={1 / 6}>
-          <SuggestionBox
-            triggerElement={
-              <Button kind="dark" size={2} css={{ cursor: 'pointer', padding: "1em 1.5em" }}>
-                Buzón de Sugerencias
+          <PopupContainer>
+            <SuggestionBox
+              triggerElement={
+                <Button kind="dark" size={2} css={{ cursor: 'pointer', padding: "1em 1.5em" }}>
+                  Buzón de Sugerencias
               </Button>
-            }
-          />
+              }
+            />
+          </PopupContainer>
         </Box>
         <Box width={3 / 6} />
         <Flex width={2 / 6} alignItems="center" justifyContent="flex-end">

@@ -6,8 +6,10 @@ import BackgroundBox from '../BackgroundBox';
 import Button from '../Button';
 import CloseButton from './CloseButton';
 import { withFormik } from 'formik';
-import validation from '../../utils/validation';
+import { RegistrationValidation as validation } from '../../utils/validation';
 import InputComponent from './InputComponent';
+import { encode } from '../../utils/formEncode';
+
 
 const Justified = styled(Text)`
   text-align: justify;
@@ -138,7 +140,7 @@ const Registration = ({
         </Button>
       </Flex>
     </Flex>
-    <button type="submit" onSubmit={handleSubmit}>submit</button>
+    <button type="submit">submit</button>
 
   </Flex>
 );
@@ -147,9 +149,25 @@ export default withFormik({
   mapPropsToValues: () => ({ email: '', password: '', name: '', captcha: false }),
   validationSchema: validation,
   handleSubmit: (values, { setSubmitting, props }) => {
-    console.log(JSON.stringify(values, null, 2));
-    const { handleLogin } = props;
-    handleLogin(true)
+    console.log(values)
+    fetch('/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': 'registerForm',
+      }),
+    })
+      .then(() => {
+        alert('Your message was sent!');
+        setSubmitting(false);
+        // navigate('/');
+        const { handleLogin } = props;
+        handleLogin(true)
+      })
+      .catch(() => {
+        setSubmitting(false);
+        return error => alert(error);
+      });
   },
-  displayName: 'LoginForm',
+  displayName: 'registerForm',
 })(Registration);

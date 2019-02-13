@@ -6,9 +6,9 @@ import Text from '../Text';
 import BackgroundBox from '../BackgroundBox';
 import Button from '../Button';
 import CloseButton from './CloseButton';
-import validation from '../../utils/validation';
+import { LogingValidation as validation } from '../../utils/validation';
 import InputComponent from './InputComponent';
-import { formEncode as encode } from '../../utils/formEncode';
+import { encode } from '../../utils/formEncode';
 
 const Centered = styled(Text)`
   margin: 1rem 0;
@@ -140,7 +140,7 @@ const Login = ({
         </Button>
       </Flex>
     </Flex>
-    <button type="submit" onSubmit={handleSubmit} >submit</button>
+    <button type="submit">submit</button>
   </Flex>
 );
 
