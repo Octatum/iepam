@@ -22,17 +22,17 @@ const AllHeight = styled.div`
   }
 `;
 
-const PopupElement = ({ triggerElement, current }) => {
+const PopupElement = ({ triggerElement, current, handleLogin }) => {
   const [currentActive, setActive] = useState(current);
 
   return (
     <AllHeight>
-      <Popup trigger={triggerElement} modal lockScroll={true}>
+      <Popup trigger={triggerElement} modal lockScroll={true} >
         {close =>
           currentActive === 'register' ? (
-            <Registration close={close} setActive={setActive} />
-          ) : (
-            <Login close={close} setActive={setActive} />
+            <Registration close={close} setActive={setActive} handleLogin={handleLogin} />
+              ) : (
+              <Login close={close} setActive={setActive} handleLogin={handleLogin} />
           )
         }
       </Popup>

@@ -5,51 +5,46 @@ import Text from '../Text';
 import BackgroundBox from '../BackgroundBox';
 import Button from '../Button';
 import CloseButton from './CloseButton';
+import { withFormik } from 'formik';
+import validation from '../../utils/validation';
+import InputComponent from './InputComponent';
 
-const BorderBox = styled(Flex)`
-  border: 1px solid ${({ theme }) => theme.color.dark};
-`;
 const Justified = styled(Text)`
   text-align: justify;
   text-align-last: left;
 `;
 const Captcha = styled(Box)``;
-const Input = styled.input`
-  border: none;
-  width: 100%;
-`;
 
-const InputComponent = ({
-  placeholder,
-  type = 'text',
-  name = '',
-  ...other
-}) => (
-  <BorderBox
-    justifyContent="flex-start"
-    alignItems="center"
+const ErrorComponent = ({ children }) => (
+  <BackgroundBox
+    width="100%"
+    backgroundColor="errorRed"
+    as={Box}
     p={2}
-    width={1}
-    {...other}
+    mb={2}
+    css={{ borderRadius: '10px' }}
   >
-    {/* <BackgroundBox backgroundColor='darkGray' as={Box} mr="10px" width="40px" css={{ height: "40px" }} /> */}
-    <Text
-      color="darkGray"
-      size={1}
-      as={Input}
-      placeholder={placeholder}
-      type={type}
-      name={name}
-    />
-  </BorderBox>
+    <Text color="red">{children}</Text>
+  </BackgroundBox>
 );
 
-const Registration = ({ close, setActive, ...other }) => (
-  <Flex flexDirection="column" mb={4} {...other}>
+const Registration = ({
+  close,
+  setActive,
+  values,
+  touched,
+  errors,
+  handleChange,
+  handleBlur,
+  handleSubmit,
+  handleLogin,
+  ...others
+}) => (
+  <Flex flexDirection="column" mb={4} as="form" name="registerForm" onSubmit={handleSubmit} {...others}>
     <CloseButton alignSelf="flex-end" closeFunction={close} />
 
     <Flex flexDirection="column" alignItems="center" mx={[4]}>
-      <Box as={Text} bold size={1} alignSelf="flex-start" pt={3}>
+      <Box as={Text} bold size={3} alignSelf="flex-start" pt={3}>
         Lorem ipsum dolor sit amet.
       </Box>
       <Box width={1} as={BackgroundBox} backgroundColor="dark" pt="3px" m={3} />
@@ -59,19 +54,37 @@ const Registration = ({ close, setActive, ...other }) => (
         name="name"
         type="text"
         placeholder="Nombre de Usuario"
+        value={values.name}
+        handleBlur={handleBlur}
+        handleChange={handleChange}
       />
+      {errors.name && touched.name && (
+        <ErrorComponent>{errors.name}</ErrorComponent>
+      )}
       <InputComponent
         my={2}
         name="email"
         type="email"
         placeholder="Correo Electronico"
+        value={values.email}
+        handleBlur={handleBlur}
+        handleChange={handleChange}
       />
+      {errors.email && touched.email && (
+        <ErrorComponent>{errors.email}</ErrorComponent>
+      )}
       <InputComponent
         my={2}
         name="password"
         type="password"
         placeholder="Contrasena"
+        value={values.password}
+        handleBlur={handleBlur}
+        handleChange={handleChange}
       />
+      {errors.password && touched.password && (
+        <ErrorComponent>{errors.password}</ErrorComponent>
+      )}
 
       <Flex flexDirection="column" mt={[2, 5]}>
         <Flex>
@@ -83,7 +96,7 @@ const Registration = ({ close, setActive, ...other }) => (
             mr={3}
           />
           <Box width="calc(100% - 30px - 16px)">
-            <Justified size={0}>
+            <Justified size={1}>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro
               cumque voluptatibus eligendi totam explicabo dolore ipsam dolorem,
               eveniet illum quod nobis laboriosam tenetur facilis commodi.
@@ -98,7 +111,7 @@ const Registration = ({ close, setActive, ...other }) => (
             backgroundColor="black"
             my={4}
           />
-          <Box as={Text} css={{ textAlign: 'center' }} mx={2}>
+          <Box as={Text} size={1} css={{ textAlign: 'center' }} mx={2}>
             Al registrarte, aceptas nuestras Condiciones de uso y Política de
             privacidad.
           </Box>
@@ -113,11 +126,11 @@ const Registration = ({ close, setActive, ...other }) => (
       />
       <Flex alignItems="center">
         <Box mr={4}>
-          <Text size={1}>¿Ya tienes una cuenta?</Text>
+          <Text size={2}>¿Ya tienes una cuenta?</Text>
         </Box>
         <Button
           kind="dark"
-          size={1}
+          size={2}
           onClick={() => setActive('login')}
           css={{ cursor: 'pointer', borderTop: 'none' }}
         >
@@ -125,7 +138,18 @@ const Registration = ({ close, setActive, ...other }) => (
         </Button>
       </Flex>
     </Flex>
+    <button type="submit" onSubmit={handleSubmit}>submit</button>
+
   </Flex>
 );
 
-export default Registration;
+export default withFormik({
+  mapPropsToValues: () => ({ email: '', password: '', name: '', captcha: false }),
+  validationSchema: validation,
+  handleSubmit: (values, { setSubmitting, props }) => {
+    console.log(JSON.stringify(values, null, 2));
+    const { handleLogin } = props;
+    handleLogin(true)
+  },
+  displayName: 'LoginForm',
+})(Registration);

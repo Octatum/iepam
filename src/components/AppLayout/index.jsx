@@ -8,19 +8,24 @@ import './index.css';
 import Footer from '../Footer';
 import Navbar from '../Navbar';
 import { Box } from '@rebass/grid';
+import UserContext from '../UserContext';
 
 const AppLayout = ({ children }) => {
+  const [loggedIn, setLoggedIn] = useState(false);
+  
   return (
-    <ThemeProvider theme={theme}>
-      <React.Fragment>
-        <Helmet titleTemplate="%s - IEPAM" />
-        <Navbar />
-        <Box mx="auto" width={[1, 1, 1400]}>
-          {children}
-        </Box>
-        <Footer />
-      </React.Fragment>
-    </ThemeProvider>
+    <UserContext.Provider value={[loggedIn, setLoggedIn]}>
+      <ThemeProvider theme={theme}>
+        <React.Fragment>
+          <Helmet titleTemplate="%s - IEPAM" />
+          <Navbar />
+          <Box mx="auto" width={[1, 1, 1400]}>
+            {children}
+          </Box>
+          <Footer />
+        </React.Fragment>
+      </ThemeProvider>
+    </UserContext.Provider>
   );
 };
 

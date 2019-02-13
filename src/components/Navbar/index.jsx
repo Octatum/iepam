@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Flex, Box } from '@rebass/grid';
 import styled from 'styled-components';
 
@@ -11,6 +11,7 @@ import SuggestionBox from '../Popups/SuggestionBox';
 import NavLink from './NavLink';
 import BackgroundBox from '../BackgroundBox';
 import Text from '../Text';
+import UserContext from '../UserContext';
 
 const FullSizeButton = styled(Button)`
   width: 100%;
@@ -23,39 +24,58 @@ const Image = styled.img`
 `;
 
 const Navbar = () => {
+  const [loggedIn, setLoggedIn] = useContext(UserContext);
+
   return (
-    <Flex as="nav" flexDirection="column" p={4}>
-      <Flex justifyContent="space-between" css={{ height: '125px' }} mb={4}>
+    <Flex as="nav" flexDirection="column" py={4}>
+      <Flex justifyContent="space-between" css={{ height: '125px' }} mx={4} mb={4}>
         <Box width={3 / 10} >
           <Image src={Logo} />
         </Box>
         <Box width={3 / 10}>
-          <Flex
-            css={{ height: '100%' }}
-            alignItems="center"
-            justifyContent="space-around"
-          >
-            <Box width={1 / 2} pr={1}>
-              <Popups
-                current="register"
-                triggerElement={
-                  <FullSizeButton size={2} bold css={{ cursor: 'pointer' }} kind="dark">
-                    Registrarse
+            <Flex
+              css={{ height: '100%' }}
+              alignItems="center"
+              justifyContent="space-around"
+              >
+              {!loggedIn ? 
+              <React.Fragment>
+                <Box width={1 / 2} pr={1}>
+                  <Popups
+                    handleLogin={setLoggedIn}
+                    current="register"
+                    triggerElement={
+                      <FullSizeButton size={2} bold css={{ cursor: 'pointer' }} kind="dark">
+                        Registrarse
+                      </FullSizeButton>
+                    }
+                  />
+                </Box>
+                <Box width={1 / 2}>
+                  <Popups
+                    handleLogin={setLoggedIn}
+                    current="login"
+                    triggerElement={
+                      <FullSizeButton size={2} bold css={{ cursor: 'pointer' }}>
+                        Iniciar Sesión
+                      </FullSizeButton>
+                    }
+                  />
+                </Box>  
+              </React.Fragment>
+              :
+              <React.Fragment>
+                <Box width={1 / 2}>
+                  <FullSizeButton size={2} bold css={{ cursor: 'pointer' }} kind="dark" onClick={() => setLoggedIn(null)}>
+                    Logout
                   </FullSizeButton>
-                }
-              />
-            </Box>
-            <Box width={1 / 2}>
-              <Popups
-                current="login"
-                triggerElement={
-                  <FullSizeButton size={2} bold css={{ cursor: 'pointer' }}>
-                    Entrar
-                  </FullSizeButton>
-                }
-              />
-            </Box>
-          </Flex>
+                </Box>
+                <Box width={1 / 2}>
+                  <Text size={2} align="center">Bienvenido usuario</Text>
+                </Box>
+              </React.Fragment>
+              }
+            </Flex> 
         </Box>
       </Flex>
 
@@ -75,7 +95,7 @@ const Navbar = () => {
           Bienestar
         </NavLink>
         <NavLink size={2} to="/revista" width={1}>
-          Revista Digital Biblioteca Virtual
+          Revista Digital
         </NavLink>
         <NavLink size={2} to="/biblioteca" width={1}>
           Biblioteca Virtual
@@ -85,18 +105,18 @@ const Navbar = () => {
         </NavLink>
       </Flex>
 
-      <Flex my={3} alignItems="center">
+      <Flex my={3} mx={4} alignItems="center">
         <Box width={1 / 6}>
           <SuggestionBox
             triggerElement={
-              <Button kind="dark" size={2} css={{ cursor: 'pointer', padding:"1em 1.5em" }}>
+              <Button kind="dark" size={2} css={{ cursor: 'pointer', padding: "1em 1.5em" }}>
                 Buzón de Sugerencias
               </Button>
             }
           />
         </Box>
         <Box width={3 / 6} />
-        <Flex width={2 / 6} alignItems="center">
+        <Flex width={2 / 6} alignItems="center" justifyContent="flex-end">
           <BackgroundBox width={5 / 6} backgroundColor="lightGray" p={3} mr={3}>
             <Text size={2} color="darkGray">
               Buscar Cualquier Cosa

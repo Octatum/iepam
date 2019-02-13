@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Box } from '@rebass/grid';
 import BackgroundBox from '../BackgroundBox';
 import { Link } from 'gatsby';
 import Text from '../Text';
@@ -14,6 +13,13 @@ const NavbarItem = styled(BackgroundBox).attrs({
   text-align: center;
   display: flex;
   flex: 1;
+
+  :first-child {
+    border-left: none;
+  }
+  :last-child {
+    border-right: none;
+  }
 `;
 
 const NavbarLink = styled(Text)`

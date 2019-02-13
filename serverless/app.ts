@@ -12,6 +12,9 @@ dotenv.config();
 
 // Controllers (route handlers)
 import * as exampleController from './controllers/example';
+import * as loginController from "./controllers/login";
+import * as registerController from "./controllers/register";
+import * as logoutController from "./controllers/logout";
 
 // Create Express server
 const app = express();
@@ -44,6 +47,10 @@ router.get('/', (req, res) => {
   res.sendStatus(200);
 });
 router.get('/example', exampleController.exampleFunction);
+router.post('/login', loginController.loginFunction);
+router.post('/register', registerController.registerFunction);
+router.post('/logout', logoutController.logoutFunction);
+
 app.use('/.netlify/functions/app', router);
 
 export default app;

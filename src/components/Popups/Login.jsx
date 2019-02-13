@@ -7,56 +7,15 @@ import BackgroundBox from '../BackgroundBox';
 import Button from '../Button';
 import CloseButton from './CloseButton';
 import validation from '../../utils/validation';
+import InputComponent from './InputComponent';
+import { formEncode as encode } from '../../utils/formEncode';
 
-const BorderBox = styled(Flex)`
-  border: 1px solid ${({ theme }) => theme.color.dark};
-`;
 const Centered = styled(Text)`
   margin: 1rem 0;
   text-align: center;
 `;
 const Captcha = styled(Box)``;
-const Input = styled.input`
-  border: none;
-  width: 100%;
-`;
 
-const InputComponent = ({
-  placeholder,
-  type = 'text',
-  name = '',
-  value,
-  handleChange,
-  handleBlur,
-  ...other
-}) => (
-  <BorderBox
-    justifyContent="flex-start"
-    alignItems="center"
-    p={2}
-    width={1}
-    {...other}
-  >
-    <BackgroundBox
-      backgroundColor="darkGray"
-      as={Box}
-      mr="10px"
-      width="40px"
-      css={{ height: '40px' }}
-    />
-    <Text
-      color="darkGray"
-      size={0}
-      as={Input}
-      placeholder={placeholder}
-      type={type}
-      name={name}
-      value={value}
-      onChange={handleChange}
-      onBlur={handleBlur}
-    />
-  </BorderBox>
-);
 
 const ErrorComponent = ({ children }) => (
   <BackgroundBox
@@ -80,6 +39,7 @@ const Login = ({
   handleChange,
   handleBlur,
   handleSubmit,
+  handleLogin,
   ...others
 }) => (
   <Flex
@@ -93,7 +53,7 @@ const Login = ({
     <CloseButton alignSelf="flex-end" closeFunction={close} />
 
     <Flex flexDirection="column" alignItems="center" mx={[4]}>
-      <Centered as={Text} bold size={1} alignSelf="flex-start" pt={3}>
+      <Centered as={Text} bold size={3} alignSelf="flex-start" pt={3}>
         Inicia sesion en tu cuenta
       </Centered>
       <Box width={1} as={BackgroundBox} backgroundColor="dark" pt="3px" m={3} />
@@ -150,10 +110,10 @@ const Login = ({
         css={{ height: '75px' }}
       />
       <Box>
-        <Centered color="darkGray" size={1}>
+        <Centered color="darkGray" size={2}>
           o ¿Has olvidado tu Contrasena?
         </Centered>
-        <Centered color="darkGray" size={0}>
+        <Centered color="darkGray" size={1}>
           Al registrarte, aceptas nuestras Condiciones de uso y Política de
           privacidad.
         </Centered>
@@ -168,11 +128,11 @@ const Login = ({
       />
       <Flex alignItems="center">
         <Box mr={4}>
-          <Text size={1}>¿No tienes una cuenta?</Text>
+          <Text size={2}>¿No tienes una cuenta?</Text>
         </Box>
         <Button
           kind="dark"
-          size={0}
+          size={2}
           onClick={() => setActive('register')}
           css={{ cursor: 'pointer', borderTop: 'none' }}
         >
@@ -180,14 +140,35 @@ const Login = ({
         </Button>
       </Flex>
     </Flex>
+    <button type="submit" onSubmit={handleSubmit} >submit</button>
   </Flex>
 );
 
 export default withFormik({
   mapPropsToValues: () => ({ email: '', password: '', captcha: false }),
   validationSchema: validation,
-  handleSubmit: (values, { setSubmitting }) => {
+  handleSubmit: (values, { setSubmitting, props }) => {
     console.log(JSON.stringify(values, null, 2));
+    fetch('/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': 'loginForm',
+      }),
+    })
+      .then(() => {
+        alert('Your message was sent!');
+        setSubmitting(false);
+        // navigate('/');
+        const { handleLogin } = props;
+        handleLogin(true)
+      })
+      .catch(() => {
+        setSubmitting(false);
+        return error => alert(error);
+      });
+
+
   },
   displayName: 'LoginForm',
 })(Login);
