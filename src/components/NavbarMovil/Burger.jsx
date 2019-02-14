@@ -2,15 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Flex, Box } from '@rebass/grid';
 
-const CollapsibleMenu = styled.div`
-  width: 100%;
-  height: auto;
-  padding: 0.65em 0;  
-`;
-const MenuIcon = styled(Box)`
-
-`;
-const Bar = styled.div`
+const Bar = styled(Box)`
   width: 3em;
   height: 0.5em;
   background-color: ${({ theme }) => theme.color.black};
@@ -35,11 +27,11 @@ const Bar3 = styled(Bar)`
 
 const Burger = ({ isOpen, ...props }) => (
   <Flex justifyContent="flex-start" {...props}>
-    <MenuIcon>
+    <Box>
       <Bar1 isOpen={isOpen} />
       <Bar2 isOpen={isOpen} />
       <Bar3 isOpen={isOpen} />
-    </MenuIcon>
+    </Box>
   </Flex>
 )
 

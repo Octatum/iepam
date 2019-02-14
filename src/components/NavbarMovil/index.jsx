@@ -28,12 +28,12 @@ const MobileNavbar = ({ ...props }) => {
   return (
     <Flex flexDirection="column" as={BackgroundBox} backgroundColor="white" {...props} css={{height: `${isOpen ? '100vh' : 'auto'}`}}>
       <Flex alignItems="center" px={4} py={3} as={BackgroundBox} backgroundColor="superLightGray">
-        <Burger width={1 / 10} isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
+        <Burger width='auto' isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
         <Box width={1 / 20} />
         <Box width={2 / 10}>
           <img src={Logo} />
         </Box>
-        <Box width={13 / 20} />
+        <Box width={1} />
         <Box width={1 / 10} >
           <img src={MagnifyingGlass} />
         </Box>
