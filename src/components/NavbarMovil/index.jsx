@@ -27,16 +27,16 @@ const MobileNavbar = ({ ...props }) => {
 
   return (
     <Flex flexDirection="column" as={BackgroundBox} backgroundColor="white" {...props} css={{height: `${isOpen ? '100vh' : 'auto'}`}}>
-      <Flex alignItems="center" px={4} py={3} as={BackgroundBox} backgroundColor="superLightGray">
+      <Flex alignItems="stretch" px={4} py={3} as={BackgroundBox} backgroundColor="superLightGray" css={{height:'75px'}}>
         <Burger width='auto' isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
         <Box width={1 / 20} />
         <Box width={2 / 10}>
-          <img src={Logo} />
+          <img src={Logo} style={{height:'100%'}}/>
         </Box>
         <Box width={1} />
-        <Box width={1 / 10} >
+        <Flex width={1 / 10} >
           <img src={MagnifyingGlass} />
-        </Box>
+        </Flex>
 
       </Flex>
       <Content flexDirection="column" alignItems="center" justifyContent="center" isOpen={isOpen} css={{borderTop: '1px solid black', borderBottom: '1px solid black'}}>
@@ -63,7 +63,7 @@ const MobileNavbar = ({ ...props }) => {
       <Content justifyContent="center" alignItems="center" flexDirection="column" isOpen={isOpen} py={2}>
         {!loggedIn ?
           <React.Fragment>
-            <Box width={1 / 4} my={2}>
+            <Box width={[1 / 2, 1 / 4]} my={2}>
               <Popups
                 handleLogin={setLoggedIn}
                 current="register"
@@ -74,7 +74,7 @@ const MobileNavbar = ({ ...props }) => {
                 }
               />
             </Box>
-            <Box width={1 / 4} my={2}>
+            <Box width={[1 / 2, 1 / 4]} my={2}>
               <Popups
                 handleLogin={setLoggedIn}
                 current="login"
@@ -88,12 +88,12 @@ const MobileNavbar = ({ ...props }) => {
           </React.Fragment>
           :
           <React.Fragment>
-            <Box width={1 / 4} my={2}>
+            <Box width={[1 / 2, 1 / 4]} my={2}>
               <FullSizeButton size={2} bold css={{ cursor: 'pointer' }} kind="dark" onClick={() => setLoggedIn(null)}>
                 Logout
               </FullSizeButton>
             </Box>
-            <Box width={1 / 4} my={2}>
+            <Box width={[1 / 2, 1 / 4]} my={2}>
               <Text size={2} align="center">Bienvenido usuario</Text>
             </Box>
           </React.Fragment>

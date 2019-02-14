@@ -6,7 +6,6 @@ const Bar = styled(Box)`
   width: 3em;
   height: 0.5em;
   background-color: ${({ theme }) => theme.color.black};
-  margin: 0.5em 0;
   transition: all 0.5s ease;
 `;
 const Bar1 = styled(Bar)`
@@ -26,12 +25,12 @@ const Bar3 = styled(Bar)`
 `;
 
 const Burger = ({ isOpen, ...props }) => (
-  <Flex justifyContent="flex-start" {...props}>
-    <Box>
+  <Flex {...props}>
+    <Flex flexDirection="column" justifyContent="space-between" alignItems="stretch">
       <Bar1 isOpen={isOpen} />
       <Bar2 isOpen={isOpen} />
       <Bar3 isOpen={isOpen} />
-    </Box>
+    </Flex>
   </Flex>
 )
 
