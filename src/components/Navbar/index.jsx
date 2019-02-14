@@ -23,11 +23,11 @@ const Image = styled.img`
   width: auto;
 `;
 
-const Navbar = () => {
+const Navbar = ({ ...props }) => {
   const [loggedIn, setLoggedIn] = useContext(UserContext);
 
   return (
-    <Flex as="nav" flexDirection="column" py={4}>
+    <Flex as="nav" flexDirection="column" py={4} {...props}>
       <Flex justifyContent="space-between" css={{ height: '125px' }} mx={4} mb={4}>
         <Box width={3 / 10} >
           <Image src={Logo} />

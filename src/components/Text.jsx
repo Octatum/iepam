@@ -4,8 +4,8 @@ import { device } from '../utils/device';
 const defaultSize = 1;
 const increments = {
   laptop: 0.3,
-  tablet: 0.15,
-  mobile: 0.0,
+  tablet: 0.2,
+  mobile: 0.1,
 };
 
 const setColor = ({ theme, color }) => {

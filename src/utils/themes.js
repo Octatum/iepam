@@ -4,6 +4,7 @@ const theme = {
     dark: '#333',
     black: 'black',
     gray: '#ABACA4',
+    superLightGray: '#F1F1F1',
     lightGray: '#C4C4C4',
     opaqueBlack: '#00000038',
     darkGray: '#6C6C6C',
