@@ -1,9 +1,17 @@
 export const breakpoints = {
-  mobile: 764,
-  tablet: 1024,
-  laptop: 1440,
+  mobile: 640,
+  tablet: 832,
+  laptop: 1024,
   desktop: 2560,
 };
+
+
+/*
+mobile: 764,
+tablet: 1024,
+laptop: 1440,
+desktop: 2560,
+*/
 
 export const breakpointsList = Object.keys(breakpoints).map(
   key => `${breakpoints[key] / 16}em`

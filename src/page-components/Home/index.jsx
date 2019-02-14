@@ -2,35 +2,9 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 import Text from '../../components/Text';
 import BackgroundBox from '../../components/BackgroundBox';
-import { Link } from 'gatsby';
-import { withButtonStyles } from '../../components/Button';
 import IEPAM from '../../assets/IEPAM.png';
+import Row from './Row';
 
-const MyLink = withButtonStyles(Link);
-
-const Row = ({ title, children, linkTo }) => (
-  <Flex flexDirection="column" mb={5} mx={[4, 4, 0]}>
-    <Box mb={3}>
-      <Text bold size={5}>
-        {title}
-      </Text>
-    </Box>
-    <BackgroundBox as={Flex} backgroundColor="darkGray" p={5} alignItems="center" >
-      <Box width={7 / 10}>
-        {children}
-      </Box>
-      <Box width={1 / 10} />
-      <Box width={2 / 10} alignSelf="flex-end">
-        <MyLink to={linkTo} kind="dark" style={{ cursor: 'pointer' }}>
-          <Text size={2} bold style={{ color: 'inherit' }}>
-            Ver más...
-          </Text>
-        </MyLink>
-      </Box>
-
-    </BackgroundBox>
-  </Flex>
-);
 
 const HomePage = () => (
   <Flex py={4} flexDirection="column" mx={[0, 0, 4]}>
