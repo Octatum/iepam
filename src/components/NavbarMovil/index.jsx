@@ -13,8 +13,8 @@ import Popups from '../Popups';
 import UserContext from '../UserContext';
 
 const Image = styled.img`
-  height: 100%;
-  width: auto;
+  height: auto;
+  width: 100%;
 `;
 
 const FullSizeButton = styled(Button)`
@@ -60,7 +60,7 @@ const MobileNavbar = ({ ...props }) => {
               Buscar Cualquier Cosa
             </Text>
           </BackgroundBox>
-          <BackgroundBox backgroundColor="black" width='100px' p={2}>
+          <BackgroundBox as={Flex} alignItems="center" backgroundColor="black" width='50px' p={2}>
             <Image src={MagnifyingGlass} />
           </BackgroundBox>
         </Flex>
