@@ -12,6 +12,11 @@ import Button from '../Button';
 import Popups from '../Popups';
 import UserContext from '../UserContext';
 
+const Image = styled.img`
+  height: 100%;
+  width: auto;
+`;
+
 const FullSizeButton = styled(Button)`
   width: 100%;
   height: 100%;
@@ -33,22 +38,31 @@ const MobileNavbar = ({ ...props }) => {
       {...props}
       css={{ height: `${isOpen ? '100vh' : 'auto'}` }}
     >
-      <Flex
-        alignItems="stretch"
-        px={4}
-        py={3}
-        as={BackgroundBox}
-        backgroundColor="superLightGray"
-        css={{ height: '75px' }}
-      >
-        <Burger width="auto" isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
-        <Box width={1 / 20} />
-        <Box width={2 / 10}>
-          <img src={Logo} style={{ height: '100%' }} />
-        </Box>
-        <Box width={1} />
-        <Flex width={1 / 10}>
-          <img src={MagnifyingGlass} />
+      <Flex flexDirection="column">
+        <Flex
+          alignItems="stretch"
+          px={4}
+          py={3}
+          as={BackgroundBox}
+          backgroundColor="superLightGray"
+          css={{ height: '75px' }}
+        >
+          <Burger width="auto" isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
+          <Box width={1 / 20} />
+          <Box width={2 / 10}>
+            <img src={Logo} style={{ height: '100%' }} />
+          </Box>
+          <Box width={1} />
+        </Flex>
+        <Flex width={1} alignItems="stretch" justifyContent="flex-end" px={4} as={BackgroundBox} backgroundColor="superLightGray" pb={4}>
+          <BackgroundBox width={1} backgroundColor="lightGray" p={3}>
+            <Text size={2} color="darkGray">
+              Buscar Cualquier Cosa
+            </Text>
+          </BackgroundBox>
+          <BackgroundBox backgroundColor="black" width='100px' p={2}>
+            <Image src={MagnifyingGlass} />
+          </BackgroundBox>
         </Flex>
       </Flex>
       <Content
@@ -153,8 +167,3 @@ const MobileNavbar = ({ ...props }) => {
 };
 
 export default MobileNavbar;
-/**
- * border-top: ${({ isOpen }) => isOpen ? '1px solid black' : 'none'};
-  border-bottom: ${({ isOpen }) => isOpen ? '1px solid black' : 'none'};
- * 
- */

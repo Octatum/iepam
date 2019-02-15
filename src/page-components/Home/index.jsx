@@ -25,7 +25,7 @@ const HomePage = () => {
   const [loggedIn, setLoggedIn] = useContext(UserContext);
 
   return (
-    <Flex py={4} flexDirection="column" mx={[0, 0, 4]}>
+    <Flex pb={4} flexDirection="column" mx={[0, 0, 4]}>
       <Box mb={4}>
         <BackgroundBox
           as={Flex}
