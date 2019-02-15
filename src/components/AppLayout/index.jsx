@@ -35,7 +35,7 @@ const AppLayout = ({ children }) => {
           <Helmet titleTemplate="%s - IEPAM" />
           <NavbarComp />
           <MobileNavbarComp />
-          <Box mx="auto" width={[1, 1, 1400]}>
+          <Box mx="auto" width={1} css={{maxWidth: '1400px'}}>
             {children}
           </Box>
           <Footer />

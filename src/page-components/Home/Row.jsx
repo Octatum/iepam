@@ -9,14 +9,6 @@ import { device } from '../../utils/device';
 
 const MyLink = withButtonStyles(Link);
 
-const Clickable = styled(Link)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-`;
-
 const MobileRow = styled(Flex)`
   box-shadow: 0 0 10px 3px ${({ theme }) => theme.color.lightGray};
   ${device.laptop} {
@@ -64,14 +56,14 @@ const Row = ({ title, children, linkTo }) => (
         backgroundColor="darkestGray"
         p={3}
       >
-        <Box mb={3}>
-          <Text size={10} bold color="white">
-            {title}
-          </Text>
+        <Text size={10} bold color="white">
+          {title}
+        </Text>
+        <Box my={[3]}>
+          <Text size={3}>{children}</Text>
         </Box>
-        <Text size={3}>{children}</Text>
+        <Text bold size={2} color="white" as={Link} to={linkTo}>Ver mas...</Text>
       </BackgroundBox>
-      <Clickable to={linkTo} />
     </MobileRow>
   </React.Fragment>
 );

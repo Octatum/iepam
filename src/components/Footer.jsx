@@ -101,13 +101,13 @@ const Footer = () => {
         </Flex>
 
         <Box mb={1} px={[4, 4, 0]}>
-          <Centered size={1} align="center">
+          <Text size={1} align="center">
             <Text as="span" size={1} bold>
               IEPAM
             </Text>{' '}
             &bull; (81) 2723 0982 &bull; Madrid 207, Mirador, C.P. 64910,
             Monterrey, N.L.
-          </Centered>
+          </Text>
         </Box>
         <Box mb={4} px={[4, 4, 0]}>
           <Text size={0} align="center">
