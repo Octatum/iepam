@@ -36,7 +36,7 @@ const Navbar = ({ ...props }) => {
         <Box width={3 / 10}>
           <Image src={Logo} />
         </Box>
-        
+
         <Box width={3 / 10}>
           <Flex
             css={{ height: '100%' }}
@@ -142,13 +142,15 @@ const Navbar = ({ ...props }) => {
           </PopupContainer>
         </Box>
         <Box width={3 / 6} />
-        <Flex width={2 / 6} alignItems="center" justifyContent="flex-end">
-          <BackgroundBox width={5 / 6} backgroundColor="lightGray" p={3} mr={3}>
+        <Flex width={2 / 6} alignItems="stretch" justifyContent="flex-end">
+          <BackgroundBox width={1} backgroundColor="lightGray" p={3}>
             <Text size={2} color="darkGray">
               Buscar Cualquier Cosa
             </Text>
           </BackgroundBox>
-          <Image src={MagnifyingGlass} />
+          <BackgroundBox as={Flex} alignItems="center" backgroundColor="black" width='50px' p={2}>
+            <Image src={MagnifyingGlass} />
+          </BackgroundBox>
         </Flex>
       </Flex>
     </Flex>

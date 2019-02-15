@@ -24,7 +24,7 @@ const InicioEducacion = () => {
       <Helmet>
         <title>Plataforma educativa</title>
       </Helmet>
-      <Flex css={{  }} p={[0, 0, 4]} flexDirection={['column','column','row']}>
+      <Flex alignItems={['initial','initial',"stretch"]} p={[0, 0, 4]} flexDirection={['column','column','row']}>
         <GrayBox width={[1, 1, 16 / 24]} p={4} py={5}>
           <Flex
             css={{ height: '15rem' }}

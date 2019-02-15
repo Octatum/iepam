@@ -59,7 +59,6 @@ const SlickNextArrow = ({ onClick }) => (
 );
 
 const Slide = ({ courseInfo }) => {
-  console.log(breakpointsList)
   return (
     <Flex flexDirection="column" mx={[2, 2, 4]} css={{ position: 'relative' }}>
       <Clickable to={courseInfo.link} />
