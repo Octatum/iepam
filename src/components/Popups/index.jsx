@@ -48,8 +48,8 @@ const PopupElement = ({ triggerElement, current, handleLogin }) => {
   );
 };
 
-export const PopupContainer = ({ children }) => (
-  <AllHeight>{children}</AllHeight>
+export const PopupContainer = ({ children, ...props }) => (
+  <AllHeight {...props}>{children}</AllHeight>
 );
 
 export default PopupElement;

@@ -6,40 +6,32 @@ import Button from './Button';
 import SuggestionBox from './Popups/SuggestionBox';
 import { Link } from 'gatsby';
 import { device } from '../utils/device';
+import { PopupContainer } from './Popups';
 
 const FlexLayout = styled(Flex)`
   background: ${({ theme }) => theme.color.footer};
 `;
 
-const AllHeight = styled.div`
-  .popup-content {
-    max-height: 80vh;
-    overflow: auto;
-
-    width: calc(100% - 3rem) !important;
-
-    ${device.tablet} {
-      width: 80% !important;
-    }
-    ${device.laptop} {
-      width: 1200px !important;
-      max-height: 90vh;
-    }
+const Centered = styled(Text)`
+  text-align: center;
+  ${device.laptop} {
+    text-align: left;
   }
 `;
+
 
 const Footer = () => {
   return (
     <footer>
-      <FlexLayout px={6} pt={5} flexDirection="column">
-        <Flex width={1} my={4}>
-          <Box mx={4} width={1 / 3}>
+      <FlexLayout px={[0, 0, 6]} pt={[0, 0, 5]} flexDirection="column">
+        <Flex flexDirection={['column', 'column', 'row']} width={1} my={4} px={[5, 5, 0]}>
+          <Box mx={[0, 0, 4]} width={[1, 1, 1 / 3]} my={[3, 3, 0]}>
             <Box mb={3}>
-              <Text size={2} bold>
+              <Centered size={2} bold>
                 Sugerencias y Comentarios
-              </Text>
+              </Centered>
             </Box>
-            <AllHeight>
+            <PopupContainer as={Flex} justifyContent={["center", 'center', 'initial']}>
               <SuggestionBox
                 triggerElement={
                   <Button
@@ -51,66 +43,74 @@ const Footer = () => {
                   </Button>
                 }
               />
-            </AllHeight>
+            </PopupContainer>
           </Box>
-          <Box mx={4} width={1 / 3}>
+
+          <Box mx={[0, 0, 4]} width={[1, 1, 1 / 3]} order={[1, 1, 0]} my={[3, 3, 0]}>
             <Box mb={3}>
-              <Text size={2} bold>
+              <Centered size={2} bold>
                 Compromiso
-              </Text>
+              </Centered>
             </Box>
-            <Text size={1}>
+            <Centered size={1}>
               Nuestra misión es ejecutar, coordinar y promover ls políticas,
               programas, acciones y estrategis para el desarrollo integral de
               las Personas Adultas Mayores de Nuevo León
-            </Text>
+            </Centered>
           </Box>
-          <Box mx={4} width={1 / 3}>
+
+          <Box mx={[0, 0, 4]} width={[1, 1, 1 / 3]} my={[3, 3, 0]}>
             <Box mb={3}>
-              <Text size={2} bold>
+              <Centered size={2} bold>
                 Secciones
-              </Text>
+              </Centered>
             </Box>
-            <Flex css={{ flexWrap: 'wrap' }}>
-              <Box width={1 / 2} mb={2}>
-                <Text size={1} as={Link} to="/educacion">
+            <Flex flexDirection={['column', 'column', 'row']} alignItems={['center', 'center', 'initial']} flexWrap={['nowrap', 'nowrap', 'wrap']}>
+              <Box width={['auto', 'auto', 1 / 2]} mb={2}>
+                <Centered size={1} as={Link} to="/">
+                  Inicio
+                </Centered>
+              </Box>
+              <Box width={['auto', 'auto', 1 / 2]} mb={2}>
+                <Centered size={1} as={Link} to="/educacion">
                   Educación
-                </Text>
+                </Centered>
               </Box>
-              <Box width={1 / 2} mb={2}>
-                <Text size={1} as={Link} to="/biblioteca">
+              <Box width={['auto', 'auto', 1 / 2]} mb={2}>
+                <Centered size={1} as={Link} to="/biblioteca">
                   Biblioteca
-                </Text>
+                </Centered>
               </Box>
-              <Box width={1 / 2} mb={2}>
-                <Text size={1} as={Link} to="/bienestar">
+              <Box width={['auto', 'auto', 1 / 2]} mb={2}>
+                <Centered size={1} as={Link} to="/bienestar">
                   Bienestar
-                </Text>
+                </Centered>
               </Box>
-              <Box width={1 / 2} mb={2}>
-                <Text size={1} as={Link} to="/ludoteca">
+              <Box width={['auto', 'auto', 1 / 2]} mb={2}>
+                <Centered size={1} as={Link} to="/ludoteca">
                   Ludoteca
-                </Text>
+                </Centered>
               </Box>
-              <Box width={1 / 2} mb={2}>
-                <Text size={1} as={Link} to="/revista">
+              <Box width={['auto', 'auto', 1 / 2]} mb={2}>
+                <Centered size={1} as={Link} to="/revista">
                   Revista
-                </Text>
+                </Centered>
               </Box>
             </Flex>
           </Box>
         </Flex>
-        <Box mb={1}>
-          <Text size={1} align="center">
+
+        <Box mb={1} px={[4, 4, 0]}>
+          <Centered size={1} align="center">
             <Text as="span" size={1} bold>
               IEPAM
             </Text>{' '}
             &bull; (81) 2723 0982 &bull; Madrid 207, Mirador, C.P. 64910,
             Monterrey, N.L.
-          </Text>
+          </Centered>
         </Box>
-        <Box mb={4}>
-          <Text size={0.5} align="center">
+        <Box mb={4} px={[4, 4, 0]}>
+          <Text size={0} align="center">
             &copy;Instituto Estatal de las Personas Adultas Mayores
           </Text>
         </Box>
