@@ -27,12 +27,20 @@ const PopupElement = ({ triggerElement, current, handleLogin }) => {
 
   return (
     <AllHeight>
-      <Popup trigger={triggerElement} modal lockScroll={true} >
+      <Popup trigger={triggerElement} modal lockScroll={true}>
         {close =>
           currentActive === 'register' ? (
-            <Registration close={close} setActive={setActive} handleLogin={handleLogin} />
-            ) : (
-            <Login close={close} setActive={setActive} handleLogin={handleLogin} />
+            <Registration
+              close={close}
+              setActive={setActive}
+              handleLogin={handleLogin}
+            />
+          ) : (
+            <Login
+              close={close}
+              setActive={setActive}
+              handleLogin={handleLogin}
+            />
           )
         }
       </Popup>
@@ -41,9 +49,7 @@ const PopupElement = ({ triggerElement, current, handleLogin }) => {
 };
 
 export const PopupContainer = ({ children }) => (
-  <AllHeight>
-    {children}
-  </AllHeight>
-)
+  <AllHeight>{children}</AllHeight>
+);
 
 export default PopupElement;

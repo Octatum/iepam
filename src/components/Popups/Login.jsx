@@ -16,7 +16,6 @@ const Centered = styled(Text)`
 `;
 const Captcha = styled(Box)``;
 
-
 const ErrorComponent = ({ children }) => (
   <BackgroundBox
     width="100%"
@@ -161,14 +160,12 @@ export default withFormik({
         setSubmitting(false);
         // navigate('/');
         const { handleLogin } = props;
-        handleLogin(true)
+        handleLogin(true);
       })
       .catch(() => {
         setSubmitting(false);
         return error => alert(error);
       });
-
-
   },
   displayName: 'LoginForm',
 })(Login);

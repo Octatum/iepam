@@ -28,8 +28,13 @@ const Navbar = ({ ...props }) => {
 
   return (
     <Flex as="nav" flexDirection="column" py={4} {...props}>
-      <Flex justifyContent="space-between" css={{ height: '125px' }} mx={4} mb={4}>
-        <Box width={3 / 10} >
+      <Flex
+        justifyContent="space-between"
+        css={{ height: '125px' }}
+        mx={4}
+        mb={4}
+      >
+        <Box width={3 / 10}>
           <Image src={Logo} />
         </Box>
         <Box width={3 / 10}>
@@ -38,14 +43,19 @@ const Navbar = ({ ...props }) => {
             alignItems="center"
             justifyContent="space-around"
           >
-            {!loggedIn ?
+            {!loggedIn ? (
               <React.Fragment>
                 <Box width={1 / 2} pr={1}>
                   <Popups
                     handleLogin={setLoggedIn}
                     current="register"
                     triggerElement={
-                      <FullSizeButton size={2} bold css={{ cursor: 'pointer' }} kind="dark">
+                      <FullSizeButton
+                        size={2}
+                        bold
+                        css={{ cursor: 'pointer' }}
+                        kind="dark"
+                      >
                         Registrarse
                       </FullSizeButton>
                     }
@@ -63,18 +73,26 @@ const Navbar = ({ ...props }) => {
                   />
                 </Box>
               </React.Fragment>
-              :
+            ) : (
               <React.Fragment>
                 <Box width={1 / 2}>
-                  <FullSizeButton size={2} bold css={{ cursor: 'pointer' }} kind="dark" onClick={() => setLoggedIn(null)}>
+                  <FullSizeButton
+                    size={2}
+                    bold
+                    css={{ cursor: 'pointer' }}
+                    kind="dark"
+                    onClick={() => setLoggedIn(null)}
+                  >
                     Logout
                   </FullSizeButton>
                 </Box>
                 <Box width={1 / 2}>
-                  <Text size={2} align="center">Bienvenido usuario</Text>
+                  <Text size={2} align="center">
+                    Bienvenido usuario
+                  </Text>
                 </Box>
               </React.Fragment>
-            }
+            )}
           </Flex>
         </Box>
       </Flex>
@@ -110,9 +128,13 @@ const Navbar = ({ ...props }) => {
           <PopupContainer>
             <SuggestionBox
               triggerElement={
-                <Button kind="dark" size={2} css={{ cursor: 'pointer', padding: "1em 1.5em" }}>
+                <Button
+                  kind="dark"
+                  size={2}
+                  css={{ cursor: 'pointer', padding: '1em 1.5em' }}
+                >
                   Buzón de Sugerencias
-              </Button>
+                </Button>
               }
             />
           </PopupContainer>

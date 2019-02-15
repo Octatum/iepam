@@ -58,9 +58,9 @@ const Slide = ({ courseInfo }) => {
         image={courseInfo.image}
         p={4}
         width="100%"
-        css={{ height: '300px', border: "2px solid #0004" }}
+        css={{ height: '300px', border: '2px solid #0004' }}
       >
-      {/* <Text color="white" align="center">
+        {/* <Text color="white" align="center">
           {courseInfo.title}
         </Text> */}
       </BackgroundBox>

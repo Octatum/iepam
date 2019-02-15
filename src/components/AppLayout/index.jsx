@@ -27,7 +27,7 @@ const NavbarComp = styled(Navbar)`
 
 const AppLayout = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
-  
+
   return (
     <UserContext.Provider value={[loggedIn, setLoggedIn]}>
       <ThemeProvider theme={theme}>

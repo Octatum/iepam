@@ -33,13 +33,14 @@ const InicioEducacion = () => {
           >
             <Box py={3}>
               <Text size={3} color="white" bold>
-                  Educación
+                Educación
               </Text>
             </Box>
             <Box width={5 / 6}>
               <Text size={2} color="white" align="justify">
-                Explora y aprende de temas como salud física y mental, vida social, 
-                como cuidar tu patrimonio, derechos humanos, entre otros.
+                Explora y aprende de temas como salud física y mental, vida
+                social, como cuidar tu patrimonio, derechos humanos, entre
+                otros.
               </Text>
             </Box>
           </Flex>

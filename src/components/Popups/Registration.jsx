@@ -10,7 +10,6 @@ import { RegistrationValidation as validation } from '../../utils/validation';
 import InputComponent from './InputComponent';
 import { encode } from '../../utils/formEncode';
 
-
 const Justified = styled(Text)`
   text-align: justify;
   text-align-last: left;
@@ -42,7 +41,14 @@ const Registration = ({
   handleLogin,
   ...others
 }) => (
-  <Flex flexDirection="column" mb={4} as="form" name="registerForm" onSubmit={handleSubmit} {...others}>
+  <Flex
+    flexDirection="column"
+    mb={4}
+    as="form"
+    name="registerForm"
+    onSubmit={handleSubmit}
+    {...others}
+  >
     <CloseButton alignSelf="flex-end" closeFunction={close} />
 
     <Flex flexDirection="column" alignItems="center" mx={[4]}>
@@ -141,15 +147,19 @@ const Registration = ({
       </Flex>
     </Flex>
     <button type="submit">submit</button>
-
   </Flex>
 );
 
 export default withFormik({
-  mapPropsToValues: () => ({ email: '', password: '', name: '', captcha: false }),
+  mapPropsToValues: () => ({
+    email: '',
+    password: '',
+    name: '',
+    captcha: false,
+  }),
   validationSchema: validation,
   handleSubmit: (values, { setSubmitting, props }) => {
-    console.log(values)
+    console.log(values);
     fetch('/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -162,7 +172,7 @@ export default withFormik({
         setSubmitting(false);
         // navigate('/');
         const { handleLogin } = props;
-        handleLogin(true)
+        handleLogin(true);
       })
       .catch(() => {
         setSubmitting(false);

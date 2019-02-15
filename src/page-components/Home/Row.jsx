@@ -9,6 +9,14 @@ import { device } from '../../utils/device';
 
 const MyLink = withButtonStyles(Link);
 
+const Clickable = styled(Link)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
 const MobileRow = styled(Flex)`
   box-shadow: 0 0 10px 3px ${({ theme }) => theme.color.lightGray};
   ${device.laptop} {
@@ -31,10 +39,13 @@ const Row = ({ title, children, linkTo }) => (
           {title}
         </Text>
       </Box>
-      <BackgroundBox as={Flex} backgroundColor="darkGray" p={5} alignItems="center" >
-        <Box width={7 / 10}>
-          {children}
-        </Box>
+      <BackgroundBox
+        as={Flex}
+        backgroundColor="darkGray"
+        p={5}
+        alignItems="center"
+      >
+        <Box width={7 / 10}>{children}</Box>
         <Box width={1 / 10} />
         <Box width={2 / 10} alignSelf="flex-end">
           <MyLink to={linkTo} kind="dark" style={{ cursor: 'pointer' }}>
@@ -43,17 +54,24 @@ const Row = ({ title, children, linkTo }) => (
             </Text>
           </MyLink>
         </Box>
-
       </BackgroundBox>
     </DesktopRow>
-    <MobileRow flexDirection="column" mb={5} mx={4}>
-      <BackgroundBox width={1} css={{height:'200px'}}/>
-      <BackgroundBox as={Flex} flexDirection="column" backgroundColor="darkestGray" p={3}>
+    <MobileRow flexDirection="column" mb={5} mx={4} css={{position:"relative"}}>
+      <BackgroundBox width={1} css={{ height: '200px' }} />
+      <BackgroundBox
+        as={Flex}
+        flexDirection="column"
+        backgroundColor="darkestGray"
+        p={3}
+      >
         <Box mb={3}>
-          <Text size={10} bold color="white">{title}</Text>
+          <Text size={10} bold color="white">
+            {title}
+          </Text>
         </Box>
         <Text size={3}>{children}</Text>
       </BackgroundBox>
+      <Clickable to={linkTo} />
     </MobileRow>
   </React.Fragment>
 );

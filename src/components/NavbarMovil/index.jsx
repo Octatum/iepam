@@ -18,7 +18,7 @@ const FullSizeButton = styled(Button)`
 `;
 
 const Content = styled(Flex)`
-  display: ${({ isOpen }) => isOpen ? 'flex' : 'none'};
+  display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
 `;
 
 const MobileNavbar = ({ ...props }) => {
@@ -26,49 +26,90 @@ const MobileNavbar = ({ ...props }) => {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <Flex flexDirection="column" as={BackgroundBox} backgroundColor="white" {...props} css={{height: `${isOpen ? '100vh' : 'auto'}`}}>
-      <Flex alignItems="stretch" px={4} py={3} as={BackgroundBox} backgroundColor="superLightGray" css={{height:'75px'}}>
-        <Burger width='auto' isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
+    <Flex
+      flexDirection="column"
+      as={BackgroundBox}
+      backgroundColor="white"
+      {...props}
+      css={{ height: `${isOpen ? '100vh' : 'auto'}` }}
+    >
+      <Flex
+        alignItems="stretch"
+        px={4}
+        py={3}
+        as={BackgroundBox}
+        backgroundColor="superLightGray"
+        css={{ height: '75px' }}
+      >
+        <Burger width="auto" isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
         <Box width={1 / 20} />
         <Box width={2 / 10}>
-          <img src={Logo} style={{height:'100%'}}/>
+          <img src={Logo} style={{ height: '100%' }} />
         </Box>
         <Box width={1} />
-        <Flex width={1 / 10} >
+        <Flex width={1 / 10}>
           <img src={MagnifyingGlass} />
         </Flex>
-
       </Flex>
-      <Content flexDirection="column" alignItems="center" justifyContent="center" isOpen={isOpen} css={{borderTop: '1px solid black', borderBottom: '1px solid black'}}>
+      <Content
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        isOpen={isOpen}
+        css={{ borderTop: '1px solid black', borderBottom: '1px solid black' }}
+      >
         <Box py={2}>
-          <Text bold size={5} as={Link} to="/">Inicio</Text>
+          <Text bold size={5} as={Link} to="/">
+            Inicio
+          </Text>
         </Box>
         <Box py={2}>
-          <Text bold size={5} as={Link} to="/educacion">Educación</Text>
+          <Text bold size={5} as={Link} to="/educacion">
+            Educación
+          </Text>
         </Box>
         <Box py={2}>
-          <Text bold size={5} as={Link} to="/bienestar">Bienestar</Text>
+          <Text bold size={5} as={Link} to="/bienestar">
+            Bienestar
+          </Text>
         </Box>
         <Box py={2}>
-          <Text bold size={5} as={Link} to="/revista">Revista Digital</Text>
+          <Text bold size={5} as={Link} to="/revista">
+            Revista Digital
+          </Text>
         </Box>
         <Box py={2}>
-          <Text bold size={5} as={Link} to="/biblioteca">Biblioteca Virtual</Text>
+          <Text bold size={5} as={Link} to="/biblioteca">
+            Biblioteca Virtual
+          </Text>
         </Box>
         <Box py={2}>
-          <Text bold size={5} as={Link} to="/ludoteca">Ludoteca</Text>
+          <Text bold size={5} as={Link} to="/ludoteca">
+            Ludoteca
+          </Text>
         </Box>
       </Content>
 
-      <Content justifyContent="center" alignItems="center" flexDirection="column" isOpen={isOpen} py={2}>
-        {!loggedIn ?
+      <Content
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+        isOpen={isOpen}
+        py={2}
+      >
+        {!loggedIn ? (
           <React.Fragment>
             <Box width={[1 / 2, 1 / 4]} my={2}>
               <Popups
                 handleLogin={setLoggedIn}
                 current="register"
                 triggerElement={
-                  <FullSizeButton size={2} bold css={{ cursor: 'pointer' }} kind="dark">
+                  <FullSizeButton
+                    size={2}
+                    bold
+                    css={{ cursor: 'pointer' }}
+                    kind="dark"
+                  >
                     Registrarse
                   </FullSizeButton>
                 }
@@ -86,22 +127,30 @@ const MobileNavbar = ({ ...props }) => {
               />
             </Box>
           </React.Fragment>
-          :
+        ) : (
           <React.Fragment>
             <Box width={[1 / 2, 1 / 4]} my={2}>
-              <FullSizeButton size={2} bold css={{ cursor: 'pointer' }} kind="dark" onClick={() => setLoggedIn(null)}>
+              <FullSizeButton
+                size={2}
+                bold
+                css={{ cursor: 'pointer' }}
+                kind="dark"
+                onClick={() => setLoggedIn(null)}
+              >
                 Logout
               </FullSizeButton>
             </Box>
             <Box width={[1 / 2, 1 / 4]} my={2}>
-              <Text size={2} align="center">Bienvenido usuario</Text>
+              <Text size={2} align="center">
+                Bienvenido usuario
+              </Text>
             </Box>
           </React.Fragment>
-        }
+        )}
       </Content>
     </Flex>
-  )
-}
+  );
+};
 
 export default MobileNavbar;
 /**

@@ -52,7 +52,7 @@ const NavbarLink = styled(Text)`
 `;
 
 const NavLink = ({ to, children, size, ...other }) => (
-  <NavbarItem  {...other}>
+  <NavbarItem {...other}>
     <NavbarLink size={size} as={Link} activeClassName="active" to={to}>
       {children}
     </NavbarLink>

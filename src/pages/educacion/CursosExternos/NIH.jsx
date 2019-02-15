@@ -27,9 +27,9 @@ const NIHData = {
       nombre: 'Ejercicios de resistencia para adultos',
       link:
         'https://www.nia.nih.gov/health/ejercicios-resistencia-adultos-mayores',
-      courseDescription: 'Mejora el desempeño de tus actividades diarias como la jardíneria, ir de compras o practicar deporte.',
+      courseDescription:
+        'Mejora el desempeño de tus actividades diarias como la jardíneria, ir de compras o practicar deporte.',
     },
-    
   ],
   bigImage: LandscapeImage,
 };

@@ -26,12 +26,16 @@ const Bar3 = styled(Bar)`
 
 const Burger = ({ isOpen, ...props }) => (
   <Flex {...props}>
-    <Flex flexDirection="column" justifyContent="space-between" alignItems="stretch">
+    <Flex
+      flexDirection="column"
+      justifyContent="space-between"
+      alignItems="stretch"
+    >
       <Bar1 isOpen={isOpen} />
       <Bar2 isOpen={isOpen} />
       <Bar3 isOpen={isOpen} />
     </Flex>
   </Flex>
-)
+);
 
 export default Burger;
