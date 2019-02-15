@@ -5,9 +5,10 @@ import { Flex } from '@rebass/grid';
 import BackgroundBox from '../../../components/BackgroundBox';
 import Text from '../../../components/Text';
 import { Link } from 'gatsby';
+import { breakpointsList, device } from '../../../utils/device';
 
 const SliderArrow = styled('div')`
-  font-size: 3em;
+  
   z-index: 10;
   color: ${({ theme }) => theme.color.white};
   font-family: Arial, Helvetica, sans-serif;
@@ -18,8 +19,15 @@ const SliderArrow = styled('div')`
   align-items: center;
   justify-content: center;
   top: 0;
-  width: 5rem;
+  font-size: 1.5em;
+  width: 3rem;
+  
   cursor: pointer;
+
+  ${device.tablet} {
+    font-size: 3em;
+    width: 5rem;
+  }
 `;
 
 const LeftArrow = styled(SliderArrow)``;
@@ -51,8 +59,9 @@ const SlickNextArrow = ({ onClick }) => (
 );
 
 const Slide = ({ courseInfo }) => {
+  console.log(breakpointsList)
   return (
-    <Flex flexDirection="column" mx={4} css={{ position: 'relative' }}>
+    <Flex flexDirection="column" mx={[2, 2, 4]} css={{ position: 'relative' }}>
       <Clickable to={courseInfo.link} />
       <BackgroundBox
         image={courseInfo.image}
@@ -69,7 +78,7 @@ const Slide = ({ courseInfo }) => {
 };
 
 const CoursesSlider = ({ coursesLinks }) => {
-  const settings = {
+  const sliderSettings = {
     dots: false,
     infinite: false,
     speed: 500,
@@ -78,9 +87,17 @@ const CoursesSlider = ({ coursesLinks }) => {
     arrows: true,
     prevArrow: <SlickPrevArrow />,
     nextArrow: <SlickNextArrow />,
+    responsive: [
+      {
+        breakpoint: breakpointsList[2],
+        settings: {
+          slidesToShow: 2,
+        }
+      }
+    ]
   };
   return (
-    <Slider {...settings}>
+    <Slider {...sliderSettings}>
       {coursesLinks.map(element => (
         <Slide key={element.title} courseInfo={element} />
       ))}

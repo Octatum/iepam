@@ -11,6 +11,7 @@ const AllHeight = styled.div`
   .popup-content {
     max-height: 80vh;
     overflow: auto;
+    max-width: 1200px;
 
     width: calc(100% - 3rem) !important;
 

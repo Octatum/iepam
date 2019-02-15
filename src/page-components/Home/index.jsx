@@ -97,31 +97,6 @@ const HomePage = () => {
           Colección de juegos y cuentos.
         </Text>
       </Row>
-      {!loggedIn && 
-      <MobileMessage flexDirection="column" alignItems="center" as={BackgroundBox} backgroundColor="darkestGray" pb={4}>
-        <BackgroundBox width="0" css={{ borderLeft: '2em solid transparent', borderRight: '2em solid transparent', borderTop: '2em solid white' }} />
-        <Text size={8} color="white" align="center">
-          <Text bold color='white' style={{ fontSize: 'inherit' }} as='span'>Entra</Text>
-          {' '} para conocer todos nuestros cursos {' '}
-          <Text bold color='white' style={{ fontSize: 'inherit' }} as='span'>gratis</Text>
-        </Text>
-        <Box mt={3}>
-          <Popups
-            handleLogin={setLoggedIn}
-            current="register"
-            triggerElement={
-              <FullSizeButton
-                size={2}
-                bold
-                css={{ cursor: 'pointer' }}
-              >
-                Registrarse ahora
-              </FullSizeButton>
-            }
-          />
-        </Box>
-      </MobileMessage>
-      }
     </Flex>
   );
 }

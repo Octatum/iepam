@@ -24,12 +24,12 @@ const InicioEducacion = () => {
       <Helmet>
         <title>Plataforma educativa</title>
       </Helmet>
-      <Flex css={{ height: '25rem' }} p={4}>
-        <GrayBox width={16 / 24} p={4} py={5}>
+      <Flex css={{  }} p={[0, 0, 4]} flexDirection={['column','column','row']}>
+        <GrayBox width={[1, 1, 16 / 24]} p={4} py={5}>
           <Flex
-            css={{ height: '100%' }}
+            css={{ height: '15rem' }}
             flexDirection="column"
-            justifyContent="flex-end"
+            justifyContent={['flex-start','flex-start',"flex-end"]}
           >
             <Box py={3}>
               <Text size={3} color="white" bold>
@@ -45,11 +45,12 @@ const InicioEducacion = () => {
             </Box>
           </Flex>
         </GrayBox>
-        <GrayBox width={6 / 24} ml="auto" p={4} py={5}>
+        <GrayBox width={[1, 1, 6 / 24]} ml="auto" p={4} py={5}>
           <Flex
             flexDirection="column"
-            justifyContent="flex-end"
-            css={{ height: '100%' }}
+            justifyContent={['center', 'center', "flex-end"]}
+            alignItems={['center', 'center', "initial"]}
+            css={{ height: '15rem' }}
           >
             <Box py={3}>
               <Text size={3} align="center" color="white" bold>
@@ -62,6 +63,7 @@ const InicioEducacion = () => {
           </Flex>
         </GrayBox>
       </Flex>
+      
       <Flex py={4} flexDirection="column">
         <Box px={4} pb={4}>
           <Text bold size={3}>
