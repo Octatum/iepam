@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Text from './Text';
 import { Flex, Box } from '@rebass/grid';
 import Button from './Button';
-import SuggestionBox from './Popups/SuggestionBox';
+import Popups from './Popups';
 import { Link } from 'gatsby';
 import { device } from '../utils/device';
 import { PopupContainer } from './Popups';
@@ -32,7 +32,9 @@ const Footer = () => {
               </Centered>
             </Box>
             <PopupContainer as={Flex} justifyContent={["center", 'center', 'initial']}>
-              <SuggestionBox
+              <Popups
+                current="suggestion"
+                handleLogin={null}
                 triggerElement={
                   <Button
                     kind="dark"

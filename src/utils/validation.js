@@ -16,3 +16,7 @@ export const SuggestionBoxValidation = object().shape({
   email: string().required('Por favor ingrese su correo electrónico'),
   name: string().required('Por favor escriba su nombre'),
 });
+
+export const RestorePassValidation = object().shape({
+  nameOrMail: string().required('Por favor ingrese su correo electrónico o su nombre de usuario'),
+})

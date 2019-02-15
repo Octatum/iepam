@@ -3,6 +3,8 @@ import Popup from 'reactjs-popup';
 import styled from 'styled-components';
 import Registration from './Registration';
 import Login from './Login';
+import RestablecerPass from './RestablecerPass';
+import SuggestionBox from './SuggestionBox';
 import { device } from './../../utils/device';
 
 const AllHeight = styled.div`
@@ -24,25 +26,36 @@ const AllHeight = styled.div`
 
 const PopupElement = ({ triggerElement, current, handleLogin }) => {
   const [currentActive, setActive] = useState(current);
-
+  
   return (
     <AllHeight>
-      <Popup trigger={triggerElement} modal lockScroll={true}>
-        {close =>
-          currentActive === 'register' ? (
-            <Registration
+      <Popup trigger={triggerElement} modal onClose={() => setActive(current)} lockScroll={true}>
+        {close =>{
+          if (currentActive === 'register') {
+            return <Registration
               close={close}
               setActive={setActive}
               handleLogin={handleLogin}
             />
-          ) : (
-            <Login
+          }
+          else if (currentActive === 'login') {
+            return <Login
               close={close}
               setActive={setActive}
               handleLogin={handleLogin}
             />
-          )
-        }
+          }
+          else if (currentActive === 'restorePass') {
+            return <RestablecerPass 
+              close={close}
+              setActive={setActive}
+              handleLogin={handleLogin}
+            />
+          }
+          else if (currentActive == 'suggestion') {
+            return <SuggestionBox close={close} />
+          }
+        }}
       </Popup>
     </AllHeight>
   );

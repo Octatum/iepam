@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import BackgroundBox from '../BackgroundBox';
 import Text from '../Text';
-import { Flex, Box } from '@rebass/grid';
+import { Flex } from '@rebass/grid';
 
 const BorderBox = styled(Flex)`
   border: 1px solid ${({ theme }) => theme.color.dark};

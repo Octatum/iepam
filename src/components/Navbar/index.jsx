@@ -7,7 +7,6 @@ import MagnifyingGlass from '../../assets/magnifying-glass.svg';
 
 import Button from '../Button';
 import Popups, { PopupContainer } from '../Popups';
-import SuggestionBox from '../Popups/SuggestionBox';
 import NavLink from './NavLink';
 import BackgroundBox from '../BackgroundBox';
 import Text from '../Text';
@@ -37,6 +36,7 @@ const Navbar = ({ ...props }) => {
         <Box width={3 / 10}>
           <Image src={Logo} />
         </Box>
+        
         <Box width={3 / 10}>
           <Flex
             css={{ height: '100%' }}
@@ -74,25 +74,25 @@ const Navbar = ({ ...props }) => {
                 </Box>
               </React.Fragment>
             ) : (
-              <React.Fragment>
-                <Box width={1 / 2}>
-                  <FullSizeButton
-                    size={2}
-                    bold
-                    css={{ cursor: 'pointer' }}
-                    kind="dark"
-                    onClick={() => setLoggedIn(null)}
-                  >
-                    Logout
+                <React.Fragment>
+                  <Box width={1 / 2}>
+                    <FullSizeButton
+                      size={2}
+                      bold
+                      css={{ cursor: 'pointer' }}
+                      kind="dark"
+                      onClick={() => setLoggedIn(null)}
+                    >
+                      Logout
                   </FullSizeButton>
-                </Box>
-                <Box width={1 / 2}>
-                  <Text size={2} align="center">
-                    Bienvenido usuario
+                  </Box>
+                  <Box width={1 / 2}>
+                    <Text size={2} align="center">
+                      Bienvenido usuario
                   </Text>
-                </Box>
-              </React.Fragment>
-            )}
+                  </Box>
+                </React.Fragment>
+              )}
           </Flex>
         </Box>
       </Flex>
@@ -126,7 +126,9 @@ const Navbar = ({ ...props }) => {
       <Flex my={3} mx={4} alignItems="center">
         <Box width={1 / 6}>
           <PopupContainer>
-            <SuggestionBox
+            <Popups
+              current='suggestion'
+              handleLogin={null}
               triggerElement={
                 <Button
                   kind="dark"
