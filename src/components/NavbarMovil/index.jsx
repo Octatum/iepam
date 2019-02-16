@@ -73,32 +73,32 @@ const MobileNavbar = ({ ...props }) => {
         css={{ borderTop: '1px solid black', borderBottom: '1px solid black' }}
       >
         <Box py={2}>
-          <Text bold size={5} as={Link} to="/">
+          <Text bold size={3} as={Link} to="/">
             Inicio
           </Text>
         </Box>
         <Box py={2}>
-          <Text bold size={5} as={Link} to="/educacion">
+          <Text bold size={3} as={Link} to="/educacion">
             Educación
           </Text>
         </Box>
         <Box py={2}>
-          <Text bold size={5} as={Link} to="/bienestar">
+          <Text bold size={3} as={Link} to="/bienestar">
             Bienestar
           </Text>
         </Box>
         <Box py={2}>
-          <Text bold size={5} as={Link} to="/revista">
+          <Text bold size={3} as={Link} to="/revista">
             Revista Digital
           </Text>
         </Box>
         <Box py={2}>
-          <Text bold size={5} as={Link} to="/biblioteca">
+          <Text bold size={3} as={Link} to="/biblioteca">
             Biblioteca Virtual
           </Text>
         </Box>
         <Box py={2}>
-          <Text bold size={5} as={Link} to="/ludoteca">
+          <Text bold size={3} as={Link} to="/ludoteca">
             Ludoteca
           </Text>
         </Box>
