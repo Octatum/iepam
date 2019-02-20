@@ -24,12 +24,12 @@ const InicioEducacion = () => {
       <Helmet>
         <title>Plataforma educativa</title>
       </Helmet>
-      <Flex alignItems={['initial','initial',"stretch"]} p={[0, 0, 4]} flexDirection={['column','column','row']}>
-        <GrayBox width={[1, 1, 16 / 24]} p={4} py={5}>
+      <Flex alignItems={['initial','initial',"stretch"]} p={[0, 0, 4]} flexDirection={['column','row','row']}>
+        <GrayBox width={[1, 2 / 3, 2 / 3]} p={4} py={5}>
           <Flex
             css={{ height: '15rem' }}
             flexDirection="column"
-            justifyContent={['flex-start','flex-start',"flex-end"]}
+            justifyContent={['flex-start','flex-start',"flex-start"]}
           >
             <Box py={3}>
               <Text size={3} color="white" bold>
@@ -45,10 +45,10 @@ const InicioEducacion = () => {
             </Box>
           </Flex>
         </GrayBox>
-        <GrayBox width={[1, 1, 6 / 24]} ml="auto" p={4} py={5}>
+        <GrayBox width={[1, 1 / 3, 1 / 3]} ml="auto" p={4} py={5}>
           <Flex
             flexDirection="column"
-            justifyContent={['center', 'center', "flex-end"]}
+            justifyContent={['center', 'center', "center"]}
             alignItems={['center', 'center', "initial"]}
             css={{ height: '15rem' }}
           >
@@ -86,6 +86,7 @@ const InicioEducacion = () => {
           </MyLink> */}
         </Box>
       </Flex>
+
     </AppLayout>
   );
 };

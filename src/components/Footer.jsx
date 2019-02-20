@@ -21,6 +21,15 @@ const Centered = styled(Text)`
   }
 `;
 
+const NotTabletCentered = styled(Text)`
+  text-align: center;
+  ${device.mobile} {
+    text-align: left;
+  }
+  ${device.tablet} {
+    text-align: center;
+  }
+`;
 
 const Footer = () => {
   const [loggedIn, setLoggedIn] = useContext(UserContext);
@@ -129,18 +138,18 @@ const Footer = () => {
 
         <Box px={[4, 0, 0]} width={[1, 1 / 2, 1]} order={[3, 3, 0]} my={[2, 4, 4]} mb={4}>
           <Box mb={1} >
-            <Centered size={1} align="center">
+            <NotTabletCentered size={1} align="center">
               <Text as="span" size={1} bold>
                 IEPAM
               </Text>{' '}
               &bull; (81) 2723 0982 &bull; Madrid 207, Mirador, C.P. 64910,
               Monterrey, N.L.
-            </Centered>
+            </NotTabletCentered>
           </Box>
           <Box >
-            <Centered size={0} align="center">
+            <NotTabletCentered size={0} align="center">
               &copy;Instituto Estatal de las Personas Adultas Mayores
-            </Centered>
+            </NotTabletCentered>
           </Box>
         </Box>
       </FlexLayout>

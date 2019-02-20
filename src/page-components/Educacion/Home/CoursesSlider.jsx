@@ -5,7 +5,7 @@ import { Flex } from '@rebass/grid';
 import BackgroundBox from '../../../components/BackgroundBox';
 import Text from '../../../components/Text';
 import { Link } from 'gatsby';
-import { breakpointsList, device } from '../../../utils/device';
+import { device, breakpoints } from '../../../utils/device';
 
 const SliderArrow = styled('div')`
   
@@ -88,11 +88,17 @@ const CoursesSlider = ({ coursesLinks }) => {
     nextArrow: <SlickNextArrow />,
     responsive: [
       {
-        breakpoint: breakpointsList[2],
+        breakpoint: breakpoints.tablet,
+        settings: {
+          slidesToShow: 3,
+        }
+      },
+      {
+        breakpoint: breakpoints.mobile,
         settings: {
           slidesToShow: 2,
         }
-      }
+      },
     ]
   };
   return (
