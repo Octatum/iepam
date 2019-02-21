@@ -9,6 +9,7 @@ import CloseButton from './CloseButton';
 import { LogingValidation as validation } from '../../utils/validation';
 import InputComponent from './InputComponent';
 import { encode } from '../../utils/formEncode';
+import { Link } from 'gatsby';
 
 const Centered = styled(Text)`
   margin: 1rem 0;
@@ -109,12 +110,12 @@ const Login = ({
         css={{ height: '75px' }}
       />
       <Box>
-        <Centered color="darkGray" size={2}>
-          o ¿Has olvidado tu Contrasena?
+        <Centered color="darkGray" size={2} onClick={() => setActive('restorePass')} style={{cursor:'pointer'}}>
+          ¿Has olvidado tu Contrasena?
         </Centered>
         <Centered color="darkGray" size={1}>
-          Al registrarte, aceptas nuestras Condiciones de uso y Política de
-          privacidad.
+          Al registrarte, aceptas nuestras <Link to="/educacion" style={{textDecoration:'underline'}}>Condiciones de uso</Link> y <Link to="/educacion" style={{textDecoration:'underline'}}>Política de
+          privacidad.</Link>
         </Centered>
       </Box>
 
