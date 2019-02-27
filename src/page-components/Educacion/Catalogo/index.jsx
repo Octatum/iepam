@@ -66,6 +66,11 @@ const CatalogoCursos = ({
 
         <Flex flexDirection={['column', 'row', 'row']} justifyContent="space-evenly" alignItems="stretch" mt={4} mx={4}>
           <Flex alignItems="center" width={[1]}>
+            <CatLink align="center" color="white" bold size={2} as={Link} activeClassName="active" to="/educacion/catalogo/">
+              Todos
+            </CatLink>
+          </Flex>
+          <Flex alignItems="center" width={[1]}>
             <CatLink align="center" color="white" bold size={2} as={Link} activeClassName="active" to="/educacion/catalogo/salud-fisica">
               Salud Fisica
             </CatLink>
