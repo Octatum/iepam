@@ -1,3 +1,3 @@
 [build]
   functions = "lambda"
-  Command = "npm run deploy"
+  Command = "npm run build:gatsby"
