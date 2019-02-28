@@ -27,7 +27,7 @@ const Row = ({ title, children, linkTo }) => (
   <React.Fragment>
     <DesktopRow flexDirection="column" mb={5} mx={0}>
       <Box mb={3}>
-        <Text bold size={5}>
+        <Text bold size={3}>
           {title}
         </Text>
       </Box>
@@ -41,13 +41,14 @@ const Row = ({ title, children, linkTo }) => (
         <Box width={1 / 10} />
         <Box width={2 / 10} alignSelf="flex-end">
           <MyLink to={linkTo} kind="dark" style={{ cursor: 'pointer' }}>
-            <Text size={2} bold style={{ color: 'inherit' }}>
+            <Text size={1.5} bold style={{ color: 'inherit' }}>
               Ver más...
             </Text>
           </MyLink>
         </Box>
       </BackgroundBox>
     </DesktopRow>
+
     <MobileRow flexDirection="column" mb={5} mx={4} css={{position:"relative"}}>
       <BackgroundBox width={1} css={{ height: '200px' }} />
       <BackgroundBox
@@ -62,7 +63,7 @@ const Row = ({ title, children, linkTo }) => (
         <Box my={[3]}>
           <Text size={3}>{children}</Text>
         </Box>
-        <Text bold size={2} color="white" as={Link} to={linkTo}>Ver mas...</Text>
+        <Text bold size={1.5} color="white" as={Link} to={linkTo}>Ver mas...</Text>
       </BackgroundBox>
     </MobileRow>
   </React.Fragment>

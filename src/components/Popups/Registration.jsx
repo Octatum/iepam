@@ -9,6 +9,7 @@ import { withFormik } from 'formik';
 import { RegistrationValidation as validation } from '../../utils/validation';
 import InputComponent from './InputComponent';
 import { encode } from '../../utils/formEncode';
+import { auth } from 'firebase';
 
 const Justified = styled(Text)`
   text-align: justify;
@@ -159,8 +160,16 @@ export default withFormik({
   }),
   validationSchema: validation,
   handleSubmit: (values, { setSubmitting, props }) => {
-    console.log(values);
-    fetch('/register', {
+    const { email, password } = values;
+    auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+      setSubmitting(false)
+      alert(error)
+    })
+    .then(() => {
+        alert("submission received");
+        setSubmitting(false);
+      })
+    /* fetch('/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
@@ -177,7 +186,7 @@ export default withFormik({
       .catch(() => {
         setSubmitting(false);
         return error => alert(error);
-      });
+      }); */
   },
   displayName: 'registerForm',
 })(Registration);

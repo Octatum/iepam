@@ -11,6 +11,7 @@ import NavLink from './NavLink';
 import BackgroundBox from '../BackgroundBox';
 import Text from '../Text';
 import UserContext from '../UserContext';
+import { auth } from 'firebase'
 
 const FullSizeButton = styled(Button)`
   width: 100%;
@@ -81,7 +82,7 @@ const Navbar = ({ ...props }) => {
                       bold
                       css={{ cursor: 'pointer' }}
                       kind="dark"
-                      onClick={() => setLoggedIn(null)}
+                      onClick={() => auth().signOut()}
                     >
                       Logout
                   </FullSizeButton>

@@ -12,6 +12,7 @@ import MobileNavbar from '../NavbarMovil';
 import { Box } from '@rebass/grid';
 import UserContext from '../UserContext';
 import { device } from '../../utils/device';
+import { auth } from 'firebase';
 
 const MobileNavbarComp = styled(MobileNavbar)`
   ${device.tablet} {
@@ -25,9 +26,18 @@ const NavbarComp = styled(Navbar)`
   }
 `;
 
-const AppLayout = ({ children }) => {
+const AppLayout = ({ children }) => {  
   const [loggedIn, setLoggedIn] = useState(false);
 
+  auth().onAuthStateChanged(function(user) {
+    if (user) {
+      setLoggedIn(user);
+    }
+    else {
+      setLoggedIn(false);
+    }
+  })
+  
   return (
     <UserContext.Provider value={[loggedIn, setLoggedIn]}>
       <ThemeProvider theme={theme}>

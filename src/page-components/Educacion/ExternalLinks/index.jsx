@@ -77,11 +77,11 @@ const EnlaceExterno = ({
             <BackgroundBox backgroundColor="darkGray" p={4} px={3}>
               <Flex alignItems="center" justifyContent="space-between">
                 <Box width={2 / 10}>
-                  <Text size={2} color="white">
+                  <Text size={1.5} color="white">
                     {data.nombre}
                   </Text>
                 </Box>
-                <Box width={7 / 10} mx={4}>
+                <Box width={6 / 10} mx={4}>
                   <Text color="white" size={1}>
                     {data.courseDescription}
                   </Text>
