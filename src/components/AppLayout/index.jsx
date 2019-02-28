@@ -28,15 +28,6 @@ const NavbarComp = styled(Navbar)`
 
 const AppLayout = ({ children }) => {  
   const [loggedIn, setLoggedIn] = useState(false);
-
-  auth().onAuthStateChanged(function(user) {
-    if (user) {
-      setLoggedIn(user);
-    }
-    else {
-      setLoggedIn(false);
-    }
-  })
   
   return (
     <UserContext.Provider value={[loggedIn, setLoggedIn]}>
