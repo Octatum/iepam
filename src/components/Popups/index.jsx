@@ -11,7 +11,7 @@ const AllHeight = styled.div`
   .popup-content {
     max-height: 80vh;
     overflow: auto;
-    max-width: 1200px;
+    max-width: 1000px;
 
     width: calc(100% - 3rem) !important;
 
@@ -30,7 +30,7 @@ const PopupElement = ({ triggerElement, current, handleLogin }) => {
   
   return (
     <AllHeight>
-      <Popup trigger={triggerElement} modal onClose={() => setActive(current)} lockScroll={true}>
+      <Popup trigger={triggerElement} modal onClose={() => setActive(current)} >
         {close =>{
           if (currentActive === 'register') {
             return <Registration

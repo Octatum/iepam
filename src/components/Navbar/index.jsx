@@ -52,7 +52,7 @@ const Navbar = ({ ...props }) => {
                     current="register"
                     triggerElement={
                       <FullSizeButton
-                        size={2}
+                        size={1.5}
                         bold
                         css={{ cursor: 'pointer' }}
                         kind="dark"
@@ -67,7 +67,7 @@ const Navbar = ({ ...props }) => {
                     handleLogin={setLoggedIn}
                     current="login"
                     triggerElement={
-                      <FullSizeButton size={2} bold css={{ cursor: 'pointer' }}>
+                      <FullSizeButton size={1.5} bold css={{ cursor: 'pointer' }}>
                         Iniciar Sesión
                       </FullSizeButton>
                     }
@@ -78,7 +78,7 @@ const Navbar = ({ ...props }) => {
                 <React.Fragment>
                   <Box width={1 / 2}>
                     <FullSizeButton
-                      size={2}
+                      size={1.5}
                       bold
                       css={{ cursor: 'pointer' }}
                       kind="dark"
@@ -88,7 +88,7 @@ const Navbar = ({ ...props }) => {
                   </FullSizeButton>
                   </Box>
                   <Box width={1 / 2}>
-                    <Text size={2} align="center">
+                    <Text size={1.5} align="center">
                       Bienvenido usuario
                   </Text>
                   </Box>
@@ -104,22 +104,22 @@ const Navbar = ({ ...props }) => {
         justifyContent="space-evenly"
         mb={4}
       >
-        <NavLink size={2} to="/" width={1}>
+        <NavLink size={1.5} to="/" width={1}>
           Inicio
         </NavLink>
-        <NavLink size={2} to="/educacion" width={1}>
+        <NavLink size={1.5} to="/educacion" width={1}>
           Educación
         </NavLink>
-        <NavLink size={2} to="/bienestar" width={1}>
+        <NavLink size={1.5} to="/bienestar" width={1}>
           Bienestar
         </NavLink>
-        <NavLink size={2} to="/revista" width={1}>
+        <NavLink size={1.5} to="/revista" width={1}>
           Revista Digital
         </NavLink>
-        <NavLink size={2} to="/biblioteca" width={1}>
+        <NavLink size={1.5} to="/biblioteca" width={1}>
           Biblioteca Virtual
         </NavLink>
-        <NavLink size={2} to="/ludoteca" width={1}>
+        <NavLink size={1.5} to="/ludoteca" width={1}>
           Ludoteca
         </NavLink>
       </Flex>
@@ -133,7 +133,7 @@ const Navbar = ({ ...props }) => {
               triggerElement={
                 <Button
                   kind="dark"
-                  size={2}
+                  size={1.5}
                   css={{ cursor: 'pointer', padding: '1em 1.5em' }}
                 >
                   Buzón de Sugerencias
@@ -145,7 +145,7 @@ const Navbar = ({ ...props }) => {
         <Box width={3 / 6} />
         <Flex width={2 / 6} alignItems="stretch" justifyContent="flex-end">
           <BackgroundBox width={1} backgroundColor="lightGray" p={3}>
-            <Text size={2} color="darkGray">
+            <Text size={1.5} color="darkGray">
               Buscar Cualquier Cosa
             </Text>
           </BackgroundBox>

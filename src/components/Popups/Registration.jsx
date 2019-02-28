@@ -86,7 +86,7 @@ const Registration = ({
         my={2}
         name="password"
         type="password"
-        placeholder="Contrasena"
+        placeholder="Contraseña"
         value={values.password}
         handleBlur={handleBlur}
         handleChange={handleChange}
@@ -113,14 +113,14 @@ const Registration = ({
           </Box>
         </Flex>
         <Box width={['100%', 'calc(100% - 60px - 32px)']} alignSelf="center">
-          <Captcha
+          {/* <Captcha
             width={1}
             css={{ height: '100px' }}
             as={BackgroundBox}
             backgroundColor="black"
             my={4}
-          />
-          <Box as={Text} size={1} css={{ textAlign: 'center' }} mx={2}>
+          /> */}
+          <Box as={Text} size={1} css={{ textAlign: 'center' }} mx={2} mt={4}>
             Al registrarte, aceptas nuestras Condiciones de uso y Política de
             privacidad.
           </Box>
@@ -146,8 +146,8 @@ const Registration = ({
           Iniciar Sesion
         </Button>
       </Flex>
+      <button type="submit">submit</button>
     </Flex>
-    <button type="submit">submit</button>
   </Flex>
 );
 

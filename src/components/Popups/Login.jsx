@@ -41,6 +41,7 @@ const Login = ({
   handleBlur,
   handleSubmit,
   handleLogin,
+  isSubmitting,
   ...others
 }) => (
   <Flex
@@ -54,27 +55,27 @@ const Login = ({
     <CloseButton alignSelf="flex-end" closeFunction={close} />
 
     <Flex flexDirection="column" alignItems="center" mx={[4]}>
-      <Centered as={Text} bold size={3} alignSelf="flex-start" pt={3}>
+      <Centered as={Text} bold size={2} alignSelf="flex-start" pt={3}>
         Inicia sesion en tu cuenta
       </Centered>
       <Box width={1} as={BackgroundBox} backgroundColor="dark" pt="3px" m={3} />
 
       {/* login with google and others */}
-      <BackgroundBox
+      {/* <BackgroundBox
         backgroundColor="black"
         as={Box}
         my={2}
         width={1}
-        css={{ height: '75px' }}
+        css={{ height: '50px' }}
       />
       <BackgroundBox
         backgroundColor="black"
         as={Box}
         mt={2}
         width={1}
-        css={{ height: '75px' }}
+        css={{ height: '50px' }}
         mb={5}
-      />
+      /> */}
 
       <InputComponent
         my={2}
@@ -103,18 +104,18 @@ const Login = ({
       )}
 
       {/* captcha */}
-      <BackgroundBox
+      {/* <BackgroundBox
         backgroundColor="black"
         as={Captcha}
         my={2}
         width={1}
         css={{ height: '75px' }}
-      />
+      /> */}
       <Box>
-        <Centered color="darkGray" size={2} onClick={() => setActive('restorePass')} style={{cursor:'pointer'}}>
-          ¿Has olvidado tu Contrasena?
+        <Centered color="darkGray" size={1.5} onClick={() => setActive('restorePass')} style={{cursor:'pointer'}}>
+          ¿Has olvidado tu Contraseña?
         </Centered>
-        <Centered color="darkGray" size={1}>
+        <Centered color="darkGray" size={0.5}>
           Al registrarte, aceptas nuestras <Link to="/educacion" style={{textDecoration:'underline'}}>Condiciones de uso</Link> y <Link to="/educacion" style={{textDecoration:'underline'}}>Política de
           privacidad.</Link>
         </Centered>
@@ -129,18 +130,18 @@ const Login = ({
       />
       <Flex alignItems="center">
         <Box mr={4}>
-          <Text size={2}>¿No tienes una cuenta?</Text>
+          <Text size={1.5}>¿No tienes una cuenta?</Text>
         </Box>
         <Button
           kind="dark"
-          size={2}
+          size={1.5}
           onClick={() => setActive('register')}
           css={{ cursor: 'pointer', borderTop: 'none' }}
         >
           Registrate
         </Button>
       </Flex>
-      <button type="submit">submit</button>
+      <button disabled={isSubmitting} type="submit">submit</button>
     </Flex>
   </Flex>
 );
