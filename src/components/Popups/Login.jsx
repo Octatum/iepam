@@ -157,7 +157,8 @@ export default withFormik({
     })
       .then(() => {
         alert("submission received");
-        setSubmitting("false");
+        setSubmitting(false);
+        return
       })
     /* console.log(JSON.stringify(values, null, 2));
     fetch('/login', {

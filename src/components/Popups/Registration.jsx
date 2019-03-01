@@ -8,8 +8,8 @@ import CloseButton from './CloseButton';
 import { withFormik } from 'formik';
 import { RegistrationValidation as validation } from '../../utils/validation';
 import InputComponent from './InputComponent';
-import { encode } from '../../utils/formEncode';
-import { auth } from 'firebase';
+import { auth, firestore } from 'firebase';
+import { useCreateUserWithEmailAndPassword } from '../../utils/useAuth';
 
 const Justified = styled(Text)`
   text-align: justify;
@@ -159,34 +159,13 @@ export default withFormik({
     captcha: false,
   }),
   validationSchema: validation,
-  handleSubmit: (values, { setSubmitting, props }) => {
-    const { email, password } = values;
-    auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-      setSubmitting(false)
-      alert(error)
-    })
-    .then(() => {
-        alert("submission received");
+  handleSubmit: (values, { setSubmitting }) => {
+    const { email, password, name } = values;
+    useCreateUserWithEmailAndPassword({ email, password, name })
+      .catch(error => {
         setSubmitting(false);
+        alert(error);
       })
-    /* fetch('/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': 'registerForm',
-      }),
-    })
-      .then(() => {
-        alert('Your message was sent!');
-        setSubmitting(false);
-        // navigate('/');
-        const { handleLogin } = props;
-        handleLogin(true);
-      })
-      .catch(() => {
-        setSubmitting(false);
-        return error => alert(error);
-      }); */
   },
   displayName: 'registerForm',
 })(Registration);
