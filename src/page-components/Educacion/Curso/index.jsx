@@ -22,7 +22,7 @@ const Curso = () => {
   return (
     <Box>
       <BackgroundBox backgroundColor="darkestGray" py={4} px={3}>
-        <Text size={3} color="white" bold align="center">Lorem ipsum dolor sit amet.</Text>
+        <Text size={2} color="white" bold align="center">Lorem ipsum dolor sit amet.</Text>
       </BackgroundBox>
       
       <Dropdown description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, illum?" title="Curso 1" link="/" />
@@ -32,21 +32,21 @@ const Curso = () => {
       <Dropdown description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, illum?" title="Curso 5" link="/" />
 
       <Box>
-        <Text bold size={3}>Lorem Ipsum is simply dummy text</Text>
+        <Text bold size={2}>Lorem Ipsum is simply dummy text</Text>
       </Box>
       <Box my={2}>
-        <Text size={3}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa tempora, tempore sunt fugiat soluta pariatur saepe aliquid expedita blanditiis eligendi!</Text>
+        <Text size={2}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa tempora, tempore sunt fugiat soluta pariatur saepe aliquid expedita blanditiis eligendi!</Text>
       </Box>
       <Box my={2}>
-        <Text size={3}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur asperiores nisi repudiandae ad sapiente incidunt sequi placeat perspiciatis doloremque, consectetur sit assumenda aliquid doloribus voluptatum cupiditate pariatur recusandae ipsa magni.</Text>
+        <Text size={2}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur asperiores nisi repudiandae ad sapiente incidunt sequi placeat perspiciatis doloremque, consectetur sit assumenda aliquid doloribus voluptatum cupiditate pariatur recusandae ipsa magni.</Text>
       </Box>
 
-      <Box>
+      <Box my={5}>
         {/* Video */}
       </Box>
 
       <Text align="center" bold size={2}>Lorem Ipsum is simply dummy text</Text>
-      <BackgroundBox backgroundColor="black" p={3} width={'200px'} mx='auto'>
+      <BackgroundBox backgroundColor="black" p={3} width={'200px'} mx='auto' mt={3} mb={5}>
         <Text color="white" align="center" size={2}>Educacion</Text>
       </BackgroundBox>
     </Box>

@@ -11,7 +11,7 @@ import NavLink from './NavLink';
 import BackgroundBox from '../BackgroundBox';
 import Text from '../Text';
 import UserContext from '../UserContext';
-import { auth } from 'firebase'
+import { mySignOut, myGetUserData } from '../../utils/useAuth';
 
 const FullSizeButton = styled(Button)`
   width: 100%;
@@ -25,6 +25,7 @@ const Image = styled.img`
 
 const Navbar = ({ ...props }) => {
   const [loggedIn, setLoggedIn] = useContext(UserContext);
+  const userData = myGetUserData();
 
   return (
     <Flex as="nav" flexDirection="column" py={4} {...props}>
@@ -82,14 +83,14 @@ const Navbar = ({ ...props }) => {
                       bold
                       css={{ cursor: 'pointer' }}
                       kind="dark"
-                      onClick={() => auth().signOut()}
+                      onClick={() => mySignOut()}
                     >
                       Logout
                   </FullSizeButton>
                   </Box>
                   <Box width={1 / 2}>
                     <Text size={1.5} align="center">
-                      Bienvenido usuario
+                      Bienvenido {userData.displayName}
                   </Text>
                   </Box>
                 </React.Fragment>

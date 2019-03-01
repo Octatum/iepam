@@ -1,16 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Box, Flex } from '@rebass/grid';
-import { withFormik, Formik } from 'formik';
+import { withFormik } from 'formik';
 import Text from '../Text';
 import BackgroundBox from '../BackgroundBox';
 import Button from '../Button';
 import CloseButton from './CloseButton';
 import { LogingValidation as validation } from '../../utils/validation';
 import InputComponent from './InputComponent';
-import { encode } from '../../utils/formEncode';
-import { Link, navigate } from 'gatsby';
-import { auth } from 'firebase';
+import { Link } from 'gatsby';
+import { mySignInWithEmailAndPassword } from '../../utils/useAuth';
 
 const Centered = styled(Text)`
   margin: 1rem 0;
@@ -151,34 +150,15 @@ export default withFormik({
   validationSchema: validation,
   handleSubmit: (values, { setSubmitting, props }) => {
     const { email, password } = values;
-    auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-      setSubmitting(false)
-      alert(error)
+    mySignInWithEmailAndPassword(email, password)
+    .catch(error => {
+      setSubmitting(false);
+      alert(error);
     })
-      .then(() => {
-        alert("submission received");
-        setSubmitting(false);
-        return
-      })
-    /* console.log(JSON.stringify(values, null, 2));
-    fetch('/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': 'loginForm',
-      }),
+    .then(() => {
+      alert("submission received");
+      setSubmitting(false);
     })
-      .then(() => {
-        alert('Your message was sent!');
-        setSubmitting(false);
-        // navigate('/');
-        const { handleLogin } = props;
-        
-      })
-      .catch(() => {
-        setSubmitting(false);
-        return error => alert(error);
-      }); */
   },
   displayName: 'LoginForm',
 })(Login);

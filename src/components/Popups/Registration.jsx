@@ -9,7 +9,7 @@ import { withFormik } from 'formik';
 import { RegistrationValidation as validation } from '../../utils/validation';
 import InputComponent from './InputComponent';
 import { auth, firestore } from 'firebase';
-import { useCreateUserWithEmailAndPassword } from '../../utils/useAuth';
+import { myCreateUserWithEmailAndPassword } from '../../utils/useAuth';
 
 const Justified = styled(Text)`
   text-align: justify;
@@ -161,7 +161,7 @@ export default withFormik({
   validationSchema: validation,
   handleSubmit: (values, { setSubmitting }) => {
     const { email, password, name } = values;
-    useCreateUserWithEmailAndPassword({ email, password, name })
+    myCreateUserWithEmailAndPassword({ email, password, name })
       .catch(error => {
         setSubmitting(false);
         alert(error);

@@ -36,7 +36,7 @@ const Footer = () => {
 
   return (
     <footer>
-      <Flex flexDirection="column" alignItems="center" as={BackgroundBox} backgroundColor="darkestGray" pb={4}>
+      {!loggedIn && <Flex flexDirection="column" alignItems="center" as={BackgroundBox} backgroundColor="darkestGray" pb={4}>
         <BackgroundBox width="0" css={{ borderLeft: '2em solid transparent', borderRight: '2em solid transparent', borderTop: '2em solid white' }} />
         <Text size={3} color="white" align="center">
           <Text bold color='white' style={{ fontSize: 'inherit' }} as='span'>Entra</Text>
@@ -58,7 +58,7 @@ const Footer = () => {
             }
           />
         </Box>
-      </Flex>
+      </Flex>}
       <FlexLayout flexDirection={['column', 'row', 'row']} flexWrap={['nowrap','wrap','wrap']} width={[1, 1, 1]} order={[0, 0, 0]} py={4} px={[0, 5, 6]} justifyContent="center">
         <Box px={[0, 0, 4]} width={[1, 1 / 2, 1 / 3]} my={[3, 0, 0]}>
           <Box mb={3}>

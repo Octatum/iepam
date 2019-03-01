@@ -1,12 +1,12 @@
 import { auth, firestore } from "firebase";
 
-export function useOnAuthStateChanged(func) {
+export function myOnAuthStateChanged(func) {
   if(auth) {
     auth().onAuthStateChanged(func);
   }
 }
 
-export function useCreateUserWithEmailAndPassword(userData) {
+export function myCreateUserWithEmailAndPassword(userData) {
   const { name, password, email } = userData;
   return new Promise((resolve, reject) => {
     if(auth) {
@@ -27,5 +27,25 @@ export function useCreateUserWithEmailAndPassword(userData) {
       });
     }
   })
-  
+}
+
+export function mySignInWithEmailAndPassword(email, password) {
+  return new Promise((resolve, reject) => {
+    if(auth) {
+      auth().signInWithEmailAndPassword(email, password)
+      .catch(error => reject(error))
+      .then(() => {
+        resolve();
+      })
+    }
+  })
+}
+
+
+export function mySignOut() {
+  auth().signOut();
+}
+
+export function myGetUserData() {
+  return auth().currentUser;
 }

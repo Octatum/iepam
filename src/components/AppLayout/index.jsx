@@ -12,7 +12,7 @@ import MobileNavbar from '../NavbarMovil';
 import { Box } from '@rebass/grid';
 import UserContext from '../UserContext';
 import { device } from '../../utils/device';
-import { useOnAuthStateChanged } from '../../utils/useAuth';
+import { myOnAuthStateChanged } from '../../utils/useAuth';
 
 const MobileNavbarComp = styled(MobileNavbar)`
   ${device.tablet} {
@@ -28,7 +28,7 @@ const NavbarComp = styled(Navbar)`
 
 const AppLayout = ({ children }) => {  
   const [loggedIn, setLoggedIn] = useState(false);
-  useOnAuthStateChanged(function(user) {
+  myOnAuthStateChanged(function(user) {
     if (user) {
       setLoggedIn(true);
     }

@@ -32,17 +32,17 @@ const Dropdown = ({ title, description, link, ...other }) => {
   const [isOpen, setOpen] = useState(false);
  
   return (
-    <Flex flexDirection="column" mb={4} {...other}>
+    <Flex flexDirection="column" mb={4} {...other} onClick={() => setOpen(!isOpen)} style={{cursor:'pointer'}}>
       <Shadow backgroundColor="lightGray" as={Flex} pt={3} pb={4} px={3}>
-        <Flex alignItems="center" justifyContent="center" width={1 / 15} css={{position:'relative', cursor:'pointer'}} onClick={() => setOpen(!isOpen)}>
+        <Flex alignItems="center" justifyContent="center" width={1 / 15} css={{position:'relative'}}>
           <Plus isOpen={isOpen} />
           <Minus />
         </Flex>
-        <Text size={3}>{title}</Text>
+        <Text size={2}>{title}</Text>
       </Shadow>
       
       <Collapse width={14 / 15} py={4} alignSelf="flex-end" px={3} isOpen={isOpen}>
-        <Text size={3}>
+        <Text size={2}>
           {description} 
         </Text>
       </Collapse>

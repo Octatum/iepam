@@ -32,12 +32,12 @@ const InicioEducacion = () => {
             justifyContent={['flex-start','flex-start',"flex-start"]}
           >
             <Box py={3}>
-              <Text size={3} color="white" bold>
+              <Text size={2} color="white" bold>
                 Educación
               </Text>
             </Box>
             <Box width={5 / 6}>
-              <Text size={2} color="white" align="justify">
+              <Text size={1.5} color="white" align="justify">
                 Explora y aprende de temas como salud física y mental, vida
                 social, como cuidar tu patrimonio, derechos humanos, entre
                 otros.
@@ -53,11 +53,11 @@ const InicioEducacion = () => {
             css={{ height: '15rem' }}
           >
             <Box py={3}>
-              <Text size={3} align="center" color="white" bold>
+              <Text size={2} align="center" color="white" bold>
                 Bienvenida
               </Text>
             </Box>
-            <Text size={2} align="center" color="white">
+            <Text size={1.5} align="center" color="white">
               Explora nuestra selección de cursos y material didáctico
             </Text>
           </Flex>
@@ -66,7 +66,7 @@ const InicioEducacion = () => {
       
       <Flex py={4} flexDirection="column">
         <Box px={4} pb={4}>
-          <Text bold size={3}>
+          <Text bold size={2}>
             Cursos destacados
           </Text>
         </Box>
