@@ -43,9 +43,9 @@ export function mySignInWithEmailAndPassword(email, password) {
 
 
 export function mySignOut() {
-  auth().signOut();
+  if(auth) auth().signOut();
 }
 
 export function myGetUserData() {
-  return auth().currentUser;
+  if(auth) return auth().currentUser;
 }

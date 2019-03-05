@@ -108,7 +108,7 @@ const Registration = ({
           value={values.nacimiento.dia}
           handleBlur={handleBlur}
           handleChange={handleChange}
-          width={1 / 3}
+          width={[1, 1 / 3]}
         />
         
         <SelectionComponent 
@@ -117,7 +117,7 @@ const Registration = ({
           value={values.nacimiento.mes}
           handleBlur={handleBlur}
           handleChange={handleChange}
-          width={1 / 3}
+          width={[1, 1 / 3]}
         />
 
         <JustInput 
@@ -129,13 +129,18 @@ const Registration = ({
           handleChange={handleChange} 
           min={new Date().getFullYear() - 130}
           max={new Date().getFullYear()}
-          width={1 / 3}
+          width={[1, 1 / 3]}
           />
 
       </Bordered>
       {errors.nacimiento && errors.nacimiento.dia && touched.nacimiento && touched.nacimiento.dia && <ErrorComponent>{errors.nacimiento.dia}</ErrorComponent>}
       {errors.nacimiento && errors.nacimiento.mes && touched.nacimiento && touched.nacimiento.mes && <ErrorComponent>{errors.nacimiento.mes}</ErrorComponent>}
       {errors.nacimiento && errors.nacimiento.ano && touched.nacimiento && touched.nacimiento.ano && <ErrorComponent>{errors.nacimiento.ano}</ErrorComponent>}
+      <Box width={1}>
+        <Text color="darkGray" size={0}>
+          * todos los campos son obligatorios
+        </Text>
+      </Box>
 
 
       <Flex flexDirection="column" mt={[2, 5]}>
@@ -147,9 +152,10 @@ const Registration = ({
           handleChange={handleChange} 
           >
           Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.
-        </CheckboxComponent>
-        
+        </CheckboxComponent>       
       </Flex>
+
+
       <Box
         width={1}
         as={BackgroundBox}
