@@ -7,7 +7,7 @@ import Button from '../Button';
 import CloseButton from './CloseButton';
 import { withFormik } from 'formik';
 import { RegistrationValidation as validation } from '../../utils/validation';
-import InputComponent, { CheckboxComponent } from './InputComponent';
+import InputComponent, { CheckboxComponent, SelectionComponent, Bordered, JustInput } from './InputComponent';
 import { myCreateUserWithEmailAndPassword } from '../../utils/useAuth';
 
 
@@ -89,6 +89,54 @@ const Registration = ({
         <ErrorComponent>{errors.password}</ErrorComponent>
       )}
 
+      <Bordered width={1} my={2}>
+        <SelectionComponent
+          options={['sexo', 'hombre', 'mujer', 'otro']}
+          name="sexo"
+          value={values.sexo}
+          handleBlur={handleBlur}
+          handleChange={handleChange}
+        />
+      </Bordered>
+      {errors.sexo && touched.sexo && <ErrorComponent>{errors.sexo}</ErrorComponent>}
+
+      <Bordered width={1} my={2}>
+        <SelectionComponent 
+          options={['Día', ...Array.from(new Array(31), (x,i) => i + 1)]}
+          name="nacimiento.dia"
+          value={values.nacimiento.dia}
+          handleBlur={handleBlur}
+          handleChange={handleChange}
+        />
+        
+
+        <SelectionComponent 
+          options={['Mes', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']}
+          name="nacimiento.mes"
+          value={values.nacimiento.mes}
+          handleBlur={handleBlur}
+          handleChange={handleChange}
+        />
+
+        <JustInput 
+          placeholder="Año" 
+          type="number" 
+          name="nacimiento.ano" 
+          value={values.nacimiento.ano}
+          handleBlur={handleBlur} 
+          handleChange={handleChange} 
+          min={new Date().getFullYear() - 130}
+          max={new Date().getFullYear()}
+          />
+
+      </Bordered>
+      {console.log(errors)}
+
+      {errors.nacimiento && errors.nacimiento.dia && touched.nacimiento && touched.nacimiento.dia && <ErrorComponent>{errors.nacimiento.dia}</ErrorComponent>}
+      {errors.nacimiento && errors.nacimiento.mes && touched.nacimiento && touched.nacimiento.mes && <ErrorComponent>{errors.nacimiento.mes}</ErrorComponent>}
+      {errors.nacimiento && errors.nacimiento.ano && touched.nacimiento && touched.nacimiento.ano && <ErrorComponent>{errors.nacimiento.ano}</ErrorComponent>}
+
+
       <Flex flexDirection="column" mt={[2, 5]}>
         <CheckboxComponent 
           my={2}
@@ -99,7 +147,7 @@ const Registration = ({
           >
           Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.
         </CheckboxComponent>
-        {errors.termsConditions && touched.termsConditions && <ErrorComponent>{errors.termsConditions}</ErrorComponent>}
+        
       </Flex>
       <Box
         width={1}
@@ -133,6 +181,8 @@ export default withFormik({
     name: '',
     captcha: false,
     termsConditions: false,
+    sexo: '',
+    nacimiento: {dia: '', mes: '', ano: ''}
   }),
   validationSchema: validation,
   handleSubmit: (values, { setSubmitting }) => {
