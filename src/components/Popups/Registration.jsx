@@ -96,6 +96,7 @@ const Registration = ({
           value={values.sexo}
           handleBlur={handleBlur}
           handleChange={handleChange}
+          width={1}
         />
       </Bordered>
       {errors.sexo && touched.sexo && <ErrorComponent>{errors.sexo}</ErrorComponent>}
@@ -107,15 +108,16 @@ const Registration = ({
           value={values.nacimiento.dia}
           handleBlur={handleBlur}
           handleChange={handleChange}
+          width={1 / 3}
         />
         
-
         <SelectionComponent 
           options={['Mes', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']}
           name="nacimiento.mes"
           value={values.nacimiento.mes}
           handleBlur={handleBlur}
           handleChange={handleChange}
+          width={1 / 3}
         />
 
         <JustInput 
@@ -127,11 +129,10 @@ const Registration = ({
           handleChange={handleChange} 
           min={new Date().getFullYear() - 130}
           max={new Date().getFullYear()}
+          width={1 / 3}
           />
 
       </Bordered>
-      {console.log(errors)}
-
       {errors.nacimiento && errors.nacimiento.dia && touched.nacimiento && touched.nacimiento.dia && <ErrorComponent>{errors.nacimiento.dia}</ErrorComponent>}
       {errors.nacimiento && errors.nacimiento.mes && touched.nacimiento && touched.nacimiento.mes && <ErrorComponent>{errors.nacimiento.mes}</ErrorComponent>}
       {errors.nacimiento && errors.nacimiento.ano && touched.nacimiento && touched.nacimiento.ano && <ErrorComponent>{errors.nacimiento.ano}</ErrorComponent>}

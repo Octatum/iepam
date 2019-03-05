@@ -76,7 +76,7 @@ export const SelectionComponent = ({
   ...other
 }) => (
   <Flex {...other}>
-    <Text as="select" color='darkGray' size={1} onChange={handleChange} onBlur={handleBlur} name={name} style={{cursor:'pointer', border:'none'}}>
+    <Text as="select" color='darkGray' size={1} onChange={handleChange} onBlur={handleBlur} name={name} style={{cursor:'pointer', border:'none', width:'100%'}}>
       {options.map(data => {
         return (
           <option value={data} key={data}>

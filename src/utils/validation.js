@@ -5,12 +5,12 @@ export const RegistrationValidation = object().shape({
   email: string().required('Por favor ingrese su correo electrónico'),
   name: string().required('Por favor escriba su nombre'),
   termsConditions: boolean().oneOf([true], 'Debes aceptar las condiciones de privacidad'),
-  sexo: string().oneOf(['hombre', 'mujer', 'otro'], "Por favor seleccione su genero"),
+  sexo: string().oneOf(['hombre', 'mujer', 'otro'], 'Por favor seleccione su genero'),
   nacimiento: object().shape({
-    dia: string().required("Por favor indique su día de nacimiento"),
-    mes: string().notOneOf(["Mes", "mes", ""], "Por favor ingrese su mes de nacimiento"),
-    ano: string().required("Por favor ingrese su año de nacimiento")
-  }).required("Por favor ingrese su fecha de nacimiento completa")
+    dia: string().required('Por favor indique su día de nacimiento'),
+    mes: string().notOneOf(['Mes', 'mes', ''], 'Por favor ingrese su mes de nacimiento'),
+    ano: string().required('Por favor ingrese su año de nacimiento')
+  }).required('Por favor ingrese su fecha de nacimiento completa')
 });
 
 export const LogingValidation = object().shape({
