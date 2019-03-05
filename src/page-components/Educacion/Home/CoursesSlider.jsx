@@ -8,7 +8,6 @@ import { Link } from 'gatsby';
 import { device, breakpoints } from '../../../utils/device';
 
 const SliderArrow = styled('div')`
-  
   z-index: 10;
   color: ${({ theme }) => theme.color.white};
   font-family: Arial, Helvetica, sans-serif;
@@ -21,7 +20,7 @@ const SliderArrow = styled('div')`
   top: 0;
   font-size: 1.5em;
   width: 3rem;
-  
+
   cursor: pointer;
 
   ${device.tablet} {
@@ -91,15 +90,15 @@ const CoursesSlider = ({ coursesLinks }) => {
         breakpoint: breakpoints.tablet,
         settings: {
           slidesToShow: 3,
-        }
+        },
       },
       {
         breakpoint: breakpoints.mobile,
         settings: {
           slidesToShow: 2,
-        }
+        },
       },
-    ]
+    ],
   };
   return (
     <Slider {...sliderSettings}>

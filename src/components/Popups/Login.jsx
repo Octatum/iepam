@@ -111,12 +111,23 @@ const Login = ({
         css={{ height: '75px' }}
       /> */}
       <Box>
-        <Centered color="darkGray" size={1.5} onClick={() => setActive('restorePass')} style={{cursor:'pointer'}}>
+        <Centered
+          color="darkGray"
+          size={1.5}
+          onClick={() => setActive('restorePass')}
+          style={{ cursor: 'pointer' }}
+        >
           ¿Has olvidado tu Contraseña?
         </Centered>
         <Centered color="darkGray" size={0.5}>
-          Al registrarte, aceptas nuestras <Link to="/educacion" style={{textDecoration:'underline'}}>Condiciones de uso</Link> y <Link to="/educacion" style={{textDecoration:'underline'}}>Política de
-          privacidad.</Link>
+          Al registrarte, aceptas nuestras{' '}
+          <Link to="/educacion" style={{ textDecoration: 'underline' }}>
+            Condiciones de uso
+          </Link>{' '}
+          y{' '}
+          <Link to="/educacion" style={{ textDecoration: 'underline' }}>
+            Política de privacidad.
+          </Link>
         </Centered>
       </Box>
 
@@ -140,7 +151,9 @@ const Login = ({
           Registrate
         </Button>
       </Flex>
-      <button disabled={isSubmitting} type="submit">submit</button>
+      <button disabled={isSubmitting} type="submit">
+        submit
+      </button>
     </Flex>
   </Flex>
 );
@@ -151,14 +164,14 @@ export default withFormik({
   handleSubmit: (values, { setSubmitting, props }) => {
     const { email, password } = values;
     mySignInWithEmailAndPassword(email, password)
-    .catch(error => {
-      setSubmitting(false);
-      alert(error);
-    })
-    .then(() => {
-      alert("submission received");
-      setSubmitting(false);
-    })
+      .catch(error => {
+        setSubmitting(false);
+        alert(error);
+      })
+      .then(() => {
+        alert('submission received');
+        setSubmitting(false);
+      });
   },
   displayName: 'LoginForm',
 })(Login);

@@ -8,9 +8,11 @@ const CatalogoDeCursos = () => (
     <Helmet>
       <title>Catálogo de Cursos</title>
     </Helmet>
-    <Catalogo categoria="Bienvenidos" categoriaDesc="Bienvenidos a la plataforma de aprendizaje." />
-
+    <Catalogo
+      categoria="Bienvenidos"
+      categoriaDesc="Bienvenidos a la plataforma de aprendizaje."
+    />
   </AppLayout>
-)
+);
 
 export default CatalogoDeCursos;

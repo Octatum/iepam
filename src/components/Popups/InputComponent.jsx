@@ -11,10 +11,12 @@ const Message = styled.textarea`
   resize: vertical;
   width: 100%;
   border: none;
+  border-bottom: 1px solid ${({theme}) => theme.color.darkGray};
 `;
 const Input = styled.input`
   border: none;
   width: 100%;
+  border-bottom: 1px solid ${({theme}) => theme.color.darkGray};
 `;
 
 const CheckboxInput = styled.input`
@@ -31,8 +33,9 @@ const CheckboxDesign = styled.span`
 
   margin-right: 1em;
 
-  background-color: ${({ theme, ischecked }) => ischecked ? theme.color.darkestGray : 'black'};
-  color: ${({ theme, ischecked }) => ischecked ? theme.color.white : 'black'};
+  background-color: ${({ theme, ischecked }) =>
+    ischecked ? theme.color.darkestGray : 'black'};
+  color: ${({ theme, ischecked }) => (ischecked ? theme.color.white : 'black')};
 `;
 
 const InputComponent = ({
@@ -44,26 +47,30 @@ const InputComponent = ({
   handleBlur,
   isMessage = false,
   width = 1,
+  size = 1,
   ...other
 }) => (
   <BorderBox
-    justifyContent="flex-start"
     alignItems="center"
+    flexDirection={['column', 'row']}
     p={2}
     width={width}
     {...other}
   >
-    <Text
-      color="darkGray"
-      size={1}
-      as={isMessage ? Message : Input}
-      placeholder={placeholder}
-      type={type}
-      name={name}
-      value={value}
-      onChange={handleChange}
-      onBlur={handleBlur}
-    />
+    <Box as={Text} width={[1, 1 / 3]} size={size} alignSelf="flex-start">{placeholder}</Box>
+    <Box width={[1, 2 / 3]}>
+      <Text
+        color="darkGray"
+        size={size}
+        as={isMessage ? Message : Input}
+        placeholder={''}
+        type={type}
+        name={name}
+        value={value}
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
+      </Box>
   </BorderBox>
 );
 
@@ -73,20 +80,33 @@ export const SelectionComponent = ({
   value,
   handleBlur,
   handleChange,
+  size = 1,
+  title = '',
   ...other
 }) => (
-  <Flex {...other}>
-    <Text as="select" color='darkGray' size={1} onChange={handleChange} onBlur={handleBlur} name={name} style={{cursor:'pointer', border:'none', width:'100%'}}>
-      {options.map(data => {
-        return (
-          <option value={data} key={data}>
-            {data}
-          </option>
-        )
-      })}
-    </Text>
+  <Flex {...other} alignItems="center" flexDirection={['column', 'row']}>
+    {title && <Box as={Text} width={[1, 1 / 3]} alignSelf='flex-start' size={size}>{title}</Box>}
+    <Box width={title ? [1, 2 / 3] : 1}>
+      <Text
+        as="select"
+        color="darkGray"
+        size={size}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        name={name}
+        style={{ cursor: 'pointer', border: 'none', width: '100%' }}
+      >
+        {options.map(data => {
+          return (
+            <option value={data} key={data}>
+              {data}
+            </option>
+          );
+        })}
+      </Text>
+    </Box>
   </Flex>
-)
+);
 
 export const CheckboxComponent = ({
   name,
@@ -94,28 +114,29 @@ export const CheckboxComponent = ({
   handleChange,
   handleBlur,
   children,
-  ...other,
+  size = 1,
+  ...other
 }) => (
-  <Flex {...other} as="label" css={{position: 'relative', cursor: 'pointer'}}>
-    <CheckboxInput type="checkbox" value={value} name={name} onChange={handleChange} onBlur={handleBlur} />
+  <Flex {...other} as="label" css={{ position: 'relative', cursor: 'pointer' }}>
+    <CheckboxInput
+      type="checkbox"
+      value={value}
+      name={name}
+      onChange={handleChange}
+      onBlur={handleBlur}
+    />
     <CheckboxDesign ischecked={value}>&#x2714;</CheckboxDesign>
-    <Text size={1} color="darkGray" >{children}</Text>
+    <Text size={size} color="darkGray">
+      {children}
+    </Text>
   </Flex>
-)
+);
 
-export const Bordered = ({
-  children,
-  ...props
-}) => (
-  <BorderBox 
-    justifyContent="flex-start"
-    alignItems="center"
-    p={2}
-    {...props} 
-  >
+export const Bordered = ({ children, ...props }) => (
+  <BorderBox justifyContent="flex-start" alignItems="center" p={2} {...props}>
     {children}
   </BorderBox>
-)
+);
 
 export const JustInput = ({ handleBlur, handleChange, ...props }) => (
   <Text
@@ -126,6 +147,6 @@ export const JustInput = ({ handleBlur, handleChange, ...props }) => (
     onBlur={handleBlur}
     {...props}
   />
-)
+);
 
 export default InputComponent;

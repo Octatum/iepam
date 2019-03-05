@@ -44,14 +44,8 @@ const SuggestionBox = ({
     <Flex flexDirection="column" alignItems="center" mx={[4]}>
       <Box as={Text} bold size={3} pt={3} alignSelf="flex-start">
         Lorem Ipsum is simply dummy text
-        </Box>
-      <Box
-        width={1}
-        as={BackgroundBox}
-        backgroundColor="dark"
-        pt="3px"
-        m={3}
-      />
+      </Box>
+      <Box width={1} as={BackgroundBox} backgroundColor="dark" pt="3px" m={3} />
 
       <InputComponent
         my={2}
@@ -104,10 +98,9 @@ const SuggestionBox = ({
         <Flex flexDirection="column" width="calc(100% - 30px - 3rem)">
           <Text size={1}>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro
-            cumque voluptatibus eligendi totam explicabo dolore ipsam
-            dolorem, eveniet illum quod nobis laboriosam tenetur facilis
-            commodi.
-            </Text>
+            cumque voluptatibus eligendi totam explicabo dolore ipsam dolorem,
+            eveniet illum quod nobis laboriosam tenetur facilis commodi.
+          </Text>
         </Flex>
       </Flex>
       <Box
@@ -125,7 +118,7 @@ const SuggestionBox = ({
           type="submit"
         >
           Enviar
-          </Button>
+        </Button>
       </Flex>
     </Flex>
   </Flex>

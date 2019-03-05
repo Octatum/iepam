@@ -1,7 +1,7 @@
-import { auth, firestore } from "firebase";
+import { auth, firestore } from 'firebase';
 
 export function myOnAuthStateChanged(func) {
-  if(auth) {
+  if (auth) {
     auth().onAuthStateChanged(func);
   }
 }
@@ -9,43 +9,47 @@ export function myOnAuthStateChanged(func) {
 export function myCreateUserWithEmailAndPassword(userData) {
   const { name, password, email } = userData;
   return new Promise((resolve, reject) => {
-    if(auth) {
-      auth().createUserWithEmailAndPassword(email, password)
-      .catch(error => reject(error))
-      .then(() => {
-        const user = auth().currentUser;
-        const uId = user.uid;
-        user.updateProfile({
-          displayName: name,
-        })
-        firestore().collection('users').doc(uId).set({
-          firstName: name,
-          email: email,
-        })
+    if (auth) {
+      auth()
+        .createUserWithEmailAndPassword(email, password)
         .catch(error => reject(error))
-        resolve();
-      });
+        .then(() => {
+          const user = auth().currentUser;
+          const uId = user.uid;
+          user.updateProfile({
+            displayName: name,
+          });
+          firestore()
+            .collection('users')
+            .doc(uId)
+            .set({
+              firstName: name,
+              email: email,
+            })
+            .catch(error => reject(error));
+          resolve();
+        });
     }
-  })
+  });
 }
 
 export function mySignInWithEmailAndPassword(email, password) {
   return new Promise((resolve, reject) => {
-    if(auth) {
-      auth().signInWithEmailAndPassword(email, password)
-      .catch(error => reject(error))
-      .then(() => {
-        resolve();
-      })
+    if (auth) {
+      auth()
+        .signInWithEmailAndPassword(email, password)
+        .catch(error => reject(error))
+        .then(() => {
+          resolve();
+        });
     }
-  })
+  });
 }
 
-
 export function mySignOut() {
-  if(auth) auth().signOut();
+  if (auth) auth().signOut();
 }
 
 export function myGetUserData() {
-  if(auth) return auth().currentUser;
+  if (auth) return auth().currentUser;
 }

@@ -53,8 +53,8 @@ const HomePage = () => {
 
       <Row title="Educación" linkTo="/educacion">
         <Text size={1.5} color="white">
-          Explora y aprende de temas como salud física y mental, vida social, como
-          cuidar tu patrimonio, derechos humanos, entre otros.
+          Explora y aprende de temas como salud física y mental, vida social,
+          como cuidar tu patrimonio, derechos humanos, entre otros.
         </Text>
       </Row>
       <Row title="Bienestar" linkTo="/bienestar">
@@ -81,6 +81,6 @@ const HomePage = () => {
       </Row>
     </Flex>
   );
-}
+};
 
 export default HomePage;

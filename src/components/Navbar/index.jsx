@@ -68,7 +68,11 @@ const Navbar = ({ ...props }) => {
                     handleLogin={setLoggedIn}
                     current="login"
                     triggerElement={
-                      <FullSizeButton size={1.5} bold css={{ cursor: 'pointer' }}>
+                      <FullSizeButton
+                        size={1.5}
+                        bold
+                        css={{ cursor: 'pointer' }}
+                      >
                         Iniciar Sesión
                       </FullSizeButton>
                     }
@@ -76,25 +80,25 @@ const Navbar = ({ ...props }) => {
                 </Box>
               </React.Fragment>
             ) : (
-                <React.Fragment>
-                  <Box width={1 / 2}>
-                    <FullSizeButton
-                      size={1.5}
-                      bold
-                      css={{ cursor: 'pointer' }}
-                      kind="dark"
-                      onClick={() => mySignOut()}
-                    >
-                      Logout
+              <React.Fragment>
+                <Box width={1 / 2}>
+                  <FullSizeButton
+                    size={1.5}
+                    bold
+                    css={{ cursor: 'pointer' }}
+                    kind="dark"
+                    onClick={() => mySignOut()}
+                  >
+                    Logout
                   </FullSizeButton>
-                  </Box>
-                  <Box width={1 / 2}>
-                    <Text size={1.5} align="center">
-                      Bienvenido {userData.displayName}
+                </Box>
+                <Box width={1 / 2}>
+                  <Text size={1.5} align="center">
+                    Bienvenido {userData.displayName}
                   </Text>
-                  </Box>
-                </React.Fragment>
-              )}
+                </Box>
+              </React.Fragment>
+            )}
           </Flex>
         </Box>
       </Flex>
@@ -129,7 +133,7 @@ const Navbar = ({ ...props }) => {
         <Box width={1 / 6}>
           <PopupContainer>
             <Popups
-              current='suggestion'
+              current="suggestion"
               handleLogin={null}
               triggerElement={
                 <Button
@@ -150,7 +154,13 @@ const Navbar = ({ ...props }) => {
               Buscar Cualquier Cosa
             </Text>
           </BackgroundBox>
-          <BackgroundBox as={Flex} alignItems="center" backgroundColor="black" width='50px' p={2}>
+          <BackgroundBox
+            as={Flex}
+            alignItems="center"
+            backgroundColor="black"
+            width="50px"
+            p={2}
+          >
             <Image src={MagnifyingGlass} />
           </BackgroundBox>
         </Flex>

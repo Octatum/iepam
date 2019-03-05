@@ -13,7 +13,7 @@ const FlexGrid = styled(Flex)`
       padding-left: 0;
       padding-right: 0;
     }
-  }  
+  }
 
   @media screen and (min-width: ${breakpoints.mobile}px) and (max-width: ${breakpoints.tablet}px) {
     & > :nth-child(3n + 1) {
@@ -22,8 +22,7 @@ const FlexGrid = styled(Flex)`
     & > :nth-child(3n + 0) {
       padding-right: 0;
     }
-    
-  } 
+  }
 
   @media screen and (min-width: ${breakpoints.tablet}px) {
     & > :nth-child(4n + 1) {
@@ -49,49 +48,103 @@ const Arrow = styled(BackgroundBox)`
   border-top: 2em solid ${({ theme }) => theme.color.darkGray};
 `;
 
-const CatalogoCursos = ({
-  categoria,
-  categoriaDesc
-}) => {
-
+const CatalogoCursos = ({ categoria, categoriaDesc }) => {
   return (
     <Flex flexDirection="column">
       <BackgroundBox backgroundColor="darkGray" py={4}>
         <Box px={4} mx="auto" width={[1, 3 / 4, 3 / 4]} mb={3}>
-          <Text size={2} color="white" align="center" bold>{categoria}</Text>
+          <Text size={2} color="white" align="center" bold>
+            {categoria}
+          </Text>
         </Box>
         <Box px={4} mx="auto" width={[1, 3 / 4, 3 / 4]}>
-          <Text size={2} color="white" align="center">{categoriaDesc}</Text>
+          <Text size={2} color="white" align="center">
+            {categoriaDesc}
+          </Text>
         </Box>
 
-        <Flex flexDirection={['column', 'row', 'row']} justifyContent="space-evenly" alignItems="stretch" mt={4} mx={4}>
+        <Flex
+          flexDirection={['column', 'row', 'row']}
+          justifyContent="space-evenly"
+          alignItems="stretch"
+          mt={4}
+          mx={4}
+        >
           <Flex alignItems="center" width={[1]}>
-            <CatLink align="center" color="white" bold size={2} as={Link} activeClassName="active" to="/educacion/catalogo/">
+            <CatLink
+              align="center"
+              color="white"
+              bold
+              size={2}
+              as={Link}
+              activeClassName="active"
+              to="/educacion/catalogo/"
+            >
               Todos
             </CatLink>
           </Flex>
           <Flex alignItems="center" width={[1]}>
-            <CatLink align="center" color="white" bold size={2} as={Link} activeClassName="active" to="/educacion/catalogo/salud-fisica">
+            <CatLink
+              align="center"
+              color="white"
+              bold
+              size={2}
+              as={Link}
+              activeClassName="active"
+              to="/educacion/catalogo/salud-fisica"
+            >
               Salud Fisica
             </CatLink>
           </Flex>
           <Flex alignItems="center" width={[1]}>
-            <CatLink align="center" color="white" bold size={2} as={Link} activeClassName="active" to="/educacion/catalogo/salud-psicologica">
+            <CatLink
+              align="center"
+              color="white"
+              bold
+              size={2}
+              as={Link}
+              activeClassName="active"
+              to="/educacion/catalogo/salud-psicologica"
+            >
               Salud Psicologica
             </CatLink>
           </Flex>
           <Flex alignItems="center" width={[1]}>
-            <CatLink align="center" color="white" bold size={2} as={Link} activeClassName="active" to="educacion/catalogo/salud-de-vida">
+            <CatLink
+              align="center"
+              color="white"
+              bold
+              size={2}
+              as={Link}
+              activeClassName="active"
+              to="educacion/catalogo/salud-de-vida"
+            >
               Salud de Vida
             </CatLink>
           </Flex>
           <Flex alignItems="center" width={[1]}>
-            <CatLink align="center" color="white" bold size={2} as={Link} activeClassName="active" to="educacion/catalogo/salud-financiera">
+            <CatLink
+              align="center"
+              color="white"
+              bold
+              size={2}
+              as={Link}
+              activeClassName="active"
+              to="educacion/catalogo/salud-financiera"
+            >
               Salud Financiera
             </CatLink>
           </Flex>
           <Flex alignItems="center" width={[1]}>
-            <CatLink align="center" color="white" bold size={2} as={Link} activeClassName="active" to="educacion/catalogo/derechos-humanos">
+            <CatLink
+              align="center"
+              color="white"
+              bold
+              size={2}
+              as={Link}
+              activeClassName="active"
+              to="educacion/catalogo/derechos-humanos"
+            >
               Derechos Humanos
             </CatLink>
           </Flex>
@@ -101,16 +154,28 @@ const CatalogoCursos = ({
       <Arrow alignSelf="center" width="0" />
 
       <Flex flexDirection="column" mx={4} mt={4}>
-        <Box alignSelf="flex-start"><Text bold size={2}>{categoria}</Text></Box>
-        <FlexGrid flexDirection="row" alignItems="center" justifyContent="flex-start" flexWrap="wrap">
+        <Box alignSelf="flex-start">
+          <Text bold size={2}>
+            {categoria}
+          </Text>
+        </Box>
+        <FlexGrid
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="flex-start"
+          flexWrap="wrap"
+        >
           {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(data => {
-            return <Box width={[1, 1 / 3, 1 / 4]} p={3} key={data}><BackgroundBox pt='100px' backgroundColor="black"></BackgroundBox></Box>
+            return (
+              <Box width={[1, 1 / 3, 1 / 4]} p={3} key={data}>
+                <BackgroundBox pt="100px" backgroundColor="black" />
+              </Box>
+            );
           })}
         </FlexGrid>
       </Flex>
-
     </Flex>
-  )
-}
+  );
+};
 
 export default CatalogoCursos;

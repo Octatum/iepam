@@ -7,12 +7,10 @@ import AppLayout from '../components/AppLayout';
 const MyProfilePage = () => (
   <AppLayout>
     <Helmet>
-      <title>
-        Mi perfil
-      </title>
+      <title>Mi perfil</title>
     </Helmet>
     <Profile />
   </AppLayout>
-) 
+);
 
 export default MyProfilePage;

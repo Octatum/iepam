@@ -26,17 +26,16 @@ const NavbarComp = styled(Navbar)`
   }
 `;
 
-const AppLayout = ({ children }) => {  
+const AppLayout = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   myOnAuthStateChanged(function(user) {
     if (user) {
       setLoggedIn(true);
-    }
-    else {
+    } else {
       setLoggedIn(false);
     }
-  })
-  
+  });
+
   return (
     <UserContext.Provider value={[loggedIn, setLoggedIn]}>
       <ThemeProvider theme={theme}>
@@ -44,7 +43,7 @@ const AppLayout = ({ children }) => {
           <Helmet titleTemplate="%s - IEPAM" />
           <NavbarComp />
           <MobileNavbarComp />
-          <Box mx="auto" width={1} css={{maxWidth: '1400px'}}>
+          <Box mx="auto" width={1} css={{ maxWidth: '1400px' }}>
             {children}
           </Box>
           <Footer />

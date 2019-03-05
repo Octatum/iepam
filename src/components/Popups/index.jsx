@@ -27,34 +27,37 @@ const AllHeight = styled.div`
 
 const PopupElement = ({ triggerElement, current, handleLogin }) => {
   const [currentActive, setActive] = useState(current);
-  
+
   return (
     <AllHeight>
-      <Popup trigger={triggerElement} modal onClose={() => setActive(current)} >
-        {close =>{
+      <Popup trigger={triggerElement} modal onClose={() => setActive(current)}>
+        {close => {
           if (currentActive === 'register') {
-            return <Registration
-              close={close}
-              setActive={setActive}
-              handleLogin={handleLogin}
-            />
-          }
-          else if (currentActive === 'login') {
-            return <Login
-              close={close}
-              setActive={setActive}
-              handleLogin={handleLogin}
-            />
-          }
-          else if (currentActive === 'restorePass') {
-            return <RestablecerPass 
-              close={close}
-              setActive={setActive}
-              handleLogin={handleLogin}
-            />
-          }
-          else if (currentActive == 'suggestion') {
-            return <SuggestionBox close={close} />
+            return (
+              <Registration
+                close={close}
+                setActive={setActive}
+                handleLogin={handleLogin}
+              />
+            );
+          } else if (currentActive === 'login') {
+            return (
+              <Login
+                close={close}
+                setActive={setActive}
+                handleLogin={handleLogin}
+              />
+            );
+          } else if (currentActive === 'restorePass') {
+            return (
+              <RestablecerPass
+                close={close}
+                setActive={setActive}
+                handleLogin={handleLogin}
+              />
+            );
+          } else if (currentActive == 'suggestion') {
+            return <SuggestionBox close={close} />;
           }
         }}
       </Popup>

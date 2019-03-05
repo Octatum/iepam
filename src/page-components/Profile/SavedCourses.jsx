@@ -7,7 +7,6 @@ import Text from '../../components/Text';
 import BackgroundBox from '../../components/BackgroundBox';
 import { breakpoints, device } from '../../utils/device';
 
-
 const SliderArrow = styled('div')`
   z-index: 10;
   color: ${({ theme }) => theme.color.white};
@@ -21,7 +20,7 @@ const SliderArrow = styled('div')`
   top: 0;
   font-size: 1.5em;
   width: 3rem;
-  
+
   cursor: pointer;
 
   ${device.tablet} {
@@ -64,7 +63,12 @@ const SlickNextArrow = ({ onClick }) => (
 
 const Slide = ({ courseInfo }) => {
   return (
-    <Shadowed my={3} flexDirection="column" mx={[2, 2, 4]} css={{ position: 'relative' }}>
+    <Shadowed
+      my={3}
+      flexDirection="column"
+      mx={[2, 2, 4]}
+      css={{ position: 'relative' }}
+    >
       <Clickable to={courseInfo.link} />
       <BackgroundBox backgroundColor="white" p={3}>
         <Text size={2} bold>
@@ -76,8 +80,8 @@ const Slide = ({ courseInfo }) => {
         image={courseInfo.image}
         p={4}
         width="100%"
-        css={{ height: '300px'}}
-       />
+        css={{ height: '300px' }}
+      />
       <BackgroundBox backgroundColor="darkestGray" p={3}>
         <Text align="center" color="white" size={1}>
           {courseInfo.description}
@@ -102,15 +106,15 @@ const CoursesSlider = ({ coursesLinks, others }) => {
         breakpoint: breakpoints.tablet,
         settings: {
           slidesToShow: 3,
-        }
+        },
       },
       {
         breakpoint: breakpoints.mobile,
         settings: {
           slidesToShow: 2,
-        }
+        },
       },
-    ]
+    ],
   };
   return (
     <Slider {...sliderSettings} {...others}>

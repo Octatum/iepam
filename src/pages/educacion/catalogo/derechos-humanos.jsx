@@ -8,9 +8,11 @@ const DerechosHumanos = () => (
     <Helmet>
       <title>Catálogo de Cursos</title>
     </Helmet>
-    <Catalogo categoria="Derechos Humanos" categoriaDesc="Explora y aprende de temas como salud física y mental, vida social, como cuidar tu patrimonio, derechos humanos, entre otros." />
-
+    <Catalogo
+      categoria="Derechos Humanos"
+      categoriaDesc="Explora y aprende de temas como salud física y mental, vida social, como cuidar tu patrimonio, derechos humanos, entre otros."
+    />
   </AppLayout>
-)
+);
 
 export default DerechosHumanos;

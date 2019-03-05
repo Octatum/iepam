@@ -49,7 +49,12 @@ const Row = ({ title, children, linkTo }) => (
       </BackgroundBox>
     </DesktopRow>
 
-    <MobileRow flexDirection="column" mb={5} mx={4} css={{position:"relative"}}>
+    <MobileRow
+      flexDirection="column"
+      mb={5}
+      mx={4}
+      css={{ position: 'relative' }}
+    >
       <BackgroundBox width={1} css={{ height: '200px' }} />
       <BackgroundBox
         as={Flex}
@@ -63,7 +68,9 @@ const Row = ({ title, children, linkTo }) => (
         <Box my={[3]}>
           <Text size={3}>{children}</Text>
         </Box>
-        <Text bold size={1.5} color="white" as={Link} to={linkTo}>Ver mas...</Text>
+        <Text bold size={1.5} color="white" as={Link} to={linkTo}>
+          Ver mas...
+        </Text>
       </BackgroundBox>
     </MobileRow>
   </React.Fragment>

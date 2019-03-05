@@ -10,7 +10,7 @@ import Text from '../Text';
 import InputComponent from './InputComponent';
 import Button from '../Button';
 
-const RestorePassword = ({ 
+const RestorePassword = ({
   close,
   handleLogin,
   setActive,
@@ -20,9 +20,9 @@ const RestorePassword = ({
   handleChange,
   handleBlur,
   handleSubmit,
-  others
+  others,
 }) => (
-    <Flex
+  <Flex
     flexDirection="column"
     mb={4}
     as="form"
@@ -35,28 +35,37 @@ const RestorePassword = ({
       <Box as={Text} bold size={3} pt={3}>
         Restablecer Contraseña
       </Box>
-      
+
       <Box width={1} as={BackgroundBox} backgroundColor="dark" pt="3px" m={3} />
-      
+
       <Box as={Text} size={2} align="center" width={3 / 4} pt={3}>
-        Enter your username or email to reset your password. 
+        Enter your username or email to reset your password.
         <br />
-        You will receive an email with instructions on how to reset your password.	If you are experiencing problems resetting your password contact us or send us an email
+        You will receive an email with instructions on how to reset your
+        password. If you are experiencing problems resetting your password
+        contact us or send us an email
       </Box>
 
-      <InputComponent handleBlur={handleBlur} handleChange={handleChange} name="nameOrMail" placeholder="Nombre de usuario o correo" type="text" value={values.nameOrMail} />
-      
+      <InputComponent
+        handleBlur={handleBlur}
+        handleChange={handleChange}
+        name="nameOrMail"
+        placeholder="Nombre de usuario o correo"
+        type="text"
+        value={values.nameOrMail}
+      />
+
       <Box my={4} width={1}>
         <Button
           kind="dark"
           type="submit"
           size={2}
-          css={{ cursor: 'pointer', width:'100%' }}
+          css={{ cursor: 'pointer', width: '100%' }}
         >
           Restablecer Contraseña
         </Button>
       </Box>
-      
+
       <Flex justifyContent="space-between" width={1}>
         <Button
           onClick={() => setActive('login')}
@@ -67,23 +76,20 @@ const RestorePassword = ({
         </Button>
 
         <Flex flexDirection="column">
-          <Text size={2}>
-            ¿No eres miembro?
-          </Text>
+          <Text size={2}>¿No eres miembro?</Text>
           <Text
             bold
             onClick={() => setActive('register')}
             size={2}
-            css={{ cursor: 'pointer', alignSelf:'flex-end' }}
+            css={{ cursor: 'pointer', alignSelf: 'flex-end' }}
           >
             Regístrate
           </Text>
         </Flex>
       </Flex>
-
     </Flex>
   </Flex>
-)
+);
 
 export default withFormik({
   mapPropsToValues: () => ({ nameOrMail: '' }),

@@ -1,4 +1,4 @@
-import { breakpointsList } from "./device";
+import { breakpointsList } from './device';
 
 const theme = {
   color: {
@@ -23,11 +23,7 @@ const theme = {
   fontIncrement: {
     desktop: 0.2,
   },
-  breakpoints: [
-    breakpointsList[0],
-    breakpointsList[1],
-    breakpointsList[2]   
-  ]
+  breakpoints: [breakpointsList[0], breakpointsList[1], breakpointsList[2]],
 };
 
 export default theme;
