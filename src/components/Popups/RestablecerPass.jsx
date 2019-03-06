@@ -1,5 +1,4 @@
 import React from 'react';
-import Popups from './index';
 import { withFormik } from 'formik';
 import CloseButton from './CloseButton';
 import { Flex, Box } from '@rebass/grid';
@@ -12,7 +11,6 @@ import Button from '../Button';
 
 const RestorePassword = ({
   close,
-  handleLogin,
   setActive,
   values,
   touched,
@@ -42,7 +40,8 @@ const RestorePassword = ({
         Enter your username or email to reset your password.
         <br />
         You will receive an email with instructions on how to reset your
-        password. If you are experiencing problems resetting your password
+        password. 
+        <br />If you are experiencing problems resetting your password
         contact us or send us an email
       </Box>
 

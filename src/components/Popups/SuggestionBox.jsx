@@ -43,7 +43,7 @@ const SuggestionBox = ({
 
     <Flex flexDirection="column" alignItems="center" mx={[4]}>
       <Box as={Text} bold size={3} pt={3} alignSelf="flex-start">
-        Lorem Ipsum is simply dummy text
+        Háganos saber que podemos mejorar
       </Box>
       <Box width={1} as={BackgroundBox} backgroundColor="dark" pt="3px" m={3} />
 
@@ -75,7 +75,7 @@ const SuggestionBox = ({
 
       <InputComponent
         my={2}
-        placeholder=""
+        placeholder="Mensaje"
         name="message"
         type="textarea"
         value={values.message}

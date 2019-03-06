@@ -15,7 +15,6 @@ const Centered = styled(Text)`
   margin: 1rem 0;
   text-align: center;
 `;
-const Captcha = styled(Box)``;
 
 const ErrorComponent = ({ children }) => (
   <BackgroundBox
@@ -39,7 +38,6 @@ const Login = ({
   handleChange,
   handleBlur,
   handleSubmit,
-  handleLogin,
   isSubmitting,
   ...others
 }) => (

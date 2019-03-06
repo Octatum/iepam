@@ -14,9 +14,35 @@ const NavbarItem = styled(BackgroundBox).attrs({
   display: flex;
   flex: 1;
 
+  :first-child {
+    border-left-width: 2px;
+  }
+  :last-child {
+    border-right-width: 2px;
+  }
 `;
 
-const NavbarLink = styled(Text)`
+
+const PartlyActive = className => ({ isPartiallyCurrent }) => ({
+  className: className + (isPartiallyCurrent ? ' active' : '')
+})
+
+const ActiveLink = ({ className, children, to, ...other }) => {
+  return (
+    <Text 
+      as={Link} 
+      to={to} 
+      activeClassName={to === '/' ? className + " active" : className}
+      getProps={to === '/' ? undefined : PartlyActive(className)}
+      className={className}
+      {...other} 
+    >
+      {children}
+    </Text>
+  )
+}
+
+const NavbarLink = styled(ActiveLink)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,9 +71,9 @@ const NavbarLink = styled(Text)`
   }
 `;
 
-const NavLink = ({ to, children, size, ...other }) => (
+const NavLink = ({ to, children, size, className, ...other }) => (
   <NavbarItem {...other}>
-    <NavbarLink size={size} as={Link} activeClassName="active" to={to}>
+    <NavbarLink size={size} to={to} >
       {children}
     </NavbarLink>
   </NavbarItem>

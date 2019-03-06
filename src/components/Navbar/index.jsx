@@ -19,8 +19,8 @@ const FullSizeButton = styled(Button)`
 `;
 
 const Image = styled.img`
-  height: 100%;
-  width: auto;
+  width: 100%;
+  height: auto;
 `;
 
 const Navbar = props => {
@@ -28,17 +28,16 @@ const Navbar = props => {
   const userData = myGetUserData();
 
   return (
-    <Flex as="nav" flexDirection="column" py={4}>
+    <Flex as="nav" flexDirection="column" py={4} className={props.className}>
       <Box>
         <Flex
           justifyContent="space-between"
-          css={{ height: '125px' }}
-          mx='auto'
+          mx={[4, 4, 4, 'auto']}
           mb={4}
           css={{maxWidth:props.maxWidth}}
         >
-          <Box width={3 / 10}>
-            <Image src={Logo} />
+          <Box width={1 / 6}>
+            <Image src={Logo}/>
           </Box>
 
           <Box width={3 / 10}>
@@ -135,7 +134,7 @@ const Navbar = props => {
       </BackgroundBox>
 
       <Box>
-        <Flex my={3} mx='auto' alignItems="center" css={{maxWidth:props.maxWidth}}>
+        <Flex my={3} mx={[4, 4, 4, 'auto']} alignItems="center" css={{maxWidth:props.maxWidth}}>
           <Box width={1 / 6}>
             <PopupContainer>
               <Popups

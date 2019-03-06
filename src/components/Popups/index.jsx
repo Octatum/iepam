@@ -37,7 +37,6 @@ const PopupElement = ({ triggerElement, current, handleLogin }) => {
               <Registration
                 close={close}
                 setActive={setActive}
-                handleLogin={handleLogin}
               />
             );
           } else if (currentActive === 'login') {
@@ -45,7 +44,6 @@ const PopupElement = ({ triggerElement, current, handleLogin }) => {
               <Login
                 close={close}
                 setActive={setActive}
-                handleLogin={handleLogin}
               />
             );
           } else if (currentActive === 'restorePass') {
@@ -53,7 +51,6 @@ const PopupElement = ({ triggerElement, current, handleLogin }) => {
               <RestablecerPass
                 close={close}
                 setActive={setActive}
-                handleLogin={handleLogin}
               />
             );
           } else if (currentActive == 'suggestion') {

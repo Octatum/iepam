@@ -37,7 +37,6 @@ const Registration = ({
   handleChange,
   handleBlur,
   handleSubmit,
-  handleLogin,
   ...others
 }) => (
   <Flex
