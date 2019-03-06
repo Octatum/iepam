@@ -55,30 +55,13 @@ const Login = ({
 
     <Flex flexDirection="column" alignItems="center" mx={[4]}>
       <Centered as={Text} bold size={2} alignSelf="flex-start" pt={3}>
-        Inicia sesion en tu cuenta
+        Inicia sesión en tu cuenta
       </Centered>
       <Box width={1} as={BackgroundBox} backgroundColor="dark" pt="3px" m={3} />
 
-      {/* login with google and others */}
-      {/* <BackgroundBox
-        backgroundColor="black"
-        as={Box}
-        my={2}
-        width={1}
-        css={{ height: '50px' }}
-      />
-      <BackgroundBox
-        backgroundColor="black"
-        as={Box}
-        mt={2}
-        width={1}
-        css={{ height: '50px' }}
-        mb={5}
-      /> */}
-
       <InputComponent
         my={2}
-        placeholder="Correo Electronico"
+        placeholder="Correo Electrónico"
         name="email"
         type="email"
         value={values.email}
@@ -102,6 +85,10 @@ const Login = ({
         <ErrorComponent>{errors.password}</ErrorComponent>
       )}
 
+      <Button kind='dark' type='submit' disabled={isSubmitting} size={1} style={{cursor:'pointer'}}>
+        Submit
+      </Button>
+
       {/* captcha */}
       {/* <BackgroundBox
         backgroundColor="black"
@@ -110,16 +97,25 @@ const Login = ({
         width={1}
         css={{ height: '75px' }}
       /> */}
+
+      <Box
+        width={1}
+        as={BackgroundBox}
+        backgroundColor="dark"
+        pt="3px"
+        mt={3}
+      />
       <Box>
         <Centered
           color="darkGray"
-          size={1.5}
+          bold
+          size={0}
           onClick={() => setActive('restorePass')}
           style={{ cursor: 'pointer' }}
         >
           ¿Has olvidado tu Contraseña?
         </Centered>
-        <Centered color="darkGray" size={0.5}>
+        <Centered color="darkGray" size={0}>
           Al registrarte, aceptas nuestras{' '}
           <Link to="/educacion" style={{ textDecoration: 'underline' }}>
             Condiciones de uso
@@ -130,30 +126,19 @@ const Login = ({
           </Link>
         </Centered>
       </Box>
-
-      <Box
-        width={1}
-        as={BackgroundBox}
-        backgroundColor="dark"
-        pt="3px"
-        mt={3}
-      />
-      <Flex alignItems="center">
-        <Box mr={4}>
-          <Text size={1.5}>¿No tienes una cuenta?</Text>
-        </Box>
-        <Button
-          kind="dark"
-          size={1.5}
-          onClick={() => setActive('register')}
-          css={{ cursor: 'pointer', borderTop: 'none' }}
-        >
-          Registrate
-        </Button>
-      </Flex>
-      <button disabled={isSubmitting} type="submit">
-        submit
-      </button>
+      
+      <Box mr={4}>
+        <Text size={0}>¿No tienes una cuenta?</Text>
+      </Box>
+      <Button
+        kind="light"
+        size={0}
+        onClick={() => setActive('register')}
+        css={{ cursor: 'pointer', borderTop: 'none' }}
+      >
+        Regístrate
+      </Button>
+      
     </Flex>
   </Flex>
 );

@@ -9,7 +9,7 @@ import { device } from './../../utils/device';
 
 const AllHeight = styled.div`
   .popup-content {
-    max-height: 80vh;
+    max-height: 90vh;
     overflow: auto;
     max-width: 1000px;
 
@@ -20,7 +20,7 @@ const AllHeight = styled.div`
     }
     ${device.laptop} {
       width: 1200px !important;
-      max-height: 90vh;
+      max-height: 95vh;
     }
   }
 `;

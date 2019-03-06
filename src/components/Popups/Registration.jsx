@@ -51,7 +51,7 @@ const Registration = ({
     <CloseButton alignSelf="flex-end" closeFunction={close} />
 
     <Flex flexDirection="column" alignItems="center" mx={[4]}>
-      <Box as={Text} bold size={2} alignSelf="flex-start" pt={3}>
+      <Box as={Text} bold size={2} alignSelf="center" pt={3}>
         Regístrese aquí
       </Box>
       <Box width={1} as={BackgroundBox} backgroundColor="dark" pt="3px" m={3} />
