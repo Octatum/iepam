@@ -41,12 +41,12 @@ const AppLayout = ({ children }) => {
       <ThemeProvider theme={theme}>
         <React.Fragment>
           <Helmet titleTemplate="%s - IEPAM" />
-          <NavbarComp />
+          <NavbarComp maxWidth='1400px' />
           <MobileNavbarComp />
           <Box mx="auto" width={1} css={{ maxWidth: '1400px' }}>
             {children}
           </Box>
-          <Footer />
+          <Footer maxWidth='1400px' />
         </React.Fragment>
       </ThemeProvider>
     </UserContext.Provider>

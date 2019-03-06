@@ -14,12 +14,6 @@ const NavbarItem = styled(BackgroundBox).attrs({
   display: flex;
   flex: 1;
 
-  :first-child {
-    border-left: none;
-  }
-  :last-child {
-    border-right: none;
-  }
 `;
 
 const NavbarLink = styled(Text)`
