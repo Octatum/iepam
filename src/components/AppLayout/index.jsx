@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { ThemeProvider } from 'styled-components';
@@ -12,7 +12,7 @@ import MobileNavbar from '../NavbarMovil';
 import { Box } from '@rebass/grid';
 import UserContext from '../UserContext';
 import { device } from '../../utils/device';
-import { myOnAuthStateChanged } from '../../utils/useAuth';
+import { auth } from 'firebase';
 
 const MobileNavbarComp = styled(MobileNavbar)`
   ${device.tablet} {
@@ -27,26 +27,29 @@ const NavbarComp = styled(Navbar)`
 `;
 
 const AppLayout = ({ children }) => {
-  const [loggedIn, setLoggedIn] = useState(false);
-  myOnAuthStateChanged(function(user) {
-    if (user) {
-      setLoggedIn(true);
-    } else {
-      setLoggedIn(false);
-    }
-  });
+  const [userData, setUserData] = useState(null);
 
+  if (auth) {
+    auth().onAuthStateChanged(user => {
+      console.log(user);
+      if (user) {
+        setUserData(user);
+      } else {
+        setUserData(null);
+      }
+    });
+  }
   return (
-    <UserContext.Provider value={[loggedIn, setLoggedIn]}>
+    <UserContext.Provider value={[userData, setUserData]}>
       <ThemeProvider theme={theme}>
         <React.Fragment>
           <Helmet titleTemplate="%s - IEPAM" />
-          <NavbarComp maxWidth='1400px' />
+          <NavbarComp maxWidth="1400px" />
           <MobileNavbarComp />
           <Box mx="auto" width={1} css={{ maxWidth: '1400px' }}>
             {children}
           </Box>
-          <Footer maxWidth='1400px' />
+          <Footer maxWidth="1400px" />
         </React.Fragment>
       </ThemeProvider>
     </UserContext.Provider>

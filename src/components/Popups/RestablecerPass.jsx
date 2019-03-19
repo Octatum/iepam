@@ -40,9 +40,10 @@ const RestorePassword = ({
         Enter your username or email to reset your password.
         <br />
         You will receive an email with instructions on how to reset your
-        password. 
-        <br />If you are experiencing problems resetting your password
-        contact us or send us an email
+        password.
+        <br />
+        If you are experiencing problems resetting your password contact us or
+        send us an email
       </Box>
 
       <InputComponent

@@ -11,7 +11,7 @@ import NavLink from './NavLink';
 import BackgroundBox from '../BackgroundBox';
 import Text from '../Text';
 import UserContext from '../UserContext';
-import { mySignOut, myGetUserData } from '../../utils/useAuth';
+import { auth } from 'firebase';
 
 const FullSizeButton = styled(Button)`
   width: 100%;
@@ -24,8 +24,7 @@ const Image = styled.img`
 `;
 
 const Navbar = props => {
-  const [loggedIn, setLoggedIn] = useContext(UserContext);
-  const userData = myGetUserData();
+  const [userData, setUserData] = useContext(UserContext);
 
   return (
     <Flex as="nav" flexDirection="column" py={4} className={props.className}>
@@ -34,10 +33,10 @@ const Navbar = props => {
           justifyContent="space-between"
           mx={[4, 4, 4, 'auto']}
           mb={4}
-          css={{maxWidth:props.maxWidth}}
+          css={{ maxWidth: props.maxWidth }}
         >
           <Box width={1 / 6}>
-            <Image src={Logo}/>
+            <Image src={Logo} />
           </Box>
 
           <Box width={3 / 10}>
@@ -46,11 +45,10 @@ const Navbar = props => {
               alignItems="center"
               justifyContent="space-around"
             >
-              {!loggedIn ? (
+              {!userData ? (
                 <React.Fragment>
                   <Box width={1 / 2} pr={1}>
                     <Popups
-                      handleLogin={setLoggedIn}
                       current="register"
                       triggerElement={
                         <FullSizeButton
@@ -66,7 +64,6 @@ const Navbar = props => {
                   </Box>
                   <Box width={1 / 2}>
                     <Popups
-                      handleLogin={setLoggedIn}
                       current="login"
                       triggerElement={
                         <FullSizeButton
@@ -88,7 +85,7 @@ const Navbar = props => {
                       bold
                       css={{ cursor: 'pointer' }}
                       kind="dark"
-                      onClick={() => mySignOut()}
+                      onClick={() => auth().signOut()}
                     >
                       Logout
                     </FullSizeButton>
@@ -105,12 +102,12 @@ const Navbar = props => {
         </Flex>
       </Box>
 
-      <BackgroundBox backgroundColor='lightBrown'>
+      <BackgroundBox backgroundColor="lightBrown">
         <Flex
-          css={{ height: '100%', maxWidth:props.maxWidth }}
+          css={{ height: '100%', maxWidth: props.maxWidth }}
           alignItems="stretch"
           justifyContent="space-evenly"
-          mx='auto'
+          mx="auto"
         >
           <NavLink size={1.5} to="/" width={1}>
             Inicio
@@ -134,12 +131,16 @@ const Navbar = props => {
       </BackgroundBox>
 
       <Box>
-        <Flex my={3} mx={[4, 4, 4, 'auto']} alignItems="center" css={{maxWidth:props.maxWidth}}>
+        <Flex
+          my={3}
+          mx={[4, 4, 4, 'auto']}
+          alignItems="center"
+          css={{ maxWidth: props.maxWidth }}
+        >
           <Box width={1 / 6}>
             <PopupContainer>
               <Popups
                 current="suggestion"
-                handleLogin={null}
                 triggerElement={
                   <Button
                     kind="dark"

@@ -9,7 +9,7 @@ import CloseButton from './CloseButton';
 import { LogingValidation as validation } from '../../utils/validation';
 import InputComponent from './InputComponent';
 import { Link } from 'gatsby';
-import { mySignInWithEmailAndPassword } from '../../utils/useAuth';
+import { auth } from 'firebase';
 
 const Centered = styled(Text)`
   margin: 1rem 0;
@@ -83,7 +83,13 @@ const Login = ({
         <ErrorComponent>{errors.password}</ErrorComponent>
       )}
 
-      <Button kind='dark' type='submit' disabled={isSubmitting} size={1} style={{cursor:'pointer'}}>
+      <Button
+        kind="dark"
+        type="submit"
+        disabled={isSubmitting}
+        size={1}
+        style={{ cursor: 'pointer' }}
+      >
         Submit
       </Button>
 
@@ -124,7 +130,7 @@ const Login = ({
           </Link>
         </Centered>
       </Box>
-      
+
       <Box mr={4}>
         <Text size={0}>¿No tienes una cuenta?</Text>
       </Box>
@@ -136,7 +142,6 @@ const Login = ({
       >
         Regístrate
       </Button>
-      
     </Flex>
   </Flex>
 );
@@ -144,17 +149,18 @@ const Login = ({
 export default withFormik({
   mapPropsToValues: () => ({ email: '', password: '', captcha: false }),
   validationSchema: validation,
-  handleSubmit: (values, { setSubmitting, props }) => {
+  handleSubmit: async (values, { setSubmitting, props }) => {
     const { email, password } = values;
-    mySignInWithEmailAndPassword(email, password)
-      .catch(error => {
-        setSubmitting(false);
-        alert(error);
-      })
-      .then(() => {
-        alert('submission received');
-        setSubmitting(false);
-      });
+    setSubmitting(true);
+    try {
+      await auth().signInWithEmailAndPassword(email, password);
+      console.log('success');
+    } catch (error) {
+      console.log(error);
+      setSubmitting(false);
+    } finally {
+      setSubmitting(false);
+    }
   },
   displayName: 'LoginForm',
 })(Login);

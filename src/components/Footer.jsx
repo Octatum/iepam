@@ -37,15 +37,13 @@ const Footer = props => {
   return (
     <footer>
       {!loggedIn && (
-        <BackgroundBox
-          backgroundColor="darkestGray"
-          >
+        <BackgroundBox backgroundColor="darkestGray">
           <Flex
             flexDirection="column"
-            alignItems="center"            
+            alignItems="center"
             pb={4}
-            mx='auto'
-            css={{maxWidth:props.maxWidth}}
+            mx="auto"
+            css={{ maxWidth: props.maxWidth }}
           >
             <BackgroundBox
               width="0"
@@ -56,11 +54,21 @@ const Footer = props => {
               }}
             />
             <Text size={3} color="white" align="center">
-              <Text bold color="white" style={{ fontSize: 'inherit' }} as="span">
+              <Text
+                bold
+                color="white"
+                style={{ fontSize: 'inherit' }}
+                as="span"
+              >
                 Entra
               </Text>{' '}
               para conocer todos nuestros cursos{' '}
-              <Text bold color="white" style={{ fontSize: 'inherit' }} as="span">
+              <Text
+                bold
+                color="white"
+                style={{ fontSize: 'inherit' }}
+                as="span"
+              >
                 gratis
               </Text>
             </Text>
@@ -78,16 +86,16 @@ const Footer = props => {
           </Flex>
         </BackgroundBox>
       )}
-      <BackgroundBox backgroundColor='footer'>
+      <BackgroundBox backgroundColor="footer">
         <FlexLayout
           flexDirection={['column', 'row', 'row']}
           flexWrap={['nowrap', 'wrap', 'wrap']}
           width={[1, 1, 1]}
           order={[0, 0, 0]}
           py={4}
-          mx='auto'
+          mx="auto"
           justifyContent="center"
-          css={{ maxWidth:props.maxWidth }}
+          css={{ maxWidth: props.maxWidth }}
         >
           <Box px={[0, 0, 4]} width={[1, 1 / 2, 1 / 3]} my={[3, 0, 0]}>
             <Box mb={3}>
@@ -128,8 +136,8 @@ const Footer = props => {
             </Box>
             <Centered size={1}>
               Nuestra misión es ejecutar, coordinar y promover ls políticas,
-              programas, acciones y estrategis para el desarrollo integral de las
-              Personas Adultas Mayores de Nuevo León
+              programas, acciones y estrategis para el desarrollo integral de
+              las Personas Adultas Mayores de Nuevo León
             </Centered>
           </Box>
 

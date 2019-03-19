@@ -11,12 +11,12 @@ const Message = styled.textarea`
   resize: vertical;
   width: 100%;
   border: none;
-  border-bottom: 1px solid ${({theme}) => theme.color.darkGray};
+  border-bottom: 1px solid ${({ theme }) => theme.color.darkGray};
 `;
 const Input = styled.input`
   border: none;
   width: 100%;
-  border-bottom: 1px solid ${({theme}) => theme.color.darkGray};
+  border-bottom: 1px solid ${({ theme }) => theme.color.darkGray};
 `;
 
 const CheckboxInput = styled.input`
@@ -57,7 +57,9 @@ const InputComponent = ({
     width={width}
     {...other}
   >
-    <Box as={Text} width={[1, 1 / 3]} size={size} alignSelf="flex-start">{placeholder}</Box>
+    <Box as={Text} width={[1, 1 / 3]} size={size} alignSelf="flex-start">
+      {placeholder}
+    </Box>
     <Box width={[1, 2 / 3]}>
       <Text
         color="darkGray"
@@ -70,7 +72,7 @@ const InputComponent = ({
         onChange={handleChange}
         onBlur={handleBlur}
       />
-      </Box>
+    </Box>
   </BorderBox>
 );
 
@@ -85,7 +87,11 @@ export const SelectionComponent = ({
   ...other
 }) => (
   <Flex {...other} alignItems="center" flexDirection={['column', 'row']}>
-    {title && <Box as={Text} width={[1, 1 / 3]} alignSelf='flex-start' size={size}>{title}</Box>}
+    {title && (
+      <Box as={Text} width={[1, 1 / 3]} alignSelf="flex-start" size={size}>
+        {title}
+      </Box>
+    )}
     <Box width={title ? [1, 2 / 3] : 1}>
       <Text
         as="select"

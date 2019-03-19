@@ -13,7 +13,8 @@ import InputComponent, {
   Bordered,
   JustInput,
 } from './InputComponent';
-import { myCreateUserWithEmailAndPassword } from '../../utils/useAuth';
+import { auth } from 'firebase';
+/* import { myCreateUserWithEmailAndPassword } from '../../utils/useAuth'; */
 
 const ErrorComponent = ({ children }) => (
   <BackgroundBox
@@ -108,7 +109,9 @@ const Registration = ({
       )}
 
       <Bordered width={1} my={2} flexDirection={['column', 'row']}>
-        <Box width={[1, 1 / 3]} as={Text} alignSelf='flex-start' size={1}>Fecha de Nacimiento</Box>
+        <Box width={[1, 1 / 3]} as={Text} alignSelf="flex-start" size={1}>
+          Fecha de Nacimiento
+        </Box>
         <Flex width={[1, 2 / 3]}>
           <SelectionComponent
             options={['Día', ...Array.from(new Array(31), (x, i) => i + 1)]}
@@ -152,7 +155,6 @@ const Registration = ({
             max={new Date().getFullYear()}
             width={[1, 1 / 3]}
           />
-
         </Flex>
       </Bordered>
       {errors.nacimiento &&
@@ -236,10 +238,26 @@ export default withFormik({
   validationSchema: validation,
   handleSubmit: (values, { setSubmitting }) => {
     const { email, password, name } = values;
-    myCreateUserWithEmailAndPassword({ email, password, name }).catch(error => {
-      setSubmitting(false);
-      alert(error);
-    });
+    setSubmitting(true);
+    auth()
+      .createUserWithEmailAndPassword(email, password)
+      .catch(error => {
+        console.log(error);
+      })
+      .then(userCredential => {
+        const headers = {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        };
+        const body = JSON.stringify({ userId: userCredential.user.uid, email, name });
+        fetch(`${process.env.GATSBY_FUNCTIONS_URL}/createUser`, {
+          method: 'POST',
+          headers,
+          body
+        })
+          .then(res => console.log('created user', userCredential))
+          .catch(error => console.log(error));
+      }); 
   },
   displayName: 'registerForm',
 })(Registration);

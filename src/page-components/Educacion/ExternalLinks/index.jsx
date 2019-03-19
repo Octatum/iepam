@@ -106,7 +106,7 @@ const EnlaceExterno = ({
   );
 };
 
-EnlaceExterno.PropTypes = {
+EnlaceExterno.propTypes = {
   courseLink: PropTypes.string,
   courseProvider: PropTypes.string,
   description: PropTypes.string,

@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import AppLayout from '../components/AppLayout';
 import { Helmet } from 'react-helmet';
 import { Flex } from '@rebass/grid';

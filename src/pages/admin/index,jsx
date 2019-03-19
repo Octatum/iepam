@@ -1,0 +1,14 @@
+import React from 'react';
+import { Helmet } from 'react-helmet';
+
+import AppLayout from '../../components/AppLayout';
+
+const AdminPage = () => (
+  <AppLayout>
+    <Helmet>
+      <title>Administracion</title>
+    </Helmet>
+  </AppLayout>
+)
+
+export default AdminPage;

@@ -33,26 +33,11 @@ const PopupElement = ({ triggerElement, current, handleLogin }) => {
       <Popup trigger={triggerElement} modal onClose={() => setActive(current)}>
         {close => {
           if (currentActive === 'register') {
-            return (
-              <Registration
-                close={close}
-                setActive={setActive}
-              />
-            );
+            return <Registration close={close} setActive={setActive} />;
           } else if (currentActive === 'login') {
-            return (
-              <Login
-                close={close}
-                setActive={setActive}
-              />
-            );
+            return <Login close={close} setActive={setActive} />;
           } else if (currentActive === 'restorePass') {
-            return (
-              <RestablecerPass
-                close={close}
-                setActive={setActive}
-              />
-            );
+            return <RestablecerPass close={close} setActive={setActive} />;
           } else if (currentActive == 'suggestion') {
             return <SuggestionBox close={close} />;
           }
