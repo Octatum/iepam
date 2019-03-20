@@ -1,7 +1,7 @@
 {
   "name": "iepam-serverless-functions",
   "description": "Plataforma conjunta de IEPAM",
-  "version": "0.1.0@prealpha",
+  "version": "0.1.0",
   "author": "Octatum <contacto@octatum.com>",
   "dependencies": {
     "@babel/polyfill": "^7.2.5",

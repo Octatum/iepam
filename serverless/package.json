@@ -1,7 +1,7 @@
 {
   "name": "iepam-serverless-functions",
   "description": "Serverless functions for iepam",
-  "version": "0.1.0@prealpha",
+  "version": "0.1.0",
   "author": "Octatum <contacto@octatum.com>",
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
@@ -45,7 +45,6 @@
     "@types/jest": "^22.2.3",
     "@types/jquery": "^3.3.29",
     "@types/lodash": "^4.14.119",
-    "@types/shelljs": "^0.7.9",
     "@types/lusca": "^1.5.0",
     "@types/morgan": "^1.7.35",
     "@types/node": "^9.6.41",
@@ -55,7 +54,10 @@
     "@types/passport-facebook": "^2.1.8",
     "@types/passport-local": "^1.0.33",
     "@types/request": "^2.48.1",
+    "@types/shelljs": "^0.7.9",
     "@types/supertest": "^2.0.7",
+    "n": "^2.1.12",
+    "concurrently": "^4.1.0",
     "netlify-lambda": "^1.4.3",
     "shelljs": "^0.8.3",
     "ts-node": "^8.0.2",

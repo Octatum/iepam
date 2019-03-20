@@ -8,20 +8,13 @@
     "core-js": "^2.6.5"
   },
   "keywords": [
-    "gatsby"
+    "lerna"
   ],
   "license": "MIT",
   "scripts": {
-    "build:gatsby": "gatsby build",
-    "build:lambda": "tsc && netlify-lambda -c webpack-config/webpack.functions.js build functions",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"src/**/*.js\" \"src/**/*.jsx\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run build:gatsby && npm run build:lambda",
-    "watch:functions": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run firebase:functions\"",
-    "watch-ts": "tsc -w",
-    "firebase:functions": "nodemon --watch ./functions --exec \"firebase serve --only functions\"",
-    "watch-built-files": "nodemon functions/server.js",
+    "build": "lerna run build",
+    "develop": "lerna run develop",
+    "test": "jest",
     "precommit": "lint-staged"
   },
   "devDependencies": {
