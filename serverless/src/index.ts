@@ -19,4 +19,3 @@ import app from './app';
 
 admin.initializeApp(functions.config().firebase);
 export const widgets = functions.https.onRequest(app);
-

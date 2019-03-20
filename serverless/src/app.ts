@@ -10,10 +10,10 @@ dotenv.config();
 
 // Controllers (route handlers)
 import * as exampleController from './controllers/example';
-import * as loginController from "./controllers/login";
-import * as registerController from "./controllers/register";
-import * as logoutController from "./controllers/logout";
-import * as suggestionController from "./controllers/suggestion";
+import * as loginController from './controllers/login';
+import * as registerController from './controllers/register';
+import * as logoutController from './controllers/logout';
+import * as suggestionController from './controllers/suggestion';
 import * as createUser from './controllers/createUser';
 
 // Create Express server
@@ -25,10 +25,13 @@ app.set('port', process.env.PORT || 3000);
 
 app.use(compression());
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next()
-})
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  next();
+});
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(expressValidator());
@@ -53,4 +56,3 @@ router.post('/createUser', createUser.createUser);
 app.use('/', router);
 
 export default app;
-

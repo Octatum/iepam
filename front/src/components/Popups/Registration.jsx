@@ -247,17 +247,21 @@ export default withFormik({
       .then(userCredential => {
         const headers = {
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          Accept: 'application/json',
         };
-        const body = JSON.stringify({ userId: userCredential.user.uid, email, name });
+        const body = JSON.stringify({
+          userId: userCredential.user.uid,
+          email,
+          name,
+        });
         fetch(`${process.env.GATSBY_FUNCTIONS_URL}/createUser`, {
           method: 'POST',
           headers,
-          body
+          body,
         })
           .then(res => console.log('created user', userCredential))
           .catch(error => console.log(error));
-      }); 
+      });
   },
   displayName: 'registerForm',
 })(Registration);

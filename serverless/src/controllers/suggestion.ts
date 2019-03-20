@@ -1,7 +1,10 @@
 import { Request, Response } from 'express';
 import Passport from 'passport';
 
-export async function suggestionFunction(req: Request, res: Response): Promise<any> {
+export async function suggestionFunction(
+  req: Request,
+  res: Response
+): Promise<any> {
   try {
     res.sendStatus(200);
   } catch (exception) {

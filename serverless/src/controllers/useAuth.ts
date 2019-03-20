@@ -1,20 +1,24 @@
 import { auth, firestore, User } from 'firebase';
 
-export function myCreateUserWithEmailAndPassword(name: string, password: string, email: string) {
+export function myCreateUserWithEmailAndPassword(
+  name: string,
+  password: string,
+  email: string
+) {
   return new Promise((resolve, reject) => {
     if (auth) {
-      console.log("hi", auth().createUserWithEmailAndPassword)
+      console.log('hi', auth().createUserWithEmailAndPassword);
       auth()
         .createUserWithEmailAndPassword(email, password)
         .then(userCredential => {
-          console.log(userCredential)
-          console.log('regiter')
+          console.log(userCredential);
+          console.log('regiter');
           const user = userCredential && userCredential.user;
           if (!user) reject('no se pudo crear usuario');
           const uId = user.uid;
           user.updateProfile({
             displayName: name,
-            photoURL: null
+            photoURL: null,
           });
           firestore()
             .collection('users')
@@ -27,25 +31,36 @@ export function myCreateUserWithEmailAndPassword(name: string, password: string,
           resolve(user);
         })
         .catch(error => {
-          console.log('regiter')
-          reject(error)
-        })
-        ;
+          console.log('regiter');
+          reject(error);
+        });
     }
   });
 }
 
-export function myCreateUserInFirestore(userId: string, userData: {name: string, email: string}) {
+export function myCreateUserInFirestore(
+  userId: string,
+  userData: { name: string; email: string }
+) {
   return new Promise((resolve, reject) => {
     if (firestore) {
-      firestore().collection('users').doc(userId).set({
-        userData
-      }).then(() => resolve()).catch(error => reject(error));``
+      firestore()
+        .collection('users')
+        .doc(userId)
+        .set({
+          userData,
+        })
+        .then(() => resolve())
+        .catch(error => reject(error));
+      ``;
     }
-  })
+  });
 }
 
-export function mySignInWithEmailAndPassword(email: string, password: string): Promise<auth.UserCredential> {
+export function mySignInWithEmailAndPassword(
+  email: string,
+  password: string
+): Promise<auth.UserCredential> {
   return new Promise((resolve, reject) => {
     if (auth) {
       auth()
