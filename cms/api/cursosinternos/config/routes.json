@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/cursosinternos",
+      "handler": "Cursosinternos.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/cursosinternos/count",
+      "handler": "Cursosinternos.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/cursosinternos/:id",
+      "handler": "Cursosinternos.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/cursosinternos",
+      "handler": "Cursosinternos.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/cursosinternos/:id",
+      "handler": "Cursosinternos.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/cursosinternos/:id",
+      "handler": "Cursosinternos.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

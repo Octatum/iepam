@@ -1,0 +1,43 @@
+{
+  "connection": "default",
+  "collectionName": "modulos",
+  "info": {
+    "name": "modulo",
+    "description": "Modulos de division para los cursos internos"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "title": {
+      "default": "",
+      "type": "string"
+    },
+    "description": {
+      "default": "",
+      "type": "text"
+    },
+    "link": {
+      "default": "",
+      "type": "string"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "temas": {
+      "collection": "temas",
+      "via": "modulo",
+      "dominant": true
+    },
+    "cursosinternos": {
+      "model": "cursosinternos",
+      "via": "modulos",
+      "columnName": ""
+    }
+  }
+}

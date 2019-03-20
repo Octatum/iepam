@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/anuncioseducacions",
+      "handler": "Anuncioseducacion.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/anuncioseducacions/count",
+      "handler": "Anuncioseducacion.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/anuncioseducacions/:id",
+      "handler": "Anuncioseducacion.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/anuncioseducacions",
+      "handler": "Anuncioseducacion.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/anuncioseducacions/:id",
+      "handler": "Anuncioseducacion.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/anuncioseducacions/:id",
+      "handler": "Anuncioseducacion.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

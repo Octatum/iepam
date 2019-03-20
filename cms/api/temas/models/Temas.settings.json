@@ -1,0 +1,23 @@
+{
+  "connection": "default",
+  "collectionName": "temas",
+  "info": {
+    "name": "temas",
+    "description": "Temas de los cursos internos"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "title": {
+      "default": "",
+      "type": "string"
+    },
+    "modulo": {
+      "model": "modulo",
+      "via": "temas"
+    }
+  }
+}

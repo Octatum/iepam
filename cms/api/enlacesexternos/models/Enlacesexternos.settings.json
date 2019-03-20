@@ -1,0 +1,37 @@
+{
+  "connection": "default",
+  "collectionName": "enlacesexternos",
+  "info": {
+    "name": "enlacesexternos",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "title": {
+      "default": "",
+      "type": "string"
+    },
+    "description": {
+      "default": "",
+      "type": "text"
+    },
+    "link": {
+      "default": "",
+      "type": "string"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "cursosexternos": {
+      "collection": "cursosexternos",
+      "via": "enlacesexternos"
+    }
+  }
+}

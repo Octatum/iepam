@@ -1,0 +1,23 @@
+{
+  "connection": "default",
+  "collectionName": "categorias",
+  "info": {
+    "name": "categorias",
+    "description": "categorias para los cursos internos"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "title": {
+      "default": "",
+      "type": "string"
+    },
+    "description": {
+      "default": "",
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "connection": "default",
+  "collectionName": "homepresentationslides",
+  "info": {
+    "name": "homepresentationslides",
+    "description": "Slides para presentacion de pagina de inicio"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "title": {
+      "default": "",
+      "type": "string"
+    },
+    "description": {
+      "default": "",
+      "type": "text"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

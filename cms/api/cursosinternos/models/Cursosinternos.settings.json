@@ -1,0 +1,36 @@
+{
+  "connection": "default",
+  "collectionName": "cursosinternos",
+  "info": {
+    "name": "cursosinternos",
+    "description": "Cursos ofrecidos por IEPAM"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "title": {
+      "default": "",
+      "type": "string"
+    },
+    "description": {
+      "default": "",
+      "type": "text"
+    },
+    "categorias": {
+      "model": "categorias"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "modulos": {
+      "collection": "modulo",
+      "via": "cursosinternos"
+    }
+  }
+}

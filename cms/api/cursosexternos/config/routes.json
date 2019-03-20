@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/cursosexternos",
+      "handler": "Cursosexternos.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/cursosexternos/count",
+      "handler": "Cursosexternos.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/cursosexternos/:id",
+      "handler": "Cursosexternos.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/cursosexternos",
+      "handler": "Cursosexternos.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/cursosexternos/:id",
+      "handler": "Cursosexternos.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/cursosexternos/:id",
+      "handler": "Cursosexternos.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

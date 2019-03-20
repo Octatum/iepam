@@ -1,0 +1,27 @@
+{
+  "connection": "default",
+  "collectionName": "anuncioseducacions",
+  "info": {
+    "name": "anuncioseducacion",
+    "description": "anuncios de educacion"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "title": {
+      "default": "",
+      "type": "string"
+    },
+    "description": {
+      "default": "",
+      "type": "text"
+    },
+    "link": {
+      "default": "",
+      "type": "string"
+    }
+  }
+}
