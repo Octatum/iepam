@@ -7,18 +7,40 @@ import AppLayout from '../../../components/AppLayout';
 import Text from '../../../components/Text';
 import CoursesSlider from './CoursesSlider';
 
-import { courses } from './ExternalLinks';
-import Button, { withButtonStyles } from '../../../components/Button';
-import { Link } from 'gatsby';
+//import { withButtonStyles } from '../../../components/Button';
+import { /* Link,  */useStaticQuery, graphql } from 'gatsby';
 
 const GrayBox = styled(Box)`
   background: ${({ theme }) => theme.color.darkGray};
   box-sizing: border-box;
 `;
 
-const MyLink = withButtonStyles(Link);
+//const MyLink = withButtonStyles(Link);
 
 const InicioEducacion = () => {
+  const cursos = useStaticQuery(graphql`
+    query getExternalLinkData {
+      allStrapiEnlacesexternos{
+        edges{
+          node{
+            title
+            image {
+              childImageSharp{
+                original{
+                  src
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const externalSourceData = cursos.allStrapiEnlacesexternos.edges.map(edge => {
+    return {title: edge.node.title, image: edge.node.image.childImageSharp.original.src, link: `educacion/cursos-externos/${edge.node.title}`}
+  })
+
   return (
     <AppLayout>
       <Helmet>
@@ -75,7 +97,7 @@ const InicioEducacion = () => {
           </Text>
         </Box>
         <Box>
-          <CoursesSlider coursesLinks={courses} />
+          <CoursesSlider coursesLinks={externalSourceData} />
         </Box>
 
         <Box px={4} py={3} alignSelf="flex-end">

@@ -1,54 +1,105 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Box, Flex } from '@rebass/grid';
+import Slider from 'react-slick';
+import styled from 'styled-components';
+
 import Text from '../../components/Text';
 import BackgroundBox from '../../components/BackgroundBox';
 import IEPAM from '../../assets/IEPAM.png';
 import Row from './Row';
+import { useStaticQuery, graphql, Link } from 'gatsby';
+
+const CustomDot = styled(BackgroundBox).attrs({
+  backgroundColor:"opaqueBlack" ,
+  mx:2,
+  width:"25px",
+})`
+  height: 25px;
+  border-radius: 50%;
+  .slick-active > & {
+    background-color: ${({ theme }) => theme.color.superLightGray};
+  }
+`;
 
 const HomePage = () => {
+  const sliderSettings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    appendDots: dot => (
+      <Flex justifyContent={['flex-start', 'flex-start', 'center']}>
+        {dot}
+      </Flex>
+    ),
+    customPaging: () => (
+        <CustomDot/>
+    )
+  };
+
+  const PresentationSlides = useStaticQuery(graphql`
+    query getHomePresentationSlides {
+      allStrapiHomepresentationslides{
+        edges{
+          node{
+            title
+            description
+            image {
+              childImageSharp{
+                original{
+                  src
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+  const imageData = PresentationSlides.allStrapiHomepresentationslides.edges.map(edge => {
+    return { title: edge.node.title, image: edge.node.image.childImageSharp.original.src, description: edge.node.description };
+  })
+
+
   return (
     <Flex pb={4} flexDirection="column" mx={[0, 0, 4]}>
       <Box mb={4}>
-        <BackgroundBox
-          as={Flex}
-          image={IEPAM}
-          p={4}
-          css={{ height: '600px' }}
-          flexDirection="column"
-          justifyContent="flex-end"
-        >
-          <BackgroundBox
-            backgroundColor="opaqueBlack"
-            alignSelf="flex-start"
-            width={[1, 1, 7 / 10]}
-            p={4}
-          >
-            <Box mb={3}>
-              <Text color="white" size={1.5} bold>
-                CRONOS
-              </Text>
-            </Box>
-            <Box>
-              <Text color="white" size={1.5}>
-                Cronos es una plataforma de formación, información y servicios
-                orientada a Personas Adultas Mayores
-              </Text>
-            </Box>
-          </BackgroundBox>
-          <Flex justifyContent={['flex-start', 'flex-start', 'center']} mt={3}>
-            {[0, 1, 2].map(index => {
-              return (
+        <Slider {...sliderSettings}>
+          {imageData.map(imageInfo => {
+            return (
+              <Box mb={4}>
                 <BackgroundBox
-                  key={index}
-                  backgroundColor="white"
-                  mx={2}
-                  width="25px"
-                  css={{ height: '25px', borderRadius: '50%' }}
-                />
-              );
-            })}
-          </Flex>
-        </BackgroundBox>
+                  as={Flex}
+                  image={imageInfo.image}
+                  p={4}
+                  css={{ height: '600px' }}
+                  flexDirection="column"
+                  justifyContent="flex-end"
+                >
+                  <BackgroundBox
+                    backgroundColor="opaqueBlack"
+                    alignSelf="flex-start"
+                    width={[1, 1, 7 / 10]}
+                    p={4}
+                  >
+                    <Box mb={3}>
+                      <Text color="white" size={1.5} bold>
+                        {imageInfo.title}
+                      </Text>
+                    </Box>
+                    <Box>
+                      <Text color="white" size={1.5}>
+                        {imageInfo.description}
+                      </Text>
+                    </Box>
+                  </BackgroundBox>
+                </BackgroundBox>
+              </Box>
+            )
+          })}
+        </Slider>
       </Box>
 
       <Row title="Educación" linkTo="/educacion">

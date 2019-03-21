@@ -30,9 +30,8 @@ const BottomX = styled.div`
 const CloseButton = ({ closeFunction, ...props }) => (
   <Flex
     {...props}
-    css={{ cursor: 'pointer' }}
     flexDirection="column"
-    css={{ position: 'sticky', top: 0, height: '30px' }}
+    css={{ position: 'sticky', top: 0, height: '30px', cursor: 'pointer' }}
   >
     <TopX />
     <BottomX />

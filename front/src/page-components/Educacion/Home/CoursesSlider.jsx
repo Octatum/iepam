@@ -3,7 +3,6 @@ import Slider from 'react-slick';
 import styled from 'styled-components';
 import { Flex } from '@rebass/grid';
 import BackgroundBox from '../../../components/BackgroundBox';
-import Text from '../../../components/Text';
 import { Link } from 'gatsby';
 import { device, breakpoints } from '../../../utils/device';
 
@@ -64,8 +63,7 @@ const Slide = ({ courseInfo }) => {
       <BackgroundBox
         image={courseInfo.image}
         p={4}
-        width="100%"
-        css={{ height: '300px', border: '2px solid #0004' }}
+        css={{ height: '300px', border: '2px solid #0004', backgroundSize:'contain' }}
       >
         {/* <Text color="white" align="center">
           {courseInfo.title}

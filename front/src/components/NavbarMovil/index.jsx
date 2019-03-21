@@ -54,7 +54,7 @@ const MobileNavbar = ({ ...props }) => {
           />
           <Box width={1 / 20} />
           <Box width={2 / 10}>
-            <img src={Logo} style={{ height: '100%' }} />
+            <img src={Logo} style={{ height: '100%' }} alt="Logo" />
           </Box>
           <Box width={1} />
         </Flex>
@@ -79,7 +79,7 @@ const MobileNavbar = ({ ...props }) => {
             width="50px"
             p={2}
           >
-            <Image src={MagnifyingGlass} />
+            <Image src={MagnifyingGlass} alt="Search" />
           </BackgroundBox>
         </Flex>
       </Flex>

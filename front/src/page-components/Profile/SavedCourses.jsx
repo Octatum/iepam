@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
-import { Flex, Box } from '@rebass/grid';
+import { Flex } from '@rebass/grid';
 import { Link } from 'gatsby';
 import Text from '../../components/Text';
 import BackgroundBox from '../../components/BackgroundBox';

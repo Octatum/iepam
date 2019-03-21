@@ -25,7 +25,7 @@ const AllHeight = styled.div`
   }
 `;
 
-const PopupElement = ({ triggerElement, current, handleLogin }) => {
+const PopupElement = ({ triggerElement, current }) => {
   const [currentActive, setActive] = useState(current);
 
   return (
@@ -38,7 +38,7 @@ const PopupElement = ({ triggerElement, current, handleLogin }) => {
             return <Login close={close} setActive={setActive} />;
           } else if (currentActive === 'restorePass') {
             return <RestablecerPass close={close} setActive={setActive} />;
-          } else if (currentActive == 'suggestion') {
+          } else if (currentActive === 'suggestion') {
             return <SuggestionBox close={close} />;
           }
         }}

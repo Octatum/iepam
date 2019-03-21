@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { ThemeProvider } from 'styled-components';
@@ -31,7 +31,6 @@ const AppLayout = ({ children }) => {
 
   if (auth) {
     auth().onAuthStateChanged(user => {
-      console.log(user);
       if (user) {
         setUserData(user);
       } else {

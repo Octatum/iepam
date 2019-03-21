@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Box, Flex } from '@rebass/grid';
 import { withFormik } from 'formik';
 import Text from '../Text';

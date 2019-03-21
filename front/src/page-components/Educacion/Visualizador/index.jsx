@@ -37,14 +37,14 @@ const Visualizador = ({ courseName }) => {
       <Box>
         <Flex flex="1 0 auto">
           <Button
-            kind={selectedTab == 0 ? 'dark' : 'light'}
+            kind={selectedTab === 0 ? 'dark' : 'light'}
             css={{ cursor: 'pointer' }}
             onClick={() => setSelectedTab(0)}
           >
             Temas
           </Button>
           <Button
-            kind={selectedTab == 1 ? 'dark' : 'light'}
+            kind={selectedTab === 1 ? 'dark' : 'light'}
             css={{ cursor: 'pointer' }}
             onClick={() => setSelectedTab(1)}
           >

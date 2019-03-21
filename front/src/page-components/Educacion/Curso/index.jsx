@@ -1,13 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Flex, Box } from '@rebass/grid';
+//import styled from 'styled-components';
+import { Box } from '@rebass/grid';
 
 import Text from '../../../components/Text';
-import Button from '../../../components/Button';
 import BackgroundBox from '../../../components/BackgroundBox';
 import Dropdown from './Dropdown';
 
-const ProgressCircle = styled('div')`
+/* const ProgressCircle = styled('div')`
   background-color: ${({ theme }) => theme.color.darkGray};
   border-radius: 100%;
   display: flex;
@@ -16,7 +15,7 @@ const ProgressCircle = styled('div')`
   --radius: 6em;
   height: var(--radius);
   width: var(--radius);
-`;
+`; */
 
 const Curso = () => {
   return (
