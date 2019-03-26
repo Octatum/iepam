@@ -54,6 +54,10 @@ const Arrow = styled(BackgroundBox)`
 `;
 
 
+function createRouteFromString(string) {
+  return string.replace(' ', '_').toLowerCase().replace(/\W/g, '');
+}
+
 const CatalogoDeCursos = (props) => {
   console.log(props);
   
@@ -111,7 +115,7 @@ const CatalogoDeCursos = (props) => {
                   size={2}
                   as={Link}
                   activeClassName="active"
-                  to={`/educacion/catalogo/${categ}`}
+                  to={`/educacion/catalogo/${createRouteFromString(categ)}`}
                 >
                   {categ}
                 </CatLink>

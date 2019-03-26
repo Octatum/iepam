@@ -51,6 +51,9 @@ const Arrow = styled(BackgroundBox)`
   border-top: 2em solid ${({ theme }) => theme.color.darkGray};
 `;
 
+function createRouteFromString(string) {
+  return string.replace(' ', '_').toLowerCase().replace(/\W/g, '');
+}
 
 const CatalogoDeCursos = ({ data }) => {
   const categorias = data.allStrapiCategoriaeducacions.edges.map(edge => {
@@ -107,7 +110,7 @@ const CatalogoDeCursos = ({ data }) => {
                     size={2}
                     as={Link}
                     activeClassName="active"
-                    to={`/educacion/catalogo/${cat}`}
+                    to={`/educacion/catalogo/${createRouteFromString(cat)}`}
                   >
                     {cat}
                   </CatLink>

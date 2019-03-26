@@ -51,7 +51,7 @@ exports.createPages = ({ actions, graphql }) => {
         if (result.errors) {
           reject(result.errors)
         }
-                
+
         let enlacesExternos = result.data.enlaces;
 
         enlacesExternos.edges.forEach(edge => {
@@ -65,13 +65,12 @@ exports.createPages = ({ actions, graphql }) => {
         })
 
         let categorias = result.data.categorias;
-        //const fixedCategorias = categorias.edges.map(edge => createRouteFromString(edge.node.title));
-        const fixedCategorias = categorias.edges.map(edge => edge.node.title);
+        const fixedCategorias = categorias.edges.map(edge => createRouteFromString(edge.node.title));
+        
       
        fixedCategorias.forEach(categ => {
           createPage({
-            //path: `/educacion/catalogo/${createRouteFromString(categ)}`,
-            path: `/educacion/catalogo/${categ}`,
+            path: `/educacion/catalogo/${createRouteFromString(categ)}`,
             component: catalogoComponent,
             context: {
               title: categ,
