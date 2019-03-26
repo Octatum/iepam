@@ -21,7 +21,7 @@
   "_resolved": "https://registry.npmjs.org/strapi-plugin-users-permissions/-/strapi-plugin-users-permissions-3.0.0-alpha.25.2.tgz",
   "_shasum": "63f3ea2c61eecec189616dd4340be3a9065cd46c",
   "_spec": "strapi-plugin-users-permissions@3.0.0-alpha.25.2",
-  "_where": "C:\\Users\\nissi\\Documents\\Octatum\\temp\\cms",
+  "_where": "C:\\Users\\nissi\\Documents\\Octatum\\iepam\\cms",
   "author": {
     "name": "Strapi team",
     "email": "hi@strapi.io",
@@ -84,23 +84,5 @@
     "icon": "users",
     "description": "users-permissions.plugin.description"
   },
-  "version": "3.0.0-alpha.25.2",
-  "warnings": [
-    {
-      "code": "ENOTSUP",
-      "required": {
-        "node": ">= 10.0.0",
-        "npm": ">= 6.0.0"
-      },
-      "pkgid": "strapi-plugin-users-permissions@3.0.0-alpha.25.2"
-    },
-    {
-      "code": "ENOTSUP",
-      "required": {
-        "node": ">= 10.0.0",
-        "npm": ">= 6.0.0"
-      },
-      "pkgid": "strapi-plugin-users-permissions@3.0.0-alpha.25.2"
-    }
-  ]
+  "version": "3.0.0-alpha.25.2"
 }

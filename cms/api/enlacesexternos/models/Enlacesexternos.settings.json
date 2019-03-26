@@ -1,14 +1,12 @@
 {
   "connection": "default",
-  "collectionName": "enlacesexternos",
+  "collectionName": "",
   "info": {
     "name": "enlacesexternos",
-    "description": ""
+    "description": "enlaces de prooveedores de cursos externos"
   },
   "options": {
-    "increments": true,
-    "timestamps": true,
-    "comment": ""
+    "timestamps": true
   },
   "attributes": {
     "title": {

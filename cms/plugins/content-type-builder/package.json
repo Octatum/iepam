@@ -21,7 +21,7 @@
   "_resolved": "https://registry.npmjs.org/strapi-plugin-content-type-builder/-/strapi-plugin-content-type-builder-3.0.0-alpha.25.2.tgz",
   "_shasum": "b8970496e682ded4d02846971f30cd077d4775b3",
   "_spec": "strapi-plugin-content-type-builder@3.0.0-alpha.25.2",
-  "_where": "C:\\Users\\nissi\\Documents\\Octatum\\temp\\cms",
+  "_where": "C:\\Users\\nissi\\Documents\\Octatum\\iepam\\cms",
   "author": {
     "name": "Strapi team",
     "email": "hi@strapi.io",
@@ -79,23 +79,5 @@
     "icon": "paint-brush",
     "description": "content-type-builder.plugin.description"
   },
-  "version": "3.0.0-alpha.25.2",
-  "warnings": [
-    {
-      "code": "ENOTSUP",
-      "required": {
-        "node": ">= 10.0.0",
-        "npm": ">= 6.0.0"
-      },
-      "pkgid": "strapi-plugin-content-type-builder@3.0.0-alpha.25.2"
-    },
-    {
-      "code": "ENOTSUP",
-      "required": {
-        "node": ">= 10.0.0",
-        "npm": ">= 6.0.0"
-      },
-      "pkgid": "strapi-plugin-content-type-builder@3.0.0-alpha.25.2"
-    }
-  ]
+  "version": "3.0.0-alpha.25.2"
 }

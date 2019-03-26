@@ -2,8 +2,8 @@
   "connection": "default",
   "collectionName": "",
   "info": {
-    "name": "anuncioseducacion",
-    "description": "anuncios para seccion de educacion"
+    "name": "tema",
+    "description": "temas para los modulos de cursos internos"
   },
   "options": {
     "timestamps": true
@@ -13,13 +13,17 @@
       "default": "",
       "type": "string"
     },
-    "description": {
+    "document": {
       "default": "",
       "type": "text"
     },
-    "link": {
+    "videolink": {
       "default": "",
       "type": "string"
+    },
+    "modulo": {
+      "model": "modulo",
+      "via": "temas"
     }
   }
 }

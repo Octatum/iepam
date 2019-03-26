@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/modulos/:id",
+      "path": "/modulos/:_id",
       "handler": "Modulo.findOne",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/modulos/:id",
+      "path": "/modulos/:_id",
       "handler": "Modulo.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/modulos/:id",
+      "path": "/modulos/:_id",
       "handler": "Modulo.destroy",
       "config": {
         "policies": []

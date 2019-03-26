@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/categorias",
-      "handler": "Categorias.find",
+      "path": "/categoriaeducacions",
+      "handler": "Categoriaeducacion.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/categorias/count",
-      "handler": "Categorias.count",
+      "path": "/categoriaeducacions/count",
+      "handler": "Categoriaeducacion.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/categorias/:id",
-      "handler": "Categorias.findOne",
+      "path": "/categoriaeducacions/:_id",
+      "handler": "Categoriaeducacion.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/categorias",
-      "handler": "Categorias.create",
+      "path": "/categoriaeducacions",
+      "handler": "Categoriaeducacion.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/categorias/:id",
-      "handler": "Categorias.update",
+      "path": "/categoriaeducacions/:_id",
+      "handler": "Categoriaeducacion.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/categorias/:id",
-      "handler": "Categorias.destroy",
+      "path": "/categoriaeducacions/:_id",
+      "handler": "Categoriaeducacion.destroy",
       "config": {
         "policies": []
       }

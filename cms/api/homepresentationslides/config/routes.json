@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/homepresentationslides/:id",
+      "path": "/homepresentationslides/:_id",
       "handler": "Homepresentationslides.findOne",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/homepresentationslides/:id",
+      "path": "/homepresentationslides/:_id",
       "handler": "Homepresentationslides.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/homepresentationslides/:id",
+      "path": "/homepresentationslides/:_id",
       "handler": "Homepresentationslides.destroy",
       "config": {
         "policies": []

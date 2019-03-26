@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Modulo.js service
+ * Categoriaeducacion.js service
  *
  * @description: A set of functions similar to controller's actions to avoid code duplication.
  */
@@ -12,21 +12,21 @@ const _ = require('lodash');
 module.exports = {
 
   /**
-   * Promise to fetch all modulos.
+   * Promise to fetch all categoriaeducacions.
    *
    * @return {Promise}
    */
 
   fetchAll: (params) => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('modulo', params);
+    const filters = strapi.utils.models.convertParams('categoriaeducacion', params);
     // Select field to populate.
-    const populate = Modulo.associations
+    const populate = Categoriaeducacion.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    return Modulo
+    return Categoriaeducacion
       .find()
       .where(filters.where)
       .sort(filters.sort)
@@ -36,90 +36,90 @@ module.exports = {
   },
 
   /**
-   * Promise to fetch a/an modulo.
+   * Promise to fetch a/an categoriaeducacion.
    *
    * @return {Promise}
    */
 
   fetch: (params) => {
     // Select field to populate.
-    const populate = Modulo.associations
+    const populate = Categoriaeducacion.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    return Modulo
-      .findOne(_.pick(params, _.keys(Modulo.schema.paths)))
+    return Categoriaeducacion
+      .findOne(_.pick(params, _.keys(Categoriaeducacion.schema.paths)))
       .populate(populate);
   },
 
   /**
-   * Promise to count modulos.
+   * Promise to count categoriaeducacions.
    *
    * @return {Promise}
    */
 
   count: (params) => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('modulo', params);
+    const filters = strapi.utils.models.convertParams('categoriaeducacion', params);
 
-    return Modulo
+    return Categoriaeducacion
       .countDocuments()
       .where(filters.where);
   },
 
   /**
-   * Promise to add a/an modulo.
+   * Promise to add a/an categoriaeducacion.
    *
    * @return {Promise}
    */
 
   add: async (values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Modulo.associations.map(ast => ast.alias));
-    const data = _.omit(values, Modulo.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Categoriaeducacion.associations.map(ast => ast.alias));
+    const data = _.omit(values, Categoriaeducacion.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = await Modulo.create(data);
+    const entry = await Categoriaeducacion.create(data);
 
     // Create relational data and return the entry.
-    return Modulo.updateRelations({ _id: entry.id, values: relations });
+    return Categoriaeducacion.updateRelations({ _id: entry.id, values: relations });
   },
 
   /**
-   * Promise to edit a/an modulo.
+   * Promise to edit a/an categoriaeducacion.
    *
    * @return {Promise}
    */
 
   edit: async (params, values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Modulo.associations.map(a => a.alias));
-    const data = _.omit(values, Modulo.associations.map(a => a.alias));
+    const relations = _.pick(values, Categoriaeducacion.associations.map(a => a.alias));
+    const data = _.omit(values, Categoriaeducacion.associations.map(a => a.alias));
 
     // Update entry with no-relational data.
-    const entry = await Modulo.updateOne(params, data, { multi: true });
+    const entry = await Categoriaeducacion.updateOne(params, data, { multi: true });
 
     // Update relational data and return the entry.
-    return Modulo.updateRelations(Object.assign(params, { values: relations }));
+    return Categoriaeducacion.updateRelations(Object.assign(params, { values: relations }));
   },
 
   /**
-   * Promise to remove a/an modulo.
+   * Promise to remove a/an categoriaeducacion.
    *
    * @return {Promise}
    */
 
   remove: async params => {
     // Select field to populate.
-    const populate = Modulo.associations
+    const populate = Categoriaeducacion.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
     // Note: To get the full response of Mongo, use the `remove()` method
     // or add spent the parameter `{ passRawResult: true }` as second argument.
-    const data = await Modulo
+    const data = await Categoriaeducacion
       .findOneAndRemove(params, {})
       .populate(populate);
 
@@ -128,7 +128,7 @@ module.exports = {
     }
 
     await Promise.all(
-      Modulo.associations.map(async association => {
+      Categoriaeducacion.associations.map(async association => {
         if (!association.via || !data._id || association.dominant) {
           return true;
         }
@@ -149,22 +149,22 @@ module.exports = {
   },
 
   /**
-   * Promise to search a/an modulo.
+   * Promise to search a/an categoriaeducacion.
    *
    * @return {Promise}
    */
 
   search: async (params) => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('modulo', params);
+    const filters = strapi.utils.models.convertParams('categoriaeducacion', params);
     // Select field to populate.
-    const populate = Modulo.associations
+    const populate = Categoriaeducacion.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    const $or = Object.keys(Modulo.attributes).reduce((acc, curr) => {
-      switch (Modulo.attributes[curr].type) {
+    const $or = Object.keys(Categoriaeducacion.attributes).reduce((acc, curr) => {
+      switch (Categoriaeducacion.attributes[curr].type) {
         case 'integer':
         case 'float':
         case 'decimal':
@@ -188,7 +188,7 @@ module.exports = {
       }
     }, []);
 
-    return Modulo
+    return Categoriaeducacion
       .find({ $or })
       .sort(filters.sort)
       .skip(filters.start)

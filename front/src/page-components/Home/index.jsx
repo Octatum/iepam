@@ -2,12 +2,11 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 import Slider from 'react-slick';
 import styled from 'styled-components';
+import { useStaticQuery, graphql } from 'gatsby';
 
 import Text from '../../components/Text';
 import BackgroundBox from '../../components/BackgroundBox';
-import IEPAM from '../../assets/IEPAM.png';
 import Row from './Row';
-import { useStaticQuery, graphql, Link } from 'gatsby';
 
 const CustomDot = styled(BackgroundBox).attrs({
   backgroundColor:"opaqueBlack" ,

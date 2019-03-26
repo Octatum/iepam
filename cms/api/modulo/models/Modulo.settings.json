@@ -1,14 +1,12 @@
 {
   "connection": "default",
-  "collectionName": "modulos",
+  "collectionName": "modulo",
   "info": {
     "name": "modulo",
-    "description": "Modulos de division para los cursos internos"
+    "description": "modulos de los cursos internos\n"
   },
   "options": {
-    "increments": true,
-    "timestamps": true,
-    "comment": ""
+    "timestamps": true
   },
   "attributes": {
     "title": {
@@ -19,10 +17,6 @@
       "default": "",
       "type": "text"
     },
-    "link": {
-      "default": "",
-      "type": "string"
-    },
     "image": {
       "model": "file",
       "via": "related",
@@ -30,14 +24,12 @@
       "required": false
     },
     "temas": {
-      "collection": "temas",
-      "via": "modulo",
-      "dominant": true
+      "collection": "tema",
+      "via": "modulo"
     },
     "cursosinternos": {
       "model": "cursosinternos",
-      "via": "modulos",
-      "columnName": ""
+      "via": "modulos"
     }
   }
 }

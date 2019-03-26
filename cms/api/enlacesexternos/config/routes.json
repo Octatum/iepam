@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/enlacesexternos/:id",
+      "path": "/enlacesexternos/:_id",
       "handler": "Enlacesexternos.findOne",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/enlacesexternos/:id",
+      "path": "/enlacesexternos/:_id",
       "handler": "Enlacesexternos.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/enlacesexternos/:id",
+      "path": "/enlacesexternos/:_id",
       "handler": "Enlacesexternos.destroy",
       "config": {
         "policies": []

@@ -1,14 +1,16 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import AppLayout from '../../../components/AppLayout';
+import { graphql } from 'gatsby';
 
 import { Box, Flex } from '@rebass/grid';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
-import BackgroundBox from '../../../components/BackgroundBox';
-import Text from '../../../components/Text';
-import { breakpoints } from '../../../utils/device';
+import AppLayout from '../components/AppLayout';
+import BackgroundBox from '../components/BackgroundBox';
+import Text from '../components/Text';
+import { breakpoints } from '../utils/device';
+
 
 const FlexGrid = styled(Flex)`
   @media screen and (max-width: ${breakpoints.mobile}px) {
@@ -52,12 +54,15 @@ const Arrow = styled(BackgroundBox)`
 `;
 
 
-const CatalogoDeCursos = ({ data }) => {
-  const categorias = data.allStrapiCategoriaeducacions.edges.map(edge => {
+const CatalogoDeCursos = (props) => {
+  console.log(props);
+  
+  const { title, description } = props.data.categoria;
+  const allCategorias = props.data.allCateg.edges.map(edge => {
     return edge.node.title;
-  })
-  console.log(categorias);
+  });
 
+  
   return (
     <AppLayout>
       <Helmet>
@@ -67,15 +72,15 @@ const CatalogoDeCursos = ({ data }) => {
         <BackgroundBox backgroundColor="darkGray" py={4}>
           <Box px={4} mx="auto" width={[1, 3 / 4, 3 / 4]} mb={3}>
             <Text size={2} color="white" align="center" bold>
-              Bienvenido
+              {title}
             </Text>
           </Box>
           <Box px={4} mx="auto" width={[1, 3 / 4, 3 / 4]}>
             <Text size={2} color="white" align="center">
-              Explora y aprende de temas como salud física y mental, vida social, como cuidar tu patrimonio, derechos humanos, entre otros.
+              {description}
             </Text>
           </Box>
-
+  
           <Flex
             flexDirection={['column', 'row', 'row']}
             justifyContent="space-evenly"
@@ -96,33 +101,31 @@ const CatalogoDeCursos = ({ data }) => {
                 Todos
               </CatLink>
             </Flex>
-            
-            {categorias.map(cat => {
-              return (
-                <Flex alignItems="center" width={[1]} key={cat}>
-                  <CatLink
-                    align="center"
-                    color="white"
-                    bold
-                    size={2}
-                    as={Link}
-                    activeClassName="active"
-                    to={`/educacion/catalogo/${cat}`}
-                  >
-                    {cat}
-                  </CatLink>
-                </Flex>
-              )
-            })}
+
+            {allCategorias.map(categ => (
+              <Flex alignItems="center" width={[1]} key={categ}>
+                <CatLink
+                  align="center"
+                  color="white"
+                  bold
+                  size={2}
+                  as={Link}
+                  activeClassName="active"
+                  to={`/educacion/catalogo/${categ}`}
+                >
+                  {categ}
+                </CatLink>
+              </Flex>
+            ))}
           </Flex>
         </BackgroundBox>
-
+  
         <Arrow alignSelf="center" width="0" />
-
+  
         <Flex flexDirection="column" mx={4} mt={4}>
           <Box alignSelf="flex-start">
             <Text bold size={2}>
-              Bienvenido
+              {title}
             </Text>
           </Box>
           <FlexGrid
@@ -148,10 +151,14 @@ const CatalogoDeCursos = ({ data }) => {
 export default CatalogoDeCursos;
 
 export const query = graphql`
-query getAllCategorias {
-  allStrapiCategoriaeducacions{
-    edges{
-      node{
+query getCategorias($titulo: String){
+  categoria: strapiCategoriaeducacions(title:{eq: $titulo}){
+    title
+    description
+  }
+  allCateg: allStrapiCategoriaeducacions {
+    edges {
+      node {
         title
       }
     }

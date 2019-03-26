@@ -2,8 +2,8 @@
   "connection": "default",
   "collectionName": "",
   "info": {
-    "name": "anuncioseducacion",
-    "description": "anuncios para seccion de educacion"
+    "name": "categoriaeducacion",
+    "description": "categorias de seccion de educacion"
   },
   "options": {
     "timestamps": true
@@ -17,9 +17,9 @@
       "default": "",
       "type": "text"
     },
-    "link": {
-      "default": "",
-      "type": "string"
+    "cursosinternos": {
+      "collection": "cursosinternos",
+      "via": "categoriaeducacion"
     }
   }
 }

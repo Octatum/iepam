@@ -1,14 +1,12 @@
 {
   "connection": "default",
-  "collectionName": "homepresentationslides",
+  "collectionName": "",
   "info": {
     "name": "homepresentationslides",
-    "description": "Slides para presentacion de pagina de inicio"
+    "description": "Presentacion de inicio"
   },
   "options": {
-    "increments": true,
-    "timestamps": true,
-    "comment": ""
+    "timestamps": true
   },
   "attributes": {
     "title": {

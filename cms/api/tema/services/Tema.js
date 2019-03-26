@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Modulo.js service
+ * Tema.js service
  *
  * @description: A set of functions similar to controller's actions to avoid code duplication.
  */
@@ -12,21 +12,21 @@ const _ = require('lodash');
 module.exports = {
 
   /**
-   * Promise to fetch all modulos.
+   * Promise to fetch all temas.
    *
    * @return {Promise}
    */
 
   fetchAll: (params) => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('modulo', params);
+    const filters = strapi.utils.models.convertParams('tema', params);
     // Select field to populate.
-    const populate = Modulo.associations
+    const populate = Tema.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    return Modulo
+    return Tema
       .find()
       .where(filters.where)
       .sort(filters.sort)
@@ -36,90 +36,90 @@ module.exports = {
   },
 
   /**
-   * Promise to fetch a/an modulo.
+   * Promise to fetch a/an tema.
    *
    * @return {Promise}
    */
 
   fetch: (params) => {
     // Select field to populate.
-    const populate = Modulo.associations
+    const populate = Tema.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    return Modulo
-      .findOne(_.pick(params, _.keys(Modulo.schema.paths)))
+    return Tema
+      .findOne(_.pick(params, _.keys(Tema.schema.paths)))
       .populate(populate);
   },
 
   /**
-   * Promise to count modulos.
+   * Promise to count temas.
    *
    * @return {Promise}
    */
 
   count: (params) => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('modulo', params);
+    const filters = strapi.utils.models.convertParams('tema', params);
 
-    return Modulo
+    return Tema
       .countDocuments()
       .where(filters.where);
   },
 
   /**
-   * Promise to add a/an modulo.
+   * Promise to add a/an tema.
    *
    * @return {Promise}
    */
 
   add: async (values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Modulo.associations.map(ast => ast.alias));
-    const data = _.omit(values, Modulo.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Tema.associations.map(ast => ast.alias));
+    const data = _.omit(values, Tema.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = await Modulo.create(data);
+    const entry = await Tema.create(data);
 
     // Create relational data and return the entry.
-    return Modulo.updateRelations({ _id: entry.id, values: relations });
+    return Tema.updateRelations({ _id: entry.id, values: relations });
   },
 
   /**
-   * Promise to edit a/an modulo.
+   * Promise to edit a/an tema.
    *
    * @return {Promise}
    */
 
   edit: async (params, values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Modulo.associations.map(a => a.alias));
-    const data = _.omit(values, Modulo.associations.map(a => a.alias));
+    const relations = _.pick(values, Tema.associations.map(a => a.alias));
+    const data = _.omit(values, Tema.associations.map(a => a.alias));
 
     // Update entry with no-relational data.
-    const entry = await Modulo.updateOne(params, data, { multi: true });
+    const entry = await Tema.updateOne(params, data, { multi: true });
 
     // Update relational data and return the entry.
-    return Modulo.updateRelations(Object.assign(params, { values: relations }));
+    return Tema.updateRelations(Object.assign(params, { values: relations }));
   },
 
   /**
-   * Promise to remove a/an modulo.
+   * Promise to remove a/an tema.
    *
    * @return {Promise}
    */
 
   remove: async params => {
     // Select field to populate.
-    const populate = Modulo.associations
+    const populate = Tema.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
     // Note: To get the full response of Mongo, use the `remove()` method
     // or add spent the parameter `{ passRawResult: true }` as second argument.
-    const data = await Modulo
+    const data = await Tema
       .findOneAndRemove(params, {})
       .populate(populate);
 
@@ -128,7 +128,7 @@ module.exports = {
     }
 
     await Promise.all(
-      Modulo.associations.map(async association => {
+      Tema.associations.map(async association => {
         if (!association.via || !data._id || association.dominant) {
           return true;
         }
@@ -149,22 +149,22 @@ module.exports = {
   },
 
   /**
-   * Promise to search a/an modulo.
+   * Promise to search a/an tema.
    *
    * @return {Promise}
    */
 
   search: async (params) => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('modulo', params);
+    const filters = strapi.utils.models.convertParams('tema', params);
     // Select field to populate.
-    const populate = Modulo.associations
+    const populate = Tema.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    const $or = Object.keys(Modulo.attributes).reduce((acc, curr) => {
-      switch (Modulo.attributes[curr].type) {
+    const $or = Object.keys(Tema.attributes).reduce((acc, curr) => {
+      switch (Tema.attributes[curr].type) {
         case 'integer':
         case 'float':
         case 'decimal':
@@ -188,7 +188,7 @@ module.exports = {
       }
     }, []);
 
-    return Modulo
+    return Tema
       .find({ $or })
       .sort(filters.sort)
       .skip(filters.start)

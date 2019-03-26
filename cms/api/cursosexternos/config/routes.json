@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/cursosexternos/:id",
+      "path": "/cursosexternos/:_id",
       "handler": "Cursosexternos.findOne",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/cursosexternos/:id",
+      "path": "/cursosexternos/:_id",
       "handler": "Cursosexternos.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/cursosexternos/:id",
+      "path": "/cursosexternos/:_id",
       "handler": "Cursosexternos.destroy",
       "config": {
         "policies": []

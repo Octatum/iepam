@@ -3,7 +3,7 @@
     {
       "method": "GET",
       "path": "/temas",
-      "handler": "Temas.find",
+      "handler": "Tema.find",
       "config": {
         "policies": []
       }
@@ -11,15 +11,15 @@
     {
       "method": "GET",
       "path": "/temas/count",
-      "handler": "Temas.count",
+      "handler": "Tema.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/temas/:id",
-      "handler": "Temas.findOne",
+      "path": "/temas/:_id",
+      "handler": "Tema.findOne",
       "config": {
         "policies": []
       }
@@ -27,23 +27,23 @@
     {
       "method": "POST",
       "path": "/temas",
-      "handler": "Temas.create",
+      "handler": "Tema.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/temas/:id",
-      "handler": "Temas.update",
+      "path": "/temas/:_id",
+      "handler": "Tema.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/temas/:id",
-      "handler": "Temas.destroy",
+      "path": "/temas/:_id",
+      "handler": "Tema.destroy",
       "config": {
         "policies": []
       }

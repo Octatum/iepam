@@ -25,7 +25,7 @@
   "_resolved": "https://registry.npmjs.org/strapi-admin/-/strapi-admin-3.0.0-alpha.25.2.tgz",
   "_shasum": "1d8837c95c2a364ce1b495522a70804cec2f6e80",
   "_spec": "strapi-admin@3.0.0-alpha.25.2",
-  "_where": "C:\\Program Files\\nodejs\\node_modules\\strapi\\node_modules\\strapi-generate-admin",
+  "_where": "C:\\Users\\nissi\\AppData\\Roaming\\npm\\node_modules\\strapi\\node_modules\\strapi-generate-admin",
   "author": {
     "name": "Strapi"
   },
@@ -83,15 +83,5 @@
     "start": "cross-env NODE_ENV=development PORT=4000 IS_ADMIN=true node ./node_modules/strapi-helper-plugin/lib/server",
     "test": "echo \"no tests yet\""
   },
-  "version": "3.0.0-alpha.25.2",
-  "warnings": [
-    {
-      "code": "ENOTSUP",
-      "required": {
-        "node": ">= 10.0.0",
-        "npm": ">= 6.0.0"
-      },
-      "pkgid": "strapi-admin@3.0.0-alpha.25.2"
-    }
-  ]
+  "version": "3.0.0-alpha.25.2"
 }

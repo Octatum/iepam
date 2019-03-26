@@ -3,12 +3,10 @@
   "collectionName": "cursosinternos",
   "info": {
     "name": "cursosinternos",
-    "description": "Cursos ofrecidos por IEPAM"
+    "description": "cursos internos de seccion de educacion"
   },
   "options": {
-    "increments": true,
-    "timestamps": true,
-    "comment": ""
+    "timestamps": true
   },
   "attributes": {
     "title": {
@@ -19,8 +17,9 @@
       "default": "",
       "type": "text"
     },
-    "categorias": {
-      "model": "categorias"
+    "categoriaeducacion": {
+      "model": "categoriaeducacion",
+      "via": "cursosinternos"
     },
     "image": {
       "model": "file",
@@ -31,6 +30,14 @@
     "modulos": {
       "collection": "modulo",
       "via": "cursosinternos"
+    },
+    "videolink": {
+      "default": "",
+      "type": "string"
+    },
+    "syllabus": {
+      "default": "",
+      "type": "text"
     }
   }
 }

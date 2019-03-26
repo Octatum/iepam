@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/cursosinternos/:id",
+      "path": "/cursosinternos/:_id",
       "handler": "Cursosinternos.findOne",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/cursosinternos/:id",
+      "path": "/cursosinternos/:_id",
       "handler": "Cursosinternos.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/cursosinternos/:id",
+      "path": "/cursosinternos/:_id",
       "handler": "Cursosinternos.destroy",
       "config": {
         "policies": []

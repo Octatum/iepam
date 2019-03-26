@@ -3,12 +3,10 @@
   "collectionName": "cursosexternos",
   "info": {
     "name": "cursosexternos",
-    "description": "Cursos de fuentees externas"
+    "description": ""
   },
   "options": {
-    "increments": true,
-    "timestamps": true,
-    "comment": ""
+    "timestamps": true
   },
   "attributes": {
     "title": {
@@ -19,13 +17,13 @@
       "default": "",
       "type": "string"
     },
-    "description": {
-      "default": "",
-      "type": "text"
-    },
     "enlacesexternos": {
       "model": "enlacesexternos",
       "via": "cursosexternos"
+    },
+    "description": {
+      "default": "",
+      "type": "text"
     }
   }
 }
