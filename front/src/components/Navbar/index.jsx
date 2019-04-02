@@ -12,6 +12,7 @@ import BackgroundBox from '../BackgroundBox';
 import Text from '../Text';
 import UserContext from '../UserContext';
 import { auth } from 'firebase';
+import { Link } from 'gatsby';
 
 const FullSizeButton = styled(Button)`
   width: 100%;
@@ -25,6 +26,8 @@ const Image = styled.img`
 
 const Navbar = props => {
   const [userData, setUserData] = useContext(UserContext);
+
+  console.log(userData);
 
   return (
     <Flex as="nav" flexDirection="column" py={4} className={props.className}>
@@ -85,14 +88,19 @@ const Navbar = props => {
                       bold
                       css={{ cursor: 'pointer' }}
                       kind="dark"
-                      onClick={() => auth().signOut()}
+                      onClick={() => setUserData(null)}
                     >
                       Logout
                     </FullSizeButton>
                   </Box>
                   <Box width={1 / 2}>
-                    <Text size={1.5} align="center">
+                    <Text size={1} align="center">
                       Bienvenido {userData.displayName}
+                    </Text>
+                    <Text size={1} align="center">
+                      <Link to="/perfil">
+                        Ver perfil
+                      </Link>
                     </Text>
                   </Box>
                 </React.Fragment>

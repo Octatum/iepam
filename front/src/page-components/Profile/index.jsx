@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Box, Flex } from '@rebass/grid';
+import { Link, navigateTo } from 'gatsby';
+import UserContext from '../../components/UserContext';
 import BackgroundBox from '../../components/BackgroundBox';
 import Text from '../../components/Text';
 import ProfileCard from './ProfileCard';
 import SavedCourses from './SavedCourses';
 import { savedCourses as courses } from './courses';
-import { Link } from 'gatsby';
+import { getUserOrRedirect } from '../../utils/hooks';
 
 const MyProfile = () => {
+  const [user, setUser] = useContext(UserContext);
+
+  useEffect(() => {
+    getUserOrRedirect(user, () => navigateTo('/'));
+  }, [user]);
+
   return (
     <Flex flexDirection="column">
       <Flex flexDirection={['column', 'row']} mt={[4]} mx={[4]}>

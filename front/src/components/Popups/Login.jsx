@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Box, Flex } from '@rebass/grid';
-import { withFormik } from 'formik';
+import { withFormik, Formik } from 'formik';
 import Text from '../Text';
 import BackgroundBox from '../BackgroundBox';
 import Button from '../Button';
@@ -10,6 +10,7 @@ import { LogingValidation as validation } from '../../utils/validation';
 import InputComponent from './InputComponent';
 import { Link } from 'gatsby';
 import { auth } from 'firebase';
+import UserContext from '../UserContext';
 
 const Centered = styled(Text)`
   margin: 1rem 0;
@@ -40,127 +41,149 @@ const Login = ({
   handleSubmit,
   isSubmitting,
   ...others
-}) => (
-  <Flex
-    flexDirection="column"
-    mb={4}
-    as="form"
-    name="LoginForm"
-    onSubmit={handleSubmit}
-    {...others}
-  >
-    <CloseButton alignSelf="flex-end" closeFunction={close} />
+}) => {
+  const [userData, setUserData] = useContext(UserContext);
 
-    <Flex flexDirection="column" alignItems="center" mx={[4]}>
-      <Centered as={Text} bold size={2} alignSelf="flex-start" pt={3}>
-        Inicia sesión en tu cuenta
-      </Centered>
-      <Box width={1} as={BackgroundBox} backgroundColor="dark" pt="3px" m={3} />
+  return (
+    <Formik
+      initialValues={{ email: '', password: '', captcha: false }}
+      validationSchema={validation}
+      onSubmit={async (values, { setSubmitting }) => {
+        console.log(values)
+        const { email, password } = values;
+        const body = JSON.stringify({
+          identifier: email,
+          password: password
+        });
+        setSubmitting(true);
+        const response = await fetch('http://localhost:1337/auth/local/', {
+          method: 'POST',
+          mode: "cors", // no-cors, cors, *same-origin
+          cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+          credentials: "same-origin", // include, *same-origin, omit
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body
+        })
 
-      <InputComponent
-        my={2}
-        placeholder="Correo Electrónico"
-        name="email"
-        type="email"
-        value={values.email}
-        handleBlur={handleBlur}
-        handleChange={handleChange}
-      />
-      {errors.email && touched.email && (
-        <ErrorComponent>{errors.email}</ErrorComponent>
-      )}
+        const jsonBody = await response.json();
+        if(jsonBody.error) {
+          console.log(jsonBody);
+        }
+        else {
+          setUserData(jsonBody);
+        }
+        setSubmitting(false);
+      }}
+    >
+      {({
+        values,
+        touched,
+        errors,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        isSubmitting
+      }) => (
+          <Flex
+            flexDirection="column"
+            mb={4}
+            as="form"
+            name="LoginForm"
+            onSubmit={handleSubmit}
+            {...others}
+          >
+            <CloseButton alignSelf="flex-end" closeFunction={close} />
 
-      <InputComponent
-        my={2}
-        placeholder="Contraseña"
-        name="password"
-        type="password"
-        value={values.password}
-        handleBlur={handleBlur}
-        handleChange={handleChange}
-      />
-      {errors.password && touched.password && (
-        <ErrorComponent>{errors.password}</ErrorComponent>
-      )}
+            <Flex flexDirection="column" alignItems="center" mx={[4]}>
+              <Centered as={Text} bold size={2} alignSelf="flex-start" pt={3}>
+                Inicia sesión en tu cuenta
+              </Centered>
+              <Box width={1} as={BackgroundBox} backgroundColor="dark" pt="3px" m={3} />
 
-      <Button
-        kind="dark"
-        type="submit"
-        disabled={isSubmitting}
-        size={1}
-        style={{ cursor: 'pointer' }}
-      >
-        Submit
-      </Button>
+              <InputComponent
+                my={2}
+                placeholder="Correo Electrónico"
+                name="email"
+                type="email"
+                value={values.email}
+                handleBlur={handleBlur}
+                handleChange={handleChange}
+              />
+              {errors.email && touched.email && (
+                <ErrorComponent>{errors.email}</ErrorComponent>
+              )}
 
-      {/* captcha */}
-      {/* <BackgroundBox
-        backgroundColor="black"
-        as={Captcha}
-        my={2}
-        width={1}
-        css={{ height: '75px' }}
-      /> */}
+              <InputComponent
+                my={2}
+                placeholder="Contraseña"
+                name="password"
+                type="password"
+                value={values.password}
+                handleBlur={handleBlur}
+                handleChange={handleChange}
+              />
+              {errors.password && touched.password && (
+                <ErrorComponent>{errors.password}</ErrorComponent>
+              )}
 
-      <Box
-        width={1}
-        as={BackgroundBox}
-        backgroundColor="dark"
-        pt="3px"
-        mt={3}
-      />
-      <Box>
-        <Centered
-          color="darkGray"
-          bold
-          size={0}
-          onClick={() => setActive('restorePass')}
-          style={{ cursor: 'pointer' }}
-        >
-          ¿Has olvidado tu Contraseña?
-        </Centered>
-        <Centered color="darkGray" size={0}>
-          Al registrarte, aceptas nuestras{' '}
-          <Link to="/educacion" style={{ textDecoration: 'underline' }}>
-            Condiciones de uso
-          </Link>{' '}
-          y{' '}
-          <Link to="/educacion" style={{ textDecoration: 'underline' }}>
-            Política de privacidad.
-          </Link>
-        </Centered>
-      </Box>
+              <Button
+                kind="dark"
+                type="submit"
+                disabled={isSubmitting}
+                size={1}
+                style={{ cursor: 'pointer' }}
+              >
+                Submit
+              </Button>
 
-      <Box mr={4}>
-        <Text size={0}>¿No tienes una cuenta?</Text>
-      </Box>
-      <Button
-        kind="light"
-        size={0}
-        onClick={() => setActive('register')}
-        css={{ cursor: 'pointer', borderTop: 'none' }}
-      >
-        Regístrate
-      </Button>
-    </Flex>
-  </Flex>
-);
+              <Box
+                width={1}
+                as={BackgroundBox}
+                backgroundColor="dark"
+                pt="3px"
+                mt={3}
+              />
+              <Box>
+                <Centered
+                  color="darkGray"
+                  bold
+                  size={0}
+                  onClick={() => setActive('restorePass')}
+                  style={{ cursor: 'pointer' }}
+                >
+                  ¿Has olvidado tu Contraseña?
+                </Centered>
+                <Centered color="darkGray" size={0}>
+                  Al registrarte, aceptas nuestras{' '}
+                  <Link to="/educacion" style={{ textDecoration: 'underline' }}>
+                    Condiciones de uso
+                  </Link>{' '}
+                  y{' '}
+                  <Link to="/educacion" style={{ textDecoration: 'underline' }}>
+                    Política de privacidad.
+                  </Link>
+                </Centered>
+              </Box>
 
-export default withFormik({
-  mapPropsToValues: () => ({ email: '', password: '', captcha: false }),
-  validationSchema: validation,
-  handleSubmit: async (values, { setSubmitting, props }) => {
-    const { email, password } = values;
-    setSubmitting(true);
-    try {
-      await auth().signInWithEmailAndPassword(email, password);
-      console.log('success');
-    } catch (error) {
-      console.log(error);
-      setSubmitting(false);
-    } finally {
-      setSubmitting(false);
-    }
-  },
-  displayName: 'LoginForm',
-})(Login);
+              <Box>
+                <Text size={0}>¿No tienes una cuenta?</Text>
+              </Box>
+              <Button
+                kind="light"
+                size={0}
+                onClick={() => setActive('register')}
+                css={{ cursor: 'pointer', borderTop: 'none' }}
+              >
+                Regístrate
+              </Button>
+            </Flex>
+          </Flex>
+        )}
+    </Formik >
+
+  );
+}
+
+export default Login;

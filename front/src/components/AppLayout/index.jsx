@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocalStorage } from 'react-use';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { ThemeProvider } from 'styled-components';
@@ -12,7 +13,6 @@ import MobileNavbar from '../NavbarMovil';
 import { Box } from '@rebass/grid';
 import UserContext from '../UserContext';
 import { device } from '../../utils/device';
-import { auth } from 'firebase';
 
 const MobileNavbarComp = styled(MobileNavbar)`
   ${device.tablet} {
@@ -27,17 +27,10 @@ const NavbarComp = styled(Navbar)`
 `;
 
 const AppLayout = ({ children }) => {
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useLocalStorage('userData');
 
-  if (auth) {
-    auth().onAuthStateChanged(user => {
-      if (user) {
-        setUserData(user);
-      } else {
-        setUserData(null);
-      }
-    });
-  }
+  console.log(userData)
+  
   return (
     <UserContext.Provider value={[userData, setUserData]}>
       <ThemeProvider theme={theme}>

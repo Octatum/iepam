@@ -15,11 +15,16 @@ const PlayArrow = styled(Box)`
   margin: auto;
 `;
 
-const Visualizador = ({ courseName }) => {
+const Visualizador = ({ courseName, data }) => {
   const [selectedTab, setSelectedTab] = useState(0);
+
+  //data => datos de curso cms
 
   return (
     <Box>
+      {/*
+        data.strapiTemas.document ? <markdown /> : <iframe />
+      */}
       <BackgroundBox
         backgroundColor="darkestGray"
         css={{ height: '80vh' }}

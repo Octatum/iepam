@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/myFunction",
+      "handler": "Customfunctions.getAnswer",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
