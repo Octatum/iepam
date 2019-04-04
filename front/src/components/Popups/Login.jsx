@@ -1,15 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { Link } from 'gatsby';
+import { Formik } from 'formik';
 import styled from 'styled-components';
 import { Box, Flex } from '@rebass/grid';
-import { withFormik, Formik } from 'formik';
 import Text from '../Text';
 import BackgroundBox from '../BackgroundBox';
 import Button from '../Button';
 import CloseButton from './CloseButton';
 import { LogingValidation as validation } from '../../utils/validation';
 import InputComponent from './InputComponent';
-import { Link } from 'gatsby';
-import { auth } from 'firebase';
 import UserContext from '../UserContext';
 
 const Centered = styled(Text)`
@@ -42,6 +41,7 @@ const Login = ({
   isSubmitting,
   ...others
 }) => {
+  const [isError, setError] = useState(false);
   const [userData, setUserData] = useContext(UserContext);
 
   return (
@@ -49,7 +49,6 @@ const Login = ({
       initialValues={{ email: '', password: '', captcha: false }}
       validationSchema={validation}
       onSubmit={async (values, { setSubmitting }) => {
-        console.log(values)
         const { email, password } = values;
         const body = JSON.stringify({
           identifier: email,
@@ -68,8 +67,11 @@ const Login = ({
         })
 
         const jsonBody = await response.json();
+
         if(jsonBody.error) {
-          console.log(jsonBody);
+          if (jsonBody.statusCode === 400) {
+            setError(true);
+          }
         }
         else {
           setUserData(jsonBody);
@@ -127,6 +129,8 @@ const Login = ({
               {errors.password && touched.password && (
                 <ErrorComponent>{errors.password}</ErrorComponent>
               )}
+
+              {isError && <ErrorComponent>Contraseña o correo incorrecto</ErrorComponent>}
 
               <Button
                 kind="dark"

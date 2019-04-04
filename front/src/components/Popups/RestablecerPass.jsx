@@ -49,10 +49,10 @@ const RestorePassword = ({
       <InputComponent
         handleBlur={handleBlur}
         handleChange={handleChange}
-        name="nameOrMail"
-        placeholder="Nombre de usuario o correo"
-        type="text"
-        value={values.nameOrMail}
+        name="email"
+        placeholder="Correo electrónico"
+        type="email"
+        value={values.email}
       />
 
       <Box my={4} width={1}>
@@ -92,7 +92,7 @@ const RestorePassword = ({
 );
 
 export default withFormik({
-  mapPropsToValues: () => ({ nameOrMail: '' }),
+  mapPropsToValues: () => ({ email: '' }),
   validationSchema: validation,
   handleSubmit: (values, { setSubmitting }) => {
     console.log(JSON.stringify(values, null, 2));

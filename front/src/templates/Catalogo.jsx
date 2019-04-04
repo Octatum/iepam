@@ -59,7 +59,6 @@ function createRouteFromString(string) {
 }
 
 const CatalogoDeCursos = (props) => {
-  console.log(props);
   
   const { title, description } = props.data.categoria;
   const allCategorias = props.data.allCateg.edges.map(edge => {

@@ -7,7 +7,7 @@ import Text from '../../components/Text';
 import ProfileCard from './ProfileCard';
 import SavedCourses from './SavedCourses';
 import { savedCourses as courses } from './courses';
-import { getUserOrRedirect } from '../../utils/hooks';
+import { getUserOrRedirect, getUserData } from '../../utils/hooks';
 
 const MyProfile = () => {
   const [user, setUser] = useContext(UserContext);
@@ -15,6 +15,10 @@ const MyProfile = () => {
   useEffect(() => {
     getUserOrRedirect(user, () => navigateTo('/'));
   }, [user]);
+
+  useEffect(() => {
+    getUserData(user);
+  });
 
   return (
     <Flex flexDirection="column">

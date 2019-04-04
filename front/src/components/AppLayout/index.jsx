@@ -28,8 +28,6 @@ const NavbarComp = styled(Navbar)`
 
 const AppLayout = ({ children }) => {
   const [userData, setUserData] = useLocalStorage('userData');
-
-  console.log(userData)
   
   return (
     <UserContext.Provider value={[userData, setUserData]}>

@@ -58,8 +58,7 @@ function createRouteFromString(string) {
 const CatalogoDeCursos = ({ data }) => {
   const categorias = data.allStrapiCategoriaeducacions.edges.map(edge => {
     return edge.node.title;
-  })
-  console.log(categorias);
+  });
 
   return (
     <AppLayout>

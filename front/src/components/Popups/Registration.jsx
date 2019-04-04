@@ -1,6 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Box, Flex } from '@rebass/grid';
 import { Formik } from 'formik';
+import { createHash } from 'crypto';
+import moment from "moment";
 
 import Text from '../Text';
 import BackgroundBox from '../BackgroundBox';
@@ -33,6 +35,9 @@ const Registration = ({
   setActive,
   ...others
 }) => {
+  moment.locale('es')
+  console.log(moment.locales())
+  const [isError, setError] = useState(null);
   const [userData, setUserData] = useContext(UserContext);
   return (
     <Formik
@@ -47,9 +52,11 @@ const Registration = ({
       }}
       validationSchema={validation}
       onSubmit={async (values, { setSubmitting }) => {
-        const { email, password, name } = values;
+        const hash = createHash('md5');
+        
+        const { email, password, name, genero, nacimiento } = values;
         const body = JSON.stringify({
-          username: name,
+          username: hash.update(name + email).digest('hex'),
           email: email,
           password: password
         });
@@ -63,11 +70,48 @@ const Registration = ({
             "Content-Type": "application/json",
           },
           body
-        })
+        });
+
+        
+      
 
         const jsonBody = await response.json();
 
-        setUserData(jsonBody);
+        if(jsonBody.error) {
+          if (jsonBody.statusCode === 400) {
+            setError(jsonBody.message);
+          }
+        }
+        else {
+          //formato de db mongo
+          // moment(`${nacimiento.ano}-${nacimiento.mes}-${nacimiento.dia}`, 'YYYY MMMM DD', 'es').format();
+          // upload name, genero, nacimiento  || userData
+          const userData = JSON.stringify({
+            'nombre completo': name,
+            genero,
+            'fecha de nacimiento': moment(`${nacimiento.ano}-${nacimiento.mes}-${nacimiento.dia}`, 'YYYY MMMM DD', 'es').format(),
+            user: jsonBody.user.id
+          });
+
+          const creaDatos = await fetch('http://localhost:1337/userdata', {
+            method: "POST",
+            mode: "cors", // no-cors, cors, *same-origin
+            cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: "same-origin", // include, *same-origin, omit
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${jsonBody.jwt}`
+            },
+            body: userData
+          });
+
+          console.log(creaDatos);
+
+          setUserData(jsonBody);
+        }
+        setSubmitting(false);
+
+        console.log(jsonBody);
       }}
     >
       {({
@@ -114,11 +158,15 @@ const Registration = ({
               placeholder="Correo Electrónico"
               value={values.email}
               handleBlur={handleBlur}
-              handleChange={handleChange}
+              handleChange={(event) => {
+                setError(null);
+                handleChange(event);
+              }}
             />
             {errors.email && touched.email && (
               <ErrorComponent>{errors.email}</ErrorComponent>
             )}
+            {isError && <ErrorComponent>Este correo ya está en uso</ErrorComponent>}
             <InputComponent
               my={2}
               name="password"
@@ -239,6 +287,7 @@ const Registration = ({
               size={1}
               type="submit"
               css={{ cursor: 'pointer', borderTop: 'none' }}
+              disabled={isSubmitting}
             >
               Registrarse
             </Button>

@@ -27,8 +27,6 @@ const Image = styled.img`
 const Navbar = props => {
   const [userData, setUserData] = useContext(UserContext);
 
-  console.log(userData);
-
   return (
     <Flex as="nav" flexDirection="column" py={4} className={props.className}>
       <Box>

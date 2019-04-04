@@ -1,7 +1,9 @@
 import { string, object, boolean } from 'yup';
 
 export const RegistrationValidation = object().shape({
-  password: string().required('Por favor ingrese su contraseña'),
+  password: string()
+  .min(6, ({ min }) => `La contraseña debe ser de al menos ${min} caracteres`)
+  .required('Por favor ingrese su contraseña'),
   email: string().required('Por favor ingrese su correo electrónico'),
   name: string().required('Por favor escriba su nombre'),
   termsConditions: boolean().oneOf(
@@ -25,7 +27,9 @@ export const RegistrationValidation = object().shape({
 });
 
 export const LogingValidation = object().shape({
-  password: string().required('Por favor ingrese su contraseña'),
+  password: string()
+  .min(6, ({ min }) => `La contraseña debe ser de al menos ${min} caracteres`)
+  .required('Por favor ingrese su contraseña'),
   email: string().required('Por favor ingrese su correo electrónico'),
 });
 
@@ -36,7 +40,7 @@ export const SuggestionBoxValidation = object().shape({
 });
 
 export const RestorePassValidation = object().shape({
-  nameOrMail: string().required(
-    'Por favor ingrese su correo electrónico o su nombre de usuario'
+  email: string().required(
+    'Por favor ingrese su correo electrónico'
   ),
 });
