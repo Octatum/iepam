@@ -4,7 +4,7 @@ export const RegistrationValidation = object().shape({
   password: string()
   .min(6, ({ min }) => `La contraseña debe ser de al menos ${min} caracteres`)
   .required('Por favor ingrese su contraseña'),
-  email: string().required('Por favor ingrese su correo electrónico'),
+  email: string().email('el correo es incorrecto').required('Por favor ingrese su correo electrónico'),
   name: string().required('Por favor escriba su nombre'),
   termsConditions: boolean().oneOf(
     [true],
@@ -13,7 +13,7 @@ export const RegistrationValidation = object().shape({
   genero: string().oneOf(
     ['hombre', 'mujer', 'otro'],
     'Por favor seleccione su genero'
-  ),
+  ).required('por favor indique su género'),
   nacimiento: object()
     .shape({
       dia: string().required('Por favor indique su día de nacimiento'),
@@ -24,6 +24,8 @@ export const RegistrationValidation = object().shape({
       ano: string().required('Por favor ingrese su año de nacimiento'),
     })
     .required('Por favor ingrese su fecha de nacimiento completa'),
+  estado: string().required('por favor indique el estado donde reside'),
+  ciudad: string().required('por favor indique la ciudad donde reside')
 });
 
 export const LogingValidation = object().shape({

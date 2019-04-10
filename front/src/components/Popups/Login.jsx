@@ -8,7 +8,7 @@ import BackgroundBox from '../BackgroundBox';
 import Button from '../Button';
 import CloseButton from './CloseButton';
 import { LogingValidation as validation } from '../../utils/validation';
-import InputComponent from './InputComponent';
+import InputComponent, { Bordered } from './InputComponent';
 import UserContext from '../UserContext';
 
 const Centered = styled(Text)`
@@ -32,13 +32,6 @@ const ErrorComponent = ({ children }) => (
 const Login = ({
   close,
   setActive,
-  values,
-  touched,
-  errors,
-  handleChange,
-  handleBlur,
-  handleSubmit,
-  isSubmitting,
   ...others
 }) => {
   const [isError, setError] = useState(false);
@@ -104,28 +97,24 @@ const Login = ({
               </Centered>
               <Box width={1} as={BackgroundBox} backgroundColor="dark" pt="3px" m={3} />
 
-              <InputComponent
-                my={2}
-                placeholder="Correo Electrónico"
-                name="email"
-                type="email"
-                value={values.email}
-                handleBlur={handleBlur}
-                handleChange={handleChange}
-              />
+              <Bordered my={2} width={1}>
+                <InputComponent                  
+                  placeholder="Correo Electrónico"
+                  name="email"
+                  type="email"
+                />
+              </Bordered>
               {errors.email && touched.email && (
                 <ErrorComponent>{errors.email}</ErrorComponent>
               )}
 
-              <InputComponent
-                my={2}
-                placeholder="Contraseña"
-                name="password"
-                type="password"
-                value={values.password}
-                handleBlur={handleBlur}
-                handleChange={handleChange}
-              />
+              <Bordered my={2} width={1}>
+                <InputComponent
+                  placeholder="Contraseña"
+                  name="password"
+                  type="password"
+                />
+              </Bordered>
               {errors.password && touched.password && (
                 <ErrorComponent>{errors.password}</ErrorComponent>
               )}

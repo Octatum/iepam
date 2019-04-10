@@ -1,6 +1,6 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { Box, Flex } from '@rebass/grid';
-import { Link, navigateTo } from 'gatsby';
+import { Link, navigateTo, navigate } from 'gatsby';
 import UserContext from '../../components/UserContext';
 import BackgroundBox from '../../components/BackgroundBox';
 import Text from '../../components/Text';
@@ -8,18 +8,38 @@ import ProfileCard from './ProfileCard';
 import SavedCourses from './SavedCourses';
 import { savedCourses as courses } from './courses';
 import { getUserOrRedirect, getUserData } from '../../utils/hooks';
+import LoadingIcon from '../../components/Loading';
 
 const MyProfile = () => {
   const [user, setUser] = useContext(UserContext);
+  const [userData, setUserData] = useState(undefined);
 
   useEffect(() => {
-    getUserOrRedirect(user, () => navigateTo('/'));
+      console.log(user)
+      getUserOrRedirect(user, () => {
+        navigate('/');
+        alert('Por favor inicie sesion');
+      });
+    
   }, [user]);
 
   useEffect(() => {
-    getUserData(user);
-  });
+    getUserData(user).then(token => {
+      setUserData(token)
+    });
+  }, []);
 
+  if(!userData) {
+    return (
+      <Flex alignItems='center'>
+        <Text size={4}>Cargando información</Text>
+        <Box ml={4}>
+          <LoadingIcon />
+        </Box>
+      </Flex>
+    )
+  }
+  
   return (
     <Flex flexDirection="column">
       <Flex flexDirection={['column', 'row']} mt={[4]} mx={[4]}>
@@ -43,7 +63,7 @@ const MyProfile = () => {
                 mb={4}
               />
               <Text size={3} align="center" color="white" bold>
-                Alejandro Walter Velarde Ruiz
+                {userData && userData['nombre completo']}
               </Text>
             </Box>
           </BackgroundBox>

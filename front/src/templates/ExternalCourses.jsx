@@ -62,7 +62,7 @@ const EnlaceExternoTemplate = ({
             </Flex>
           </BackgroundBox>
         </Flex>
-        <Flex px={4}>
+        {/* <Flex px={4}>
           <BackgroundBox
             backgroundColor="darkestGray"
             mr={3}
@@ -70,7 +70,7 @@ const EnlaceExternoTemplate = ({
             width={1 / 3}
           />
           <BackgroundBox backgroundColor="darkestGray" width={1 / 18} />
-        </Flex>
+        </Flex> */}
         <Box px={4} py={5} pb={6}>
           <Box pl={3} pb={3}>
             <Text size={2} bold>

@@ -2,7 +2,10 @@ import React, { useContext, useState } from 'react';
 import { Box, Flex } from '@rebass/grid';
 import { Formik } from 'formik';
 import { createHash } from 'crypto';
+import _ from 'lodash';
+
 import moment from "moment";
+import 'moment/locale/es';
 
 import Text from '../Text';
 import BackgroundBox from '../BackgroundBox';
@@ -16,6 +19,7 @@ import InputComponent, {
   JustInput,
 } from './InputComponent';
 import UserContext from '../UserContext';
+import cityState from '../../utils/cityStates.json';
 
 const ErrorComponent = ({ children }) => (
   <BackgroundBox
@@ -36,7 +40,9 @@ const Registration = ({
   ...others
 }) => {
   moment.locale('es')
+  const spanishLocale = moment.locale('es')
   console.log(moment.locales())
+  console.log(spanishLocale)
   const [isError, setError] = useState(null);
   const [userData, setUserData] = useContext(UserContext);
   return (
@@ -49,12 +55,14 @@ const Registration = ({
         termsConditions: false,
         genero: '',
         nacimiento: { dia: '', mes: '', ano: '' },
+        ciudad: '',
+        estado: '',
       }}
       validationSchema={validation}
       onSubmit={async (values, { setSubmitting }) => {
         const hash = createHash('md5');
         
-        const { email, password, name, genero, nacimiento } = values;
+        const { email, password, name, genero, nacimiento, estado, ciudad } = values;
         const body = JSON.stringify({
           username: hash.update(name + email).digest('hex'),
           email: email,
@@ -83,14 +91,17 @@ const Registration = ({
           }
         }
         else {
+          
           //formato de db mongo
           // moment(`${nacimiento.ano}-${nacimiento.mes}-${nacimiento.dia}`, 'YYYY MMMM DD', 'es').format();
           // upload name, genero, nacimiento  || userData
           const userData = JSON.stringify({
             'nombre completo': name,
             genero,
-            'fecha de nacimiento': moment(`${nacimiento.ano}-${nacimiento.mes}-${nacimiento.dia}`, 'YYYY MMMM DD', 'es').format(),
-            user: jsonBody.user.id
+            'fecha de nacimiento': moment(`${nacimiento.mes}-${nacimiento.dia}-${nacimiento.ano}`, 'MMMM DD YYYY', 'es').format('YYYY-MM-DD'),
+            user: jsonBody.user.id,
+            ciudad,
+            estado
           });
 
           const creaDatos = await fetch('http://localhost:1337/userdata', {
@@ -121,7 +132,8 @@ const Registration = ({
         handleChange,
         handleBlur,
         handleSubmit,
-        isSubmitting
+        isSubmitting,
+        setValues
       }) => (
         <Flex
           flexDirection="column"
@@ -139,43 +151,39 @@ const Registration = ({
             </Box>
             <Box width={1} as={BackgroundBox} backgroundColor="dark" pt="3px" m={3} />
 
-            <InputComponent
-              my={2}
-              name="name"
-              type="text"
-              placeholder="Nombre de Usuario"
-              value={values.name}
-              handleBlur={handleBlur}
-              handleChange={handleChange}
-            />
+            <Bordered my={2} width={1}>
+              <InputComponent
+                name="name"
+                type="text"
+                placeholder="Nombre Completo"
+              />
+            </Bordered>
             {errors.name && touched.name && (
               <ErrorComponent>{errors.name}</ErrorComponent>
             )}
-            <InputComponent
-              my={2}
-              name="email"
-              type="email"
-              placeholder="Correo Electrónico"
-              value={values.email}
-              handleBlur={handleBlur}
-              handleChange={(event) => {
-                setError(null);
-                handleChange(event);
-              }}
-            />
+            <Bordered my={2} width={1}>
+              <InputComponent
+                name="email"
+                type="email"
+                placeholder="Correo Electrónico"
+                handleChange={(event) => {
+                  setError(null);
+                  handleChange(event);
+                }}
+              />
+            </Bordered>
             {errors.email && touched.email && (
               <ErrorComponent>{errors.email}</ErrorComponent>
             )}
             {isError && <ErrorComponent>Este correo ya está en uso</ErrorComponent>}
-            <InputComponent
-              my={2}
-              name="password"
-              type="password"
-              placeholder="Contraseña"
-              value={values.password}
-              handleBlur={handleBlur}
-              handleChange={handleChange}
-            />
+            
+            <Bordered my={2} width={1}>
+              <InputComponent
+                name="password"
+                type="password"
+                placeholder="Contraseña"
+              />
+            </Bordered>
             {errors.password && touched.password && (
               <ErrorComponent>{errors.password}</ErrorComponent>
             )}
@@ -185,9 +193,6 @@ const Registration = ({
                 options={['---', 'hombre', 'mujer', 'otro']}
                 name="genero"
                 title="Género"
-                value={values.genero}
-                handleBlur={handleBlur}
-                handleChange={handleChange}
                 width={1}
               />
             </Bordered>
@@ -203,9 +208,6 @@ const Registration = ({
                 <SelectionComponent
                   options={['Día', ...Array.from(new Array(31), (x, i) => i + 1)]}
                   name="nacimiento.dia"
-                  value={values.nacimiento.dia}
-                  handleBlur={handleBlur}
-                  handleChange={handleChange}
                   width={[1, 1 / 3]}
                 />
                 <SelectionComponent
@@ -225,9 +227,6 @@ const Registration = ({
                     'Diciembre',
                   ]}
                   name="nacimiento.mes"
-                  value={values.nacimiento.mes}
-                  handleBlur={handleBlur}
-                  handleChange={handleChange}
                   width={[1, 1 / 3]}
                 />
 
@@ -235,9 +234,6 @@ const Registration = ({
                   placeholder="Año"
                   type="number"
                   name="nacimiento.ano"
-                  value={values.nacimiento.ano}
-                  handleBlur={handleBlur}
-                  handleChange={handleChange}
                   min={new Date().getFullYear() - 130}
                   max={new Date().getFullYear()}
                   width={[1, 1 / 3]}
@@ -262,6 +258,29 @@ const Registration = ({
               touched.nacimiento.ano && (
                 <ErrorComponent>{errors.nacimiento.ano}</ErrorComponent>
               )}
+
+            <Bordered width={1} my={2} flexDirection={['column', 'row']}>
+              <Box width={[1, 1 / 3]} as={Text} alignSelf="flex-start" size={1}>
+                Ciudad de Residencia
+              </Box>
+
+              <SelectionComponent
+                options={_.keys(cityState)}
+                name="estado"
+                handleChange={event => {
+                  handleChange(event);
+                  setValues({...values, 'ciudad': ''});
+                }}
+                width={[1, 1 / 3]}
+              />
+
+              <SelectionComponent
+                options={values.estado ? cityState[values.estado] : []}
+                name="ciudad"
+                width={[1, 1 / 3]}
+              />
+            </Bordered>
+
             <Box width={1}>
               <Text color="darkGray" size={0}>
                 * todos los campos son obligatorios
@@ -270,11 +289,7 @@ const Registration = ({
 
             <Flex flexDirection="column" mt={[2, 4]}>
               <CheckboxComponent
-                my={2}
                 name="termsConditions"
-                value={values.termsConditions}
-                handleBlur={handleBlur}
-                handleChange={handleChange}
                 size={0}
               >
                 Al registrarte, aceptas nuestras Condiciones de uso y Política de

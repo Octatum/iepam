@@ -4,6 +4,7 @@ const _ = require('lodash');
 
 module.exports = {
   getAnswer: async (ctx) => {
-    return ctx.response(200);
+    console.log(ctx);
+    return ctx.send(200);
   }
 }

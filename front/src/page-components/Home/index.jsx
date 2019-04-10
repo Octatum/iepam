@@ -68,7 +68,7 @@ const HomePage = () => {
         <Slider {...sliderSettings}>
           {imageData.map(imageInfo => {
             return (
-              <Box mb={4}>
+              <Box mb={4} key={imageInfo.title}>
                 <BackgroundBox
                   as={Flex}
                   image={imageInfo.image}
@@ -84,7 +84,7 @@ const HomePage = () => {
                     p={4}
                   >
                     <Box mb={3}>
-                      <Text color="white" size={1.5} bold>
+                      <Text color="white" size={1.5}>
                         {imageInfo.title}
                       </Text>
                     </Box>

@@ -5,7 +5,8 @@
   "author": "Octatum <contacto@octatum.com>",
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
-    "core-js": "^2.6.5"
+    "core-js": "^2.6.5",
+    "lodash": "^4.17.11"
   },
   "keywords": [
     "lerna"
