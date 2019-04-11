@@ -20,19 +20,8 @@ import InputComponent, {
 } from './InputComponent';
 import UserContext from '../UserContext';
 import cityState from '../../utils/cityStates.json';
+import ErrorComponent from './ErrorComponent';
 
-const ErrorComponent = ({ children }) => (
-  <BackgroundBox
-    width="100%"
-    backgroundColor="errorRed"
-    as={Box}
-    p={2}
-    mb={2}
-    css={{ borderRadius: '10px' }}
-  >
-    <Text color="red">{children}</Text>
-  </BackgroundBox>
-);
 
 const Registration = ({
   close,
@@ -54,7 +43,7 @@ const Registration = ({
         captcha: false,
         termsConditions: false,
         genero: '',
-        nacimiento: { dia: '', mes: '', ano: '' },
+        nacimiento: { dia: '', mes: '', ano: 1960 },
         ciudad: '',
         estado: '',
       }}
@@ -80,13 +69,11 @@ const Registration = ({
           body
         });
 
-        
-      
-
         const jsonBody = await response.json();
 
         if(jsonBody.error) {
           if (jsonBody.statusCode === 400) {
+            console.log(jsonBody.error)
             setError(jsonBody.message);
           }
         }

@@ -28,8 +28,7 @@ const CheckboxDesign = styled.span`
 
   margin-right: 1em;
 
-  background-color: ${({ theme }) =>
-    theme.color.black};
+  border: 1px solid black;
   color: transparent;
 `;
 const CheckboxInput = styled(Field)`
@@ -39,8 +38,7 @@ const CheckboxInput = styled(Field)`
   opacity: 0;
 
   &:checked ~ ${CheckboxDesign} {
-    color: ${({ theme }) => theme.color.white};
-    background-color: ${({ theme }) => theme.color.darkestGray};
+    color: ${({ theme }) => theme.color.black};
   }
 `;
 

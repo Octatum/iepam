@@ -38,7 +38,7 @@ const InicioEducacion = () => {
   `)
 
   const externalSourceData = cursos.allStrapiEnlacesexternos.edges.map(edge => {
-    return {title: edge.node.title, image: edge.node.image.childImageSharp.original.src, link: `educacion/cursos-externos/${edge.node.title}`}
+    return {title: edge.node.title, image: edge.node.image.childImageSharp.original.src, link: `/educacion/cursos-externos/${edge.node.title}`}
   })
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useLocalStorage } from 'react-use';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';

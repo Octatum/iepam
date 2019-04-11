@@ -1,4 +1,4 @@
-import { string, object, boolean } from 'yup';
+import { string, number, object, boolean, ref } from 'yup';
 
 export const RegistrationValidation = object().shape({
   password: string()
@@ -21,7 +21,7 @@ export const RegistrationValidation = object().shape({
         ['Mes', 'mes', ''],
         'Por favor ingrese su mes de nacimiento'
       ),
-      ano: string().required('Por favor ingrese su año de nacimiento'),
+      ano: number().required('Por favor ingrese su año de nacimiento'),
     })
     .required('Por favor ingrese su fecha de nacimiento completa'),
   estado: string().required('por favor indique el estado donde reside'),
@@ -46,3 +46,10 @@ export const RestorePassValidation = object().shape({
     'Por favor ingrese su correo electrónico'
   ),
 });
+
+export const ResetPassValidation = object().shape({
+  password: string()
+  .min(6, ({ min }) => `La contraseña debe ser de al menos ${min} caracteres`)
+  .required('Por favor ingrese su contraseña'),
+  passwordConfirmation: string().oneOf([ref('password'), null], 'las contraseñas no son iguales')
+})

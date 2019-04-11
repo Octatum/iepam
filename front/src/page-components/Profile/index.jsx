@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Box, Flex } from '@rebass/grid';
-import { Link, navigateTo, navigate } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 import UserContext from '../../components/UserContext';
 import BackgroundBox from '../../components/BackgroundBox';
 import Text from '../../components/Text';

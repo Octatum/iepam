@@ -3,9 +3,9 @@ import Popup from 'reactjs-popup';
 import styled from 'styled-components';
 import Registration from './Registration';
 import Login from './Login';
-import RestablecerPass from './RestablecerPass';
 import SuggestionBox from './SuggestionBox';
 import { device } from './../../utils/device';
+import ForgotPassword from './ForgotPassword';
 
 const AllHeight = styled.div`
   .popup-content {
@@ -37,10 +37,10 @@ const PopupElement = ({ triggerElement, current }) => {
           } else if (currentActive === 'login') {
             return <Login close={close} setActive={setActive} />;
           } else if (currentActive === 'restorePass') {
-            return <RestablecerPass close={close} setActive={setActive} />;
+            return <ForgotPassword close={close} setActive={setActive} />;
           } else if (currentActive === 'suggestion') {
             return <SuggestionBox close={close} />;
-          }
+          } 
         }}
       </Popup>
     </AllHeight>

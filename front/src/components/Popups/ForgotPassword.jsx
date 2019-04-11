@@ -7,7 +7,7 @@ import Text from '../Text';
 import BackgroundBox from '../BackgroundBox';
 import Button from '../Button';
 import CloseButton from './CloseButton';
-import { LogingValidation as validation } from '../../utils/validation';
+import { RestorePassValidation as validation } from '../../utils/validation';
 import InputComponent, { Bordered } from './InputComponent';
 import UserContext from '../UserContext';
 import ErrorComponent from './ErrorComponent';
@@ -17,26 +17,27 @@ const Centered = styled(Text)`
   text-align: center;
 `;
 
-const Login = ({
+const ForgotPassword = ({
   close,
   setActive,
   ...others
 }) => {
-  const [isError, setError] = useState(false);
   const [userData, setUserData] = useContext(UserContext);
 
   return (
     <Formik
-      initialValues={{ email: '', password: '', captcha: false }}
+      initialValues={{ email: '' }}
       validationSchema={validation}
       onSubmit={async (values, { setSubmitting }) => {
-        const { email, password } = values;
+        /* 
+        setSubmitting(true);
+        const { email } = values;
         const body = JSON.stringify({
-          identifier: email,
-          password: password
+          email,
+          url: 'http:/localhost:1337/user/profile/reset-password'
         });
         setSubmitting(true);
-        const response = await fetch('http://localhost:1337/auth/local/', {
+        const response = await fetch('http://localhost:1337/auth/forgot-password', {
           method: 'POST',
           mode: "cors", // no-cors, cors, *same-origin
           cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -51,21 +52,19 @@ const Login = ({
 
         if(jsonBody.error) {
           if (jsonBody.statusCode === 400) {
-            setError(true);
+            console.log(jsonBody.error)
           }
         }
         else {
-          setUserData(jsonBody);
-        }
+          // success
+        } 
         setSubmitting(false);
+        */
       }}
     >
       {({
-        values,
         touched,
         errors,
-        handleChange,
-        handleBlur,
         handleSubmit,
         isSubmitting
       }) => (
@@ -73,7 +72,7 @@ const Login = ({
             flexDirection="column"
             mb={4}
             as="form"
-            name="LoginForm"
+            name="ForgotPassword"
             onSubmit={handleSubmit}
             {...others}
           >
@@ -81,10 +80,17 @@ const Login = ({
 
             <Flex flexDirection="column" alignItems="center" mx={[4]}>
               <Centered as={Text} bold size={2} alignSelf="flex-start" pt={3}>
-                Inicia sesión en tu cuenta
+                Contraseña olvidada
               </Centered>
               <Box width={1} as={BackgroundBox} backgroundColor="dark" pt="3px" m={3} />
               
+              <Box my={3} alignSelf='flex-start'>
+                <Text size={1}>
+                  Al ingresar su correo electrónico le llegará un correo con un vínculo donde podrá
+                  reestablecer su contraseña.
+                </Text>
+              </Box>
+
               <Bordered my={2} width={1}>
                 <InputComponent                  
                   placeholder="Correo Electrónico"
@@ -95,19 +101,6 @@ const Login = ({
               {errors.email && touched.email && (
                 <ErrorComponent>{errors.email}</ErrorComponent>
               )}
-
-              <Bordered my={2} width={1}>
-                <InputComponent
-                  placeholder="Contraseña"
-                  name="password"
-                  type="password"
-                />
-              </Bordered>
-              {errors.password && touched.password && (
-                <ErrorComponent>{errors.password}</ErrorComponent>
-              )}
-
-              {isError && <ErrorComponent>Contraseña o correo incorrecto</ErrorComponent>}
 
               <Button
                 kind="dark"
@@ -126,39 +119,7 @@ const Login = ({
                 pt="3px"
                 mt={3}
               />
-              <Box>
-                <Centered
-                  color="darkGray"
-                  bold
-                  size={0}
-                  onClick={() => setActive('restorePass')}
-                  style={{ cursor: 'pointer' }}
-                >
-                  ¿Has olvidado tu Contraseña?
-                </Centered>
-                <Centered color="darkGray" size={0}>
-                  Al registrarte, aceptas nuestras{' '}
-                  <Link to="/educacion" style={{ textDecoration: 'underline' }}>
-                    Condiciones de uso
-                  </Link>{' '}
-                  y{' '}
-                  <Link to="/educacion" style={{ textDecoration: 'underline' }}>
-                    Política de privacidad.
-                  </Link>
-                </Centered>
-              </Box>
 
-              <Box>
-                <Text size={0}>¿No tienes una cuenta?</Text>
-              </Box>
-              <Button
-                kind="light"
-                size={0}
-                onClick={() => setActive('register')}
-                css={{ cursor: 'pointer', borderTop: 'none' }}
-              >
-                Regístrate
-              </Button>
             </Flex>
           </Flex>
         )}
@@ -167,4 +128,4 @@ const Login = ({
   );
 }
 
-export default Login;
+export default ForgotPassword;

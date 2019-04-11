@@ -11,7 +11,6 @@ import NavLink from './NavLink';
 import BackgroundBox from '../BackgroundBox';
 import Text from '../Text';
 import UserContext from '../UserContext';
-import { auth } from 'firebase';
 import { Link } from 'gatsby';
 
 const FullSizeButton = styled(Button)`
@@ -88,7 +87,7 @@ const Navbar = props => {
                       kind="dark"
                       onClick={() => setUserData(null)}
                     >
-                      Logout
+                      Cerrar Sesión
                     </FullSizeButton>
                   </Box>
                   <Box width={1 / 2}>

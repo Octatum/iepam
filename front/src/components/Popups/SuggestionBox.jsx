@@ -7,19 +7,7 @@ import Button from '../Button';
 import CloseButton from './CloseButton';
 import { SuggestionBoxValidation as validation } from '../../utils/validation';
 import InputComponent, { Bordered } from './InputComponent';
-
-const ErrorComponent = ({ children }) => (
-  <BackgroundBox
-    width="100%"
-    backgroundColor="errorRed"
-    as={Box}
-    p={2}
-    mb={2}
-    css={{ borderRadius: '10px' }}
-  >
-    <Text color="red">{children}</Text>
-  </BackgroundBox>
-);
+import ErrorComponent from './ErrorComponent';
 
 const SuggestionBox = ({
   close,
@@ -50,11 +38,8 @@ const SuggestionBox = ({
       }}
     >
       {({
-        values,
         touched,
         errors,
-        handleChange,
-        handleBlur,
         handleSubmit,
         isSubmitting
       }) => (
@@ -67,7 +52,7 @@ const SuggestionBox = ({
         {...others}
       >
         <CloseButton alignSelf="flex-end" closeFunction={close} />
-    
+        
         <Flex flexDirection="column" alignItems="center" mx={[4]}>
           <Box as={Text} bold size={3} pt={3} alignSelf="flex-start">
             Háganos saber que podemos mejorar
@@ -137,6 +122,7 @@ const SuggestionBox = ({
               size={2}
               css={{ cursor: 'pointer', borderTop: 'none' }}
               type="submit"
+              disabled={isSubmitting}
             >
               Enviar
             </Button>

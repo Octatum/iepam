@@ -24,12 +24,12 @@ export async function getUserOrRedirect(user, callback) {
       
       // usuario no es permitido
       if(response.status === 401) {
-        throw 'error';
+        throw new Error('unauthorized user');
       }
 
       // datos incorrectos
       if (response.status !== 200) {
-        throw 'error';
+        throw new Error('internal error');
       }
       
     } catch (error) {
