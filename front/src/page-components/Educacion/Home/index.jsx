@@ -93,7 +93,7 @@ const InicioEducacion = () => {
       <Flex py={4} flexDirection="column">
         <Box px={4} pb={4}>
           <Text bold size={2}>
-            Cursos destacados
+            Enlaces externos
           </Text>
         </Box>
         <Box>

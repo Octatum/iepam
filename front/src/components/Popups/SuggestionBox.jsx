@@ -93,22 +93,6 @@ const SuggestionBox = ({
             <ErrorComponent>{errors.message}</ErrorComponent>
           )}
     
-          <Flex>
-            <BackgroundBox
-              backgroundColor="darkGray"
-              as={Box}
-              width="30px"
-              css={{ height: '30px' }}
-              mr={3}
-            />
-            <Flex flexDirection="column" width="calc(100% - 30px - 3rem)">
-              <Text size={1}>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro
-                cumque voluptatibus eligendi totam explicabo dolore ipsam dolorem,
-                eveniet illum quod nobis laboriosam tenetur facilis commodi.
-              </Text>
-            </Flex>
-          </Flex>
           <Box
             width={1}
             as={BackgroundBox}

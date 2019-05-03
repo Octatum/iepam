@@ -45,20 +45,13 @@ const HomePage = () => {
           node{
             title
             description
-            image {
-              childImageSharp{
-                original{
-                  src
-                }
-              }
-            }
           }
         }
       }
     }
   `)
   const imageData = PresentationSlides.allStrapiHomepresentationslides.edges.map(edge => {
-    return { title: edge.node.title, image: edge.node.image.childImageSharp.original.src, description: edge.node.description };
+    return { title: edge.node.title, description: edge.node.description };
   })
 
 
@@ -71,7 +64,7 @@ const HomePage = () => {
               <Box mb={4} key={imageInfo.title}>
                 <BackgroundBox
                   as={Flex}
-                  image={imageInfo.image}
+                  backgroundColor='darkestGray'
                   p={4}
                   css={{ height: '600px' }}
                   flexDirection="column"
